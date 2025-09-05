@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import gatoGif from "../assets/images/gato-unscreen.gif";
 import { TermsModal, useModal } from "../components/Modals";
 import { useNavigate } from "react-router-dom";
@@ -11,6 +11,7 @@ export default function Home() {
   const [catFact, setCatFact] = useState("");
   const [achievements, setAchievements] = useState({});
   const [showCatFact, setShowCatFact] = useState(false);
+  const [isGenerating, setIsGenerating] = useState(false);
   const termsModal = useModal();
   const navigate = useNavigate();
 
@@ -54,8 +55,8 @@ export default function Home() {
     return "Que tal planejar o dia de amanhã?";
   };
 
-  // Dicas do dia e fatos sobre gatos
-  const dailyTips = [
+  // Dicas do dia e fatos sobre gatos - memoizados para performance
+  const dailyTips = useMemo(() => [
     "Organize sua geladeira por categorias para facilitar o acesso!",
     "Use vinagre branco para limpar superfícies de vidro sem manchas.",
     "Mantenha temperos em potes herméticos para preservar o sabor.",
@@ -64,9 +65,9 @@ export default function Home() {
     "Use papel alumínio para manter alimentos frescos por mais tempo.",
     "Organize utensílios por frequência de uso.",
     "Mantenha um calendário de limpeza para não esquecer nada."
-  ];
+  ], []);
 
-  const catFacts = [
+  const catFacts = useMemo(() => [
     "Os gatos passam 70% da vida dormindo! 😴",
     "Um gato pode fazer mais de 100 sons diferentes! 🐱",
     "Os bigodes dos gatos são sensores de movimento ultra-sensíveis! 🧐",
@@ -75,7 +76,7 @@ export default function Home() {
     "Gatos têm 3 pálpebras em cada olho! 👁️",
     "Um gato pode correr até 48 km/h! 🏃‍♂️",
     "Gatos suam apenas pelas patas! 🐾"
-  ];
+  ], []);
 
   // Simular dados de atividade recente baseados no localStorage
   useEffect(() => {
@@ -127,6 +128,26 @@ export default function Home() {
   // Função para alternar entre dica e fato sobre gatos
   const toggleTipFact = () => {
     setShowCatFact(!showCatFact);
+  };
+
+  // Função para gerar nova dica ou fato
+  const generateNewTipFact = async () => {
+    setIsGenerating(true);
+    
+    // Simular um pequeno delay para dar feedback visual
+    await new Promise(resolve => setTimeout(resolve, 300));
+    
+    if (showCatFact) {
+      // Gerar novo fato sobre gatos
+      const randomIndex = Math.floor(Math.random() * catFacts.length);
+      setCatFact(catFacts[randomIndex]);
+    } else {
+      // Gerar nova dica
+      const randomIndex = Math.floor(Math.random() * dailyTips.length);
+      setDailyTip(dailyTips[randomIndex]);
+    }
+    
+    setIsGenerating(false);
   };
 
   // Função para navegar para seções específicas
@@ -229,6 +250,9 @@ export default function Home() {
                   <div 
                     key={activity.id} 
                     onClick={() => handleActivityClick(activity)}
+                    onKeyDown={(e) => e.key === 'Enter' && handleActivityClick(activity)}
+                    role="button"
+                    tabIndex={0}
                     className={`${colorScheme.bg} p-4 rounded-xl shadow-md hover:shadow-lg transform hover:scale-[1.02] transition-all duration-200 cursor-pointer group`}
                   >
                     <div className="flex items-center justify-between">
@@ -262,6 +286,9 @@ export default function Home() {
             <div className="flex-1">
               <div 
                 onClick={toggleTipFact}
+                onKeyDown={(e) => e.key === 'Enter' && toggleTipFact()}
+                role="button"
+                tabIndex={0}
                 className="bg-gradient-to-r from-yellow-100 to-orange-100 dark:from-yellow-600/20 dark:to-orange-600/20 border border-yellow-200 dark:border-yellow-500/30 rounded-xl p-3 tip-box h-full flex items-center cursor-pointer hover:shadow-md transition-all duration-200 group"
               >
                 <div className="flex items-start gap-3">
@@ -269,22 +296,52 @@ export default function Home() {
                     {showCatFact ? "🐱" : "💡"}
                   </div>
                   <div className="flex-1">
-                    <p className="text-sm text-yellow-800 dark:text-yellow-100 font-medium leading-relaxed">
-                      <strong>{showCatFact ? "Fato Curioso:" : "Dica:"}</strong> {showCatFact ? catFact : dailyTip}
-                    </p>
-                    <p className="text-xs text-yellow-700 dark:text-yellow-200 mt-1 opacity-75">
-                      Clique para {showCatFact ? "ver dica" : "ver fato sobre gatos"}
-                    </p>
+                    {isGenerating ? (
+                      <div className="flex items-center gap-2">
+                        <div className="animate-spin rounded-full h-4 w-4 border-2 border-yellow-600 border-t-transparent"></div>
+                        <p className="text-sm text-yellow-800 dark:text-yellow-100 font-medium">
+                          Gerando {showCatFact ? "novo fato" : "nova dica"}...
+                        </p>
+                      </div>
+                    ) : (
+                      <>
+                        <p className="text-sm text-yellow-800 dark:text-yellow-100 font-medium leading-relaxed">
+                          <strong>{showCatFact ? "Fato Curioso:" : "Dica:"}</strong> {showCatFact ? catFact : dailyTip}
+                        </p>
+                        <p className="text-xs text-yellow-700 dark:text-yellow-200 mt-1 opacity-75">
+                          Clique para {showCatFact ? "ver dica" : "ver fato sobre gatos"}
+                        </p>
+                      </>
+                    )}
                   </div>
                 </div>
               </div>
             </div>
           </div>
           <div className="flex justify-end mt-4">
-            <a href="/dicas" className="btn px-4 py-2 rounded-lg bg-yellow-500 hover:bg-yellow-600 text-white font-semibold shadow-md transition-all duration-200 flex items-center gap-2 hover:scale-105 transform">
-              <i className="fa-solid fa-lightbulb text-sm"></i> 
-              <span className="text-sm">Mais dicas</span>
-            </a>
+            <button 
+              onClick={generateNewTipFact}
+              disabled={isGenerating}
+              className={`btn px-4 py-2 rounded-lg text-white font-semibold shadow-md transition-all duration-200 flex items-center gap-2 hover:scale-105 transform active:scale-95 ${
+                isGenerating 
+                  ? 'bg-yellow-400 cursor-not-allowed' 
+                  : 'bg-yellow-500 hover:bg-yellow-600'
+              }`}
+            >
+              {isGenerating ? (
+                <>
+                  <div className="animate-spin rounded-full h-4 w-4 border-2 border-white border-t-transparent"></div>
+                  <span className="text-sm">Gerando...</span>
+                </>
+              ) : (
+                <>
+                  <i className={`fa-solid ${showCatFact ? 'fa-cat' : 'fa-lightbulb'} text-sm`}></i> 
+                  <span className="text-sm">
+                    {showCatFact ? 'Novo fato' : 'Nova dica'}
+                  </span>
+                </>
+              )}
+            </button>
           </div>
         </article>
       </section>
@@ -300,6 +357,9 @@ export default function Home() {
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4">
             <div 
               onClick={() => navigate('/cozinha-ia')}
+              onKeyDown={(e) => e.key === 'Enter' && navigate('/cozinha-ia')}
+              role="button"
+              tabIndex={0}
               className="text-center p-2 bg-green-100 dark:bg-green-600 border border-green-200 dark:border-green-400 rounded-lg achievement-card-green cursor-pointer hover:shadow-md hover:scale-105 transition-all duration-200 group"
             >
               <div className="text-xs font-bold text-green-700 dark:text-white achievement-number group-hover:scale-110 transition-transform duration-200">
@@ -309,6 +369,9 @@ export default function Home() {
             </div>
             <div 
               onClick={() => navigate('/mercado-ia')}
+              onKeyDown={(e) => e.key === 'Enter' && navigate('/mercado-ia')}
+              role="button"
+              tabIndex={0}
               className="text-center p-2 bg-blue-100 dark:bg-blue-600 border border-blue-200 dark:border-blue-400 rounded-lg achievement-card-blue cursor-pointer hover:shadow-md hover:scale-105 transition-all duration-200 group"
             >
               <div className="text-xs font-bold text-blue-700 dark:text-white achievement-number group-hover:scale-110 transition-transform duration-200">
@@ -318,6 +381,9 @@ export default function Home() {
             </div>
             <div 
               onClick={() => navigate('/faxina-ia')}
+              onKeyDown={(e) => e.key === 'Enter' && navigate('/faxina-ia')}
+              role="button"
+              tabIndex={0}
               className="text-center p-2 bg-orange-100 dark:bg-orange-600 border border-orange-200 dark:border-orange-400 rounded-lg achievement-card-orange cursor-pointer hover:shadow-md hover:scale-105 transition-all duration-200 group"
             >
               <div className="text-xs font-bold text-orange-700 dark:text-white achievement-number group-hover:scale-110 transition-transform duration-200">
@@ -327,6 +393,9 @@ export default function Home() {
             </div>
             <div 
               onClick={() => navigate('/config')}
+              onKeyDown={(e) => e.key === 'Enter' && navigate('/config')}
+              role="button"
+              tabIndex={0}
               className="text-center p-2 bg-purple-100 dark:bg-purple-600 border border-purple-200 dark:border-purple-400 rounded-lg achievement-card-purple cursor-pointer hover:shadow-md hover:scale-105 transition-all duration-200 group"
             >
               <div className="text-xs font-bold text-purple-700 dark:text-white achievement-number group-hover:scale-110 transition-transform duration-200">
