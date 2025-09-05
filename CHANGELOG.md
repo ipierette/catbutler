@@ -12,6 +12,37 @@ e este projeto adere ao [Versionamento Semântico](https://semver.org/lang/pt-BR
 - Guias de instalação, desenvolvimento e deploy
 - Templates para contribuição
 
+## [2.0.2] - 2025-01-27
+
+### 🎨 Melhorias de UX/UI
+
+#### Melhorado
+- **Card "Agora" - Contraste e Legibilidade**
+  - Texto da sugestão com contraste melhorado no modo claro
+  - Fundo azul escuro (blue-600) para melhor visibilidade
+  - Texto branco com sombra para destaque
+  - Ícone amarelo com texto branco para contraste
+  - CSS forçado com !important para garantir aplicação
+  - Classes específicas para controle de estilo
+
+- **Acessibilidade Aprimorada**
+  - Substituição de elementos com role="button" por botões reais
+  - Melhor navegação por teclado
+  - Elementos semânticos corretos
+  - Contraste WCAG melhorado
+
+#### Técnico
+- **CSS Específico**
+  - Classes `.suggestion-card`, `.suggestion-text`, `.suggestion-subtitle`
+  - Seletores específicos para modo claro (.light)
+  - Text-shadow para melhor legibilidade
+  - Font-weight aumentado para destaque
+
+- **Componentes**
+  - Card "Agora" com design premium
+  - Elementos interativos com acessibilidade completa
+  - Hover effects refinados
+
 ## [2.0.1] - 2025-01-27
 
 ### 🎨 Melhorias de UX/UI

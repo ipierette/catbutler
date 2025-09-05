@@ -193,6 +193,13 @@ catbutler-react/
 - **Gatinho Mordomo**: Escondido em telas < 1024px
 - **Assistente Culinário**: Estilos otimizados para modo claro
 
+### ♿ Acessibilidade Avançada
+- **Elementos Semânticos**: Botões reais em vez de divs com role
+- **Navegação por Teclado**: Suporte completo a Tab e Enter
+- **Contraste WCAG**: Texto com contraste otimizado
+- **Text Shadow**: Melhora legibilidade em fundos escuros
+- **Font Weight**: Destaque visual para elementos importantes
+
 ### ⚡ Estados de Loading
 - **LoadingSpinner**: Spinner animado com tamanhos e cores
 - **LoadingButton**: Botões com estado de carregamento

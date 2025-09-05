@@ -245,16 +245,16 @@ export default function Home() {
                 </div>
               </div>
               
-              <div className="bg-white dark:bg-gray-800 rounded-lg p-3 border border-blue-200 dark:border-gray-600">
+              <div className="bg-blue-600 dark:bg-gray-800 rounded-lg p-3 border border-blue-500 dark:border-gray-600 suggestion-card">
                 <div className="flex items-start gap-3">
-                  <div className="w-6 h-6 bg-green-100 dark:bg-green-900 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
-                    <i className="fa-solid fa-lightbulb text-green-600 dark:text-green-400 text-xs"></i>
+                  <div className="w-6 h-6 bg-yellow-400 dark:bg-green-900 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                    <i className="fa-solid fa-lightbulb text-white dark:text-green-400 text-xs"></i>
                   </div>
                   <div className="flex-1">
-                    <p className="text-sm text-gray-800 dark:text-gray-200 font-medium leading-relaxed">
+                    <p className="text-sm text-white dark:text-gray-200 font-bold leading-relaxed suggestion-text">
                       {getTimeBasedSuggestion()}
                     </p>
-                    <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">
+                    <p className="text-xs text-gray-200 dark:text-gray-400 mt-1 font-medium suggestion-subtitle">
                       Sugestão baseada no horário
                     </p>
                   </div>
