@@ -127,6 +127,28 @@ footer {
   z-index: 1 !important;
 }
 
+/* Responsividade do footer - telas menores que 926px */
+@media (max-width: 925px) {
+  .footer-desktop {
+    display: none !important;
+  }
+  
+  .footer-mobile {
+    display: flex !important;
+  }
+}
+
+/* Responsividade do footer - telas maiores que 926px */
+@media (min-width: 926px) {
+  .footer-desktop {
+    display: flex !important;
+  }
+  
+  .footer-mobile {
+    display: none !important;
+  }
+}
+
 /* Melhor contraste para o footer */
 footer .text-gray-900 {
   color: #1f2937 !important; /* gray-800 */

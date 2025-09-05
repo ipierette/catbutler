@@ -88,7 +88,7 @@ export default function Home() {
             <li className="flex items-center gap-1 sm:gap-2 whitespace-nowrap"><i className="fa-solid fa-location-dot text-pink-500 dark:text-pink-300"></i> Preços locais</li>
           </ul>
         </div>
-        <div className="absolute lg:relative lg:w-1/3 flex items-end justify-center lg:justify-end">
+        <div className="hidden xl:block absolute lg:relative lg:w-1/3 flex items-end justify-center lg:justify-end">
           <img
             src={gatoGif}
             alt="gato-mordomo"
