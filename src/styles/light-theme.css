@@ -1,0 +1,63 @@
+/* ===== VARIÁVEIS E CONFIGURAÇÕES DO MODO CLARO ===== */
+
+:root.light {
+  /* Cores primárias */
+  --primary-color: #191970;
+  --primary-hover: #7c3aed;
+  --accent-color: #7c3aed;
+  --accent-hover: #a3e635;
+  
+  /* Cores de texto */
+  --text-primary: #191970;
+  --text-secondary: #6b7280;
+  --text-muted: #9ca3af;
+  --text-inverse: #ffffff;
+  
+  /* Cores de fundo */
+  --bg-primary: #ffffff;
+  --bg-secondary: #f9fafb;
+  --bg-glass: rgba(255, 255, 255, 0.85);
+  --bg-glass-border: rgba(0, 0, 0, 0.04);
+  
+  /* Cores de borda */
+  --border-primary: #d1d5db;
+  --border-secondary: #e5e7eb;
+  --border-focus: #f97316;
+  
+  /* Cores de gradiente */
+  --gradient-blue: linear-gradient(135deg, #dbeafe, #bfdbfe);
+  --gradient-green: linear-gradient(135deg, #dcfce7, #bbf7d0);
+  --gradient-yellow: linear-gradient(135deg, #fef3c7, #fde68a);
+  --gradient-purple: linear-gradient(135deg, #e9d5ff, #ddd6fe);
+  --gradient-orange: linear-gradient(135deg, #fed7aa, #fdba74);
+  --gradient-pink: linear-gradient(135deg, #fce7f3, #fbcfe8);
+  --gradient-indigo: linear-gradient(135deg, #e0e7ff, #c7d2fe);
+  --gradient-emerald: linear-gradient(135deg, #d1fae5, #a7f3d0);
+  --gradient-teal: linear-gradient(135deg, #ccfbf1, #99f6e4);
+  
+  /* Sombras */
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  --shadow-glass: 0 4px 32px 0 rgba(0, 0, 0, 0.07), 0 1.5px 4px 0 rgba(0, 0, 0, 0.03);
+  
+  /* Cores de estado */
+  --success: #10b981;
+  --warning: #f59e0b;
+  --error: #ef4444;
+  --info: #3b82f6;
+  
+  /* Cores de chat */
+  --chat-bg: #f9fafb;
+  --chat-border: #d1d5db;
+  --chat-input-bg: #ffffff;
+  --chat-input-border: #d1d5db;
+  --chat-bot-bg: #f3f4f6;
+  --chat-user-bg: #dbeafe;
+  --chat-user-text: #1e40af;
+  
+  /* Cores de accordion */
+  --accordion-chevron: #4b5563;
+  --accordion-chevron-bg: #f3f4f6;
+  --accordion-chevron-hover: #6b7280;
+}

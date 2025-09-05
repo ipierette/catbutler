@@ -1,291 +1,10 @@
-/* Tooltip de compartilhamento mais escuro no modo dark */
-.share-tooltip {
-  background: #181f2a;
-  border: 1px solid #232b3a;
-  z-index: 99999 !important;
-  position: fixed !important;
-  isolation: isolate !important;
-}
-
-/* Garantir que o tooltip apareça acima do header */
-.share-tooltip {
-  z-index: 99999 !important;
-}
-
-/* Reduzir z-index dos containers principais para que o tooltip apareça acima */
-.glass-effect {
-  z-index: 1 !important;
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  background: rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-}
-
-/* Reduzir z-index de outros elementos que podem interferir */
-main, section, article, .fade-in-up {
-  z-index: 1 !important;
-}
-
-/* Garantir que o header tenha z-index alto */
-header {
-  z-index: 100 !important;
-}
-
-/* Menu mobile - garantir visibilidade */
-.mobile-menu {
-  z-index: 40 !important;
-  position: fixed !important;
-  top: 4rem !important; /* 64px - altura do header */
-  left: 0 !important;
-  right: 0 !important;
-}
-
-/* Overlay do menu mobile */
-.mobile-menu-overlay {
-  z-index: 30 !important;
-  position: fixed !important;
-  top: 0 !important;
-  left: 0 !important;
-  right: 0 !important;
-  bottom: 0 !important;
-}
-
-
-/* Cores personalizadas */
-.midnight-text {
-  color: #191970;
-}
-
-html.dark .midnight-text {
-  color: #191970;
-}
-
-/* Span visitante com cor especial */
-.visitante-span {
-  color: #22c55e;
-}
-
-html.dark .visitante-span {
-  color: #22c55e;
-}
-
-/* CatButler title cor modo claro/escuro */
-.catbutler-title {
-  color: #191970;
-}
-
-html.dark .catbutler-title {
-  color: #22c55e;
-}
-
-/* Ícones sociais modo claro/escuro */
-.icon-social {
-  color: #191970;
-  transition: color 0.2s;
-}
-html.dark .icon-social {
-  color: #22c55e;
-}
-.icon-social:hover {
-  color: #7c3aed;
-}
-html.dark .icon-social:hover {
-  color: #a3e635;
-}
+/* ===== CONFIGURAÇÕES GERAIS E UTILITÁRIOS ===== */
+@import './styles/light-theme.css';
+@import './styles/dark-theme.css';
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-/* Cor global de texto para modo claro e escuro, exceto spans */
-html.light body, html.light main, html.light section, html.light article, html.light header, html.light footer, html.light h1, html.light h2, html.light h3, html.light h4, html.light h5, html.light h6, html.light p, html.light ul, html.light ol, html.light li, html.light a, html.light div, html.light label, html.light input, html.light textarea {
-  color: #191970;
-}
-html.dark body, html.dark main, html.dark section, html.dark article, html.dark header, html.dark footer, html.dark h1, html.dark h2, html.dark h3, html.dark h4, html.dark h5, html.dark h6, html.dark p, html.dark ul, html.dark ol, html.dark li, html.dark a, html.dark div, html.dark label, html.dark input, html.dark textarea {
-  color: #fff;
-}
-/* Cor roxa tecnológica para span .visitante no modo claro */
-html.light .visitante-span {
-  color: #7c3aed !important; /* Tailwind purple-600 */
-}
-
-/* Containers, header e footer mais claros no modo claro para destacar texto preto */
-html.light .glass-effect,
-html.light header,
-html.light footer,
-html.light .card,
-html.light .container {
-  background: rgba(255,255,255,0.85) !important;
-  box-shadow: 0 4px 32px 0 rgba(0,0,0,0.07), 0 1.5px 4px 0 rgba(0,0,0,0.03);
-  border: 1px solid rgba(0,0,0,0.04);
-  backdrop-filter: blur(8px);
-}
-
-/* Footer maior no modo claro e escuro */
-footer {
-  font-size: 1.15rem;
-  z-index: 1 !important;
-}
-
-/* Responsividade do footer - telas menores que 926px */
-@media (max-width: 925px) {
-  .footer-desktop {
-    display: none !important;
-  }
-  
-  .footer-mobile {
-    display: flex !important;
-  }
-}
-
-/* Responsividade do footer - telas maiores que 926px */
-@media (min-width: 926px) {
-  .footer-desktop {
-    display: flex !important;
-  }
-  
-  .footer-mobile {
-    display: none !important;
-  }
-}
-
-/* Melhor contraste para o footer */
-footer .text-gray-900 {
-  color: #1f2937 !important; /* gray-800 */
-}
-
-html.dark footer .text-gray-100 {
-  color: #f9fafb !important; /* gray-50 */
-}
-
-/* Melhorias específicas e cirúrgicas para modo claro */
-:not(.dark) .text-gray-500 {
-  color: #6b7280 !important; /* gray-500 - mais escuro que gray-400 */
-}
-
-:not(.dark) .text-gray-400 {
-  color: #9ca3af !important; /* gray-400 - mais escuro que gray-300 */
-}
-
-/* Contraste específico para gradientes claros */
-:not(.dark) .bg-gradient-to-br.from-blue-50 .text-gray-900 {
-  color: #1f2937 !important; /* gray-800 - mais escuro */
-}
-
-:not(.dark) .bg-gradient-to-br.from-green-50 .text-gray-900 {
-  color: #1f2937 !important; /* gray-800 - mais escuro */
-}
-
-:not(.dark) .bg-gradient-to-br.from-yellow-50 .text-gray-900 {
-  color: #1f2937 !important; /* gray-800 - mais escuro */
-}
-
-:not(.dark) .bg-gradient-to-br.from-purple-50 .text-gray-900 {
-  color: #1f2937 !important; /* gray-800 - mais escuro */
-}
-
-:not(.dark) .bg-gradient-to-br.from-orange-50 .text-gray-900 {
-  color: #1f2937 !important; /* gray-800 - mais escuro */
-}
-
-:not(.dark) .bg-gradient-to-br.from-pink-50 .text-gray-900 {
-  color: #1f2937 !important; /* gray-800 - mais escuro */
-}
-
-:not(.dark) .bg-gradient-to-br.from-indigo-50 .text-gray-900 {
-  color: #1f2937 !important; /* gray-800 - mais escuro */
-}
-
-:not(.dark) .bg-gradient-to-br.from-emerald-50 .text-gray-900 {
-  color: #1f2937 !important; /* gray-800 - mais escuro */
-}
-
-:not(.dark) .bg-gradient-to-br.from-teal-50 .text-gray-900 {
-  color: #1f2937 !important; /* gray-800 - mais escuro */
-}
-
-/* Contraste para textos secundários em gradientes claros */
-:not(.dark) .bg-gradient-to-br .text-gray-600 {
-  color: #4b5563 !important; /* gray-600 - mais escuro */
-}
-
-:not(.dark) .bg-gradient-to-br .text-gray-500 {
-  color: #6b7280 !important; /* gray-500 - mais escuro */
-}
-
-/* Melhor contraste para inputs no modo claro */
-:not(.dark) input[type="text"],
-:not(.dark) input[type="email"],
-:not(.dark) input[type="password"],
-:not(.dark) textarea,
-:not(.dark) select {
-  color: #111827 !important; /* gray-900 - mais escuro */
-  border-color: #d1d5db !important; /* gray-300 - mais visível */
-}
-
-:not(.dark) input::placeholder,
-:not(.dark) textarea::placeholder {
-  color: #9ca3af !important; /* gray-400 - mais escuro */
-}
-
-/* Melhor contraste para labels no modo claro */
-:not(.dark) label {
-  color: #374151 !important; /* gray-700 - mais escuro */
-}
-
-/* Melhor contraste para o chat no modo claro */
-:not(.dark) .chat-container {
-  background-color: #f9fafb !important; /* gray-50 - mais escuro */
-  border-color: #d1d5db !important; /* gray-300 - mais visível */
-}
-
-:not(.dark) .chat-input {
-  color: #111827 !important; /* gray-900 - mais escuro */
-  border-color: #d1d5db !important; /* gray-300 - mais visível */
-}
-
-:not(.dark) .chat-input::placeholder {
-  color: #9ca3af !important; /* gray-400 - mais escuro */
-}
-
-/* Melhor contraste para mensagens do chat no modo claro */
-:not(.dark) .chat-message.bot {
-  background-color: #f3f4f6 !important; /* gray-100 - mais escuro */
-  color: #111827 !important; /* gray-900 - mais escuro */
-}
-
-:not(.dark) .chat-message.user {
-  background-color: #dbeafe !important; /* blue-100 - mais escuro */
-  color: #1e40af !important; /* blue-800 - mais escuro */
-}
-
-/* Melhor visibilidade para setinhas de accordion */
-.fa-chevron-down,
-.fa-chevron-up {
-  opacity: 0.8 !important;
-  transition: all 0.2s ease-in-out !important;
-}
-
-.fa-chevron-down:hover,
-.fa-chevron-up:hover {
-  opacity: 1 !important;
-  transform: scale(1.1) !important;
-}
-
-/* Setinhas mais visíveis em modo claro */
-:not(.dark) .fa-chevron-down,
-:not(.dark) .fa-chevron-up {
-  color: #4b5563 !important; /* gray-600 - mais escuro */
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1) !important;
-}
-
-/* Setinhas mais visíveis em modo escuro */
-.dark .fa-chevron-down,
-.dark .fa-chevron-up {
-  color: #d1d5db !important; /* gray-300 - mais claro */
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3) !important;
-}
-
 
 :root {
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
@@ -302,121 +21,19 @@ html.dark footer .text-gray-100 {
   transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
 }
 
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
-}
-
-
 body {
   margin: 0;
   min-width: 320px;
   min-height: 100vh;
-  background: transparent; /* Permite que o fundo 3D seja visível */
+  background: transparent;
+  overflow: hidden;
 }
 
-/* Garantir que o container principal não cause scroll desnecessário */
-
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+html {
+  scroll-behavior: smooth;
 }
 
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
-}
-
-/* Melhorias para o tema escuro */
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    color: #f5f5f5;
-  }
-  html.light body, html.light main, html.light section, html.light article, html.light header, html.light footer, html.light h1, html.light h2, html.light h3, html.light h4, html.light h5, html.light h6, html.light p, html.light ul, html.light ol, html.light li, html.light a, html.light div, html.light label, html.light input, html.light textarea {
-    color: #191970;
-  }
-}
-
-
-.dark .glass-effect {
-  background: rgba(0, 0, 0, 0.7) !important;
-  border: 1px solid rgba(255, 255, 255, 0.25) !important;
-  backdrop-filter: blur(15px);
-  -webkit-backdrop-filter: blur(15px);
-}
-
-/* Garantir fundos escuros para cards específicos no modo escuro */
-.dark .bg-white {
-  background-color: #1f2937 !important; /* gray-800 */
-}
-
-.dark .bg-gray-50 {
-  background-color: #374151 !important; /* gray-700 */
-}
-
-.dark .bg-blue-50 {
-  background-color: #1e3a8a !important; /* blue-900 */
-}
-
-.dark .bg-green-50 {
-  background-color: #14532d !important; /* green-900 */
-}
-
-.dark .bg-yellow-50 {
-  background-color: #713f12 !important; /* yellow-900 */
-}
-
-.dark .bg-purple-50 {
-  background-color: #581c87 !important; /* purple-900 */
-}
-
-.dark .bg-orange-50 {
-  background-color: #9a3412 !important; /* orange-900 */
-}
-
-/* Forçar cor branca para seletores no modo escuro */
-.dark select {
-  color: #ffffff !important;
-}
-
-.dark select option {
-  color: #ffffff !important;
-  background-color: #374151 !important; /* gray-700 */
-}
-
-.dark select option:hover {
-  background-color: #4b5563 !important; /* gray-600 */
-}
-
-/* Regra mais específica para garantir que funcione */
-html.dark select,
-html.dark select option {
-  color: #ffffff !important;
-}
-
-html.dark select option {
-  background-color: #374151 !important;
-}
-
-/* Animação de entrada suave */
+/* ===== ANIMAÇÕES E EFEITOS GLOBAIS ===== */
 @keyframes fadeInUp {
   from {
     opacity: 0;
@@ -428,11 +45,6 @@ html.dark select option {
   }
 }
 
-.fade-in-up {
-  animation: fadeInUp 0.6s ease-out;
-}
-
-/* Animações adicionais para galeria */
 @keyframes slideInFromLeft {
   from {
     opacity: 0;
@@ -453,6 +65,10 @@ html.dark select option {
   }
 }
 
+.fade-in-up {
+  animation: fadeInUp 0.6s ease-out;
+}
+
 .slide-in-left {
   animation: slideInFromLeft 0.5s ease-out forwards;
 }
@@ -461,13 +77,51 @@ html.dark select option {
   animation: pulse 2s infinite;
 }
 
-/* Galeria de tarefas - animações escalonadas */
 .gallery-item {
   animation: fadeInUp 0.6s ease-out forwards;
   opacity: 0;
 }
 
-/* Line clamp para descrições */
+/* ===== EFEITOS GLASS E Z-INDEX ===== */
+.glass-effect {
+  z-index: 1 !important;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+main, section, article, .fade-in-up {
+  z-index: 1 !important;
+}
+
+header {
+  z-index: 100 !important;
+}
+
+.mobile-menu {
+  z-index: 40 !important;
+  position: fixed !important;
+  top: 4rem !important;
+  left: 0 !important;
+  right: 0 !important;
+}
+
+.mobile-menu-overlay {
+  z-index: 30 !important;
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+}
+
+/* ===== TOOLTIPS E ELEMENTOS FLUTUANTES ===== */
+.share-tooltip {
+  z-index: 99999 !important;
+  position: fixed !important;
+  isolation: isolate !important;
+}
+
+/* ===== UTILITÁRIOS GLOBAIS ===== */
 .line-clamp-2 {
   display: -webkit-box;
   -webkit-line-clamp: 2;
@@ -475,94 +129,355 @@ html.dark select option {
   overflow: hidden;
 }
 
-/* Aplicar tema globalmente */
-html {
-  scroll-behavior: smooth;
+/* ===== RESPONSIVIDADE DO FOOTER ===== */
+@media (max-width: 925px) {
+  .footer-desktop {
+    display: none !important;
+  }
+  .footer-mobile {
+    display: flex !important;
+  }
 }
 
-/* Impedir scroll vertical da página */
-body {
-  overflow: hidden;
+@media (min-width: 926px) {
+  .footer-desktop {
+    display: flex !important;
+  }
+  .footer-mobile {
+    display: none !important;
+  }
 }
 
-/* Estilos do chat para modo claro - mais suaves e harmoniosos */
-.light .chat-container {
-  background-color: #f8fafc !important; /* gray-50 - fundo mais claro */
-  border-color: #e2e8f0 !important; /* gray-200 - borda mais suave */
-}
-
-.light .bot-message {
-  background-color: #e0f2fe !important; /* blue-50 - azul bem claro */
-  color: #0f172a !important; /* slate-900 - texto escuro para contraste */
-  border: 1px solid #bae6fd !important; /* blue-200 - borda sutil */
-}
-
-.light .chat-input {
-  background-color: #ffffff !important; /* white - fundo branco */
-  color: #0f172a !important; /* slate-900 - texto escuro */
-  border-color: #cbd5e1 !important; /* gray-300 - borda mais suave */
-}
-
-.light .chat-input:focus {
-  border-color: #f97316 !important; /* orange-500 - foco laranja */
-  box-shadow: 0 0 0 3px rgba(249, 115, 22, 0.1) !important; /* shadow laranja suave */
-}
-
-/* Melhorias adicionais para o chat no modo claro */
-.light .chat-container {
-  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.05) !important; /* sombra interna sutil */
-}
-
-.light .bot-message {
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05) !important; /* sombra sutil nas mensagens */
-  font-weight: 500 !important; /* texto um pouco mais bold */
-}
-
-/* Estilo para mensagens do usuário no modo claro */
-.light .chat-container .bg-orange-500 {
-  background: linear-gradient(135deg, #f97316, #ea580c) !important; /* gradiente laranja */
-  box-shadow: 0 2px 4px rgba(249, 115, 22, 0.2) !important; /* sombra laranja */
-}
-
-/* Placeholder mais suave no modo claro */
-.light .chat-input::placeholder {
-  color: #94a3b8 !important; /* slate-400 - placeholder mais suave */
-}
-
-/* Hover states para o chat no modo claro */
-.light .chat-container:hover {
-  border-color: #cbd5e1 !important; /* gray-300 - borda mais escura no hover */
-}
-
-.light .bot-message:hover {
-  transform: translateY(-1px) !important; /* leve elevação no hover */
-  transition: transform 0.2s ease !important;
-}
-
-/* Forçar cores do chat no modo escuro */
-.dark .chat-container {
-  background-color: #111827 !important; /* gray-900 */
-}
-
-.dark .bot-message {
-  background-color: #1e3a8a !important; /* blue-800 */
-  color: white !important;
-}
-
-.dark .chat-input {
-  background-color: #111827 !important; /* gray-900 */
-  color: white !important;
-}
-
+/* ===== MODO CLARO - CONFIGURAÇÕES ESPECÍFICAS ===== */
 html.light {
   color-scheme: light;
 }
 
+/* Cores de texto base para modo claro */
+html.light body,
+html.light main,
+html.light section,
+html.light article,
+html.light header,
+html.light footer,
+html.light h1,
+html.light h2,
+html.light h3,
+html.light h4,
+html.light h5,
+html.light h6,
+html.light p,
+html.light ul,
+html.light ol,
+html.light li,
+html.light a,
+html.light div,
+html.light label,
+html.light input,
+html.light textarea {
+  color: #191970;
+}
+
+/* Glass effect para modo claro */
+html.light .glass-effect,
+html.light header,
+html.light footer,
+html.light .card,
+html.light .container {
+  background: rgba(255, 255, 255, 0.85) !important;
+  box-shadow: 0 4px 32px 0 rgba(0, 0, 0, 0.07), 0 1.5px 4px 0 rgba(0, 0, 0, 0.03);
+  border: 1px solid rgba(0, 0, 0, 0.04);
+  backdrop-filter: blur(8px);
+}
+
+/* Cores específicas para modo claro */
+html.light .midnight-text {
+  color: #191970;
+}
+
+html.light .visitante-span {
+  color: #7c3aed !important;
+}
+
+html.light .catbutler-title {
+  color: #191970;
+}
+
+html.light .icon-social {
+  color: #191970;
+  transition: color 0.2s;
+}
+
+html.light .icon-social:hover {
+  color: #7c3aed;
+}
+
+/* Contraste para textos em modo claro */
+html.light .text-gray-500 {
+  color: #6b7280 !important;
+}
+
+html.light .text-gray-400 {
+  color: #9ca3af !important;
+}
+
+/* Contraste específico para gradientes claros */
+html.light .bg-gradient-to-br.from-blue-50 .text-gray-900 {
+  color: #1f2937 !important;
+}
+
+html.light .bg-gradient-to-br.from-green-50 .text-gray-900 {
+  color: #1f2937 !important;
+}
+
+html.light .bg-gradient-to-br.from-yellow-50 .text-gray-900 {
+  color: #1f2937 !important;
+}
+
+html.light .bg-gradient-to-br.from-purple-50 .text-gray-900 {
+  color: #1f2937 !important;
+}
+
+html.light .bg-gradient-to-br.from-orange-50 .text-gray-900 {
+  color: #1f2937 !important;
+}
+
+html.light .bg-gradient-to-br.from-pink-50 .text-gray-900 {
+  color: #1f2937 !important;
+}
+
+html.light .bg-gradient-to-br.from-indigo-50 .text-gray-900 {
+  color: #1f2937 !important;
+}
+
+html.light .bg-gradient-to-br.from-emerald-50 .text-gray-900 {
+  color: #1f2937 !important;
+}
+
+html.light .bg-gradient-to-br.from-teal-50 .text-gray-900 {
+  color: #1f2937 !important;
+}
+
+html.light .bg-gradient-to-br .text-gray-600 {
+  color: #4b5563 !important;
+}
+
+html.light .bg-gradient-to-br .text-gray-500 {
+  color: #6b7280 !important;
+}
+
+/* Inputs e formulários para modo claro */
+html.light input[type="text"],
+html.light input[type="email"],
+html.light input[type="password"],
+html.light textarea,
+html.light select {
+  color: #111827 !important;
+  border-color: #d1d5db !important;
+}
+
+html.light input::placeholder,
+html.light textarea::placeholder {
+  color: #9ca3af !important;
+}
+
+html.light label {
+  color: #374151 !important;
+}
+
+/* Chat para modo claro */
+html.light .chat-container {
+  background-color: #f9fafb !important;
+  border-color: #d1d5db !important;
+}
+
+html.light .chat-input {
+  color: #111827 !important;
+  border-color: #d1d5db !important;
+}
+
+html.light .chat-input::placeholder {
+  color: #9ca3af !important;
+}
+
+html.light .chat-message.bot {
+  background-color: #f3f4f6 !important;
+  color: #111827 !important;
+}
+
+html.light .chat-message.user {
+  background-color: #dbeafe !important;
+  color: #1e40af !important;
+}
+
+/* Setinhas de accordion para modo claro */
+html.light .fa-chevron-down,
+html.light .fa-chevron-up {
+  color: #4b5563 !important;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1) !important;
+}
+
+/* Footer para modo claro */
+html.light footer {
+  font-size: 1.15rem;
+  z-index: 1 !important;
+}
+
+html.light footer .text-gray-900 {
+  color: #1f2937 !important;
+}
+
+/* ===== MODO ESCURO - CONFIGURAÇÕES ESPECÍFICAS ===== */
 html.dark {
   color-scheme: dark;
 }
 
-/* Estilos para o toggle de tema */
+/* Cores de texto base para modo escuro */
+html.dark body,
+html.dark main,
+html.dark section,
+html.dark article,
+html.dark header,
+html.dark footer,
+html.dark h1,
+html.dark h2,
+html.dark h3,
+html.dark h4,
+html.dark h5,
+html.dark h6,
+html.dark p,
+html.dark ul,
+html.dark ol,
+html.dark li,
+html.dark a,
+html.dark div,
+html.dark label,
+html.dark input,
+html.dark textarea {
+  color: #fff;
+}
+
+/* Glass effect para modo escuro */
+html.dark .glass-effect {
+  background: rgba(0, 0, 0, 0.7) !important;
+  border: 1px solid rgba(255, 255, 255, 0.25) !important;
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+}
+
+/* Cores específicas para modo escuro */
+html.dark .midnight-text {
+  color: #191970;
+}
+
+html.dark .visitante-span {
+  color: #22c55e;
+}
+
+html.dark .catbutler-title {
+  color: #22c55e;
+}
+
+html.dark .icon-social {
+  color: #22c55e;
+  transition: color 0.2s;
+}
+
+html.dark .icon-social:hover {
+  color: #a3e635;
+}
+
+/* Fundos escuros para cards específicos */
+html.dark .bg-white {
+  background-color: #1f2937 !important;
+}
+
+html.dark .bg-gray-50 {
+  background-color: #374151 !important;
+}
+
+html.dark .bg-blue-50 {
+  background-color: #1e3a8a !important;
+}
+
+html.dark .bg-green-50 {
+  background-color: #14532d !important;
+}
+
+html.dark .bg-yellow-50 {
+  background-color: #713f12 !important;
+}
+
+html.dark .bg-purple-50 {
+  background-color: #581c87 !important;
+}
+
+html.dark .bg-orange-50 {
+  background-color: #9a3412 !important;
+}
+
+/* Seletores para modo escuro */
+html.dark select {
+  color: #ffffff !important;
+}
+
+html.dark select option {
+  color: #ffffff !important;
+  background-color: #374151 !important;
+}
+
+html.dark select option:hover {
+  background-color: #4b5563 !important;
+}
+
+/* Chat para modo escuro */
+html.dark .chat-container {
+  background-color: #111827 !important;
+}
+
+html.dark .bot-message {
+  background-color: #1e3a8a !important;
+  color: white !important;
+}
+
+html.dark .chat-input {
+  background-color: #111827 !important;
+  color: white !important;
+}
+
+/* Setinhas de accordion para modo escuro */
+html.dark .fa-chevron-down,
+html.dark .fa-chevron-up {
+  color: #d1d5db !important;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3) !important;
+}
+
+/* Footer para modo escuro */
+html.dark footer {
+  font-size: 1.15rem;
+  z-index: 1 !important;
+}
+
+html.dark footer .text-gray-100 {
+  color: #f9fafb !important;
+}
+
+/* ===== ESTILOS ESPECÍFICOS PARA ELEMENTOS ESPECIAIS ===== */
+
+/* Setinhas de accordion - comportamento global */
+.fa-chevron-down,
+.fa-chevron-up {
+  opacity: 0.8 !important;
+  transition: all 0.2s ease-in-out !important;
+}
+
+.fa-chevron-down:hover,
+.fa-chevron-up:hover {
+  opacity: 1 !important;
+  transform: scale(1.1) !important;
+}
+
+/* Toggle de tema */
 .theme-toggle {
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
@@ -573,117 +488,38 @@ html.dark {
   transform: scale(1.05);
 }
 
-/* ===== ESTILOS ESPECÍFICOS PARA LEGIBILIDADE NO MODO ESCURO ===== */
-
-/* Caixa de sugestão verde - contraste máximo no modo escuro */
-html.dark .hero-suggestion-box {
-  background: #065f46 !important; /* green-800 */
-  border-color: #10b981 !important; /* green-500 */
-  color: #ffffff !important;
+/* ===== ESTILOS LEGACY (manter compatibilidade) ===== */
+a {
+  font-weight: 500;
+  color: #646cff;
+  text-decoration: inherit;
 }
 
-html.dark .hero-suggestion-box .fa-lightbulb {
-  color: #ffffff !important;
+a:hover {
+  color: #535bf2;
 }
 
-/* Caixa de dica amarela - contraste máximo no modo escuro */
-html.dark .tip-box {
-  background: #92400e !important; /* yellow-800 */
-  border-color: #f59e0b !important; /* yellow-500 */
-  color: #ffffff !important;
+h1 {
+  font-size: 3.2em;
+  line-height: 1.1;
 }
 
-/* Ícones dos cards - contraste máximo no modo escuro */
-html.dark .card-icon-clock {
-  color: #60a5fa !important; /* blue-400 */
+button {
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  cursor: pointer;
+  transition: border-color 0.25s;
 }
 
-html.dark .card-icon-chart {
-  color: #4ade80 !important; /* green-400 */
+button:hover {
+  border-color: #646cff;
 }
 
-html.dark .card-icon-star {
-  color: #fbbf24 !important; /* yellow-400 */
+button:focus,
+button:focus-visible {
+  outline: 4px auto -webkit-focus-ring-color;
 }
-
-html.dark .card-icon-trophy {
-  color: #a78bfa !important; /* purple-400 */
-}
-
-/* Horário no card Agora - contraste máximo */
-html.dark .time-display {
-  color: #60a5fa !important; /* blue-400 */
-}
-
-/* Textos secundários - contraste máximo no modo escuro */
-html.dark .secondary-text {
-  color: #e5e7eb !important; /* gray-200 */
-}
-
-html.dark .timestamp-text {
-  color: #042968 !important; /* gray-400 */
-}
-
-/* Ícones das atividades recentes - contraste máximo */
-html.dark .activity-icon {
-  color: #ffffff !important;
-}
-
-/* Lista de características - contraste máximo */
-html.dark .feature-list {
-  color: #ffffff !important;
-}
-
-html.dark .feature-list .fa-wand-magic-sparkles {
-  color: #4ade80 !important; /* green-400 */
-}
-
-html.dark .feature-list .fa-list-check {
-  color: #60a5fa !important; /* blue-400 */
-}
-
-html.dark .feature-list .fa-location-dot {
-  color: #f472b6 !important; /* pink-400 */
-}
-
-/* Cards de conquistas - contraste máximo no modo escuro */
-html.dark .achievement-card-green {
-  background: #065f46 !important; /* green-800 */
-  border-color: #10b981 !important; /* green-500 */
-}
-
-html.dark .achievement-card-blue {
-  background: #1e40af !important; /* blue-800 */
-  border-color: #3b82f6 !important; /* blue-500 */
-}
-
-html.dark .achievement-card-orange {
-  background: #9a3412 !important; /* orange-800 */
-  border-color: #f97316 !important; /* orange-500 */
-}
-
-html.dark .achievement-card-purple {
-  background: #6b21a8 !important; /* purple-800 */
-  border-color: #a855f7 !important; /* purple-500 */
-}
-
-html.dark .achievement-number {
-  color: #ffffff !important;
-}
-
-html.dark .achievement-label {
-  color: #ffffff !important;
-}
-
-/* Forçar contraste da sugestão no card "Agora" - modo claro */
-.light .suggestion-card .suggestion-text {
-  color: #ffffff !important;
-  font-weight: 700 !important;
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3) !important;
-}
-
-.light .suggestion-card .suggestion-subtitle {
-  color: #e5e7eb !important;
-  font-weight: 500 !important;
-}
-
