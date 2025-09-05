@@ -38,23 +38,30 @@ export default function Config() {
 
   return (
     <main className="min-h-screen p-2 sm:p-3 md:p-4 max-w-7xl mx-auto pb-20">
-      {/* Hero Section - Estilo Home */}
-      <section className="relative flex flex-col items-center justify-center gap-3 lg:gap-6 w-full mx-auto glass-effect rounded-xl shadow-lg p-4 sm:p-6 mb-4 sm:mb-6 fade-in-up bg-white/95 dark:bg-gray-700 border border-gray-200 dark:border-gray-500 min-h-[200px] lg:min-h-[240px]">
-        <div className="flex flex-col items-center justify-center gap-3 text-center">
-          <div className="flex items-center gap-3 mb-1">
-            <h1 className="text-lg sm:text-xl lg:text-2xl font-bold text-gray-900 dark:text-white">
+      {/* Hero Section - Compacto */}
+      <section className="relative flex items-center justify-between w-full mx-auto glass-effect rounded-xl shadow-lg p-4 sm:p-6 mb-4 sm:mb-6 fade-in-up bg-white/95 dark:bg-gray-700 border border-gray-200 dark:border-gray-500 h-20 sm:h-24">
+        <div className="flex items-center gap-3">
+          <div className="p-2 bg-green-100 dark:bg-green-900/30 rounded-lg">
+            <span className="text-xl sm:text-2xl" aria-label="configurações">⚙️</span>
+          </div>
+          <div>
+            <h1 className="text-lg sm:text-xl font-bold text-gray-900 dark:text-white">
               <span className="visitante-span">Configurações</span>
             </h1>
-            <span className="text-2xl" aria-label="configurações">⚙️</span>
+            <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-300">
+              Gerencie sua conta e preferências
+            </p>
           </div>
-          <p className="text-xs sm:text-sm text-gray-800 dark:text-white max-w-xl font-medium leading-relaxed mb-3">
-            Gerencie sua conta e preferências do CatButler
+        </div>
+        <div className="hidden sm:block text-right">
+          <p className="text-xs text-gray-500 dark:text-gray-400">
+            Personalize sua experiência
           </p>
         </div>
       </section>
 
-      {/* Tabs - Estilo Cards Home */}
-      <section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 w-full mx-auto mb-4 sm:mb-6">
+      {/* Tabs - Layout Horizontal Compacto */}
+      <section className="flex flex-wrap gap-2 sm:gap-3 w-full mx-auto mb-4 sm:mb-6">
         {tabs.map((tab, index) => {
           const colors = [
             { bg: 'bg-gradient-to-r from-blue-500 to-blue-600', text: 'text-white', hover: 'hover:from-blue-600 hover:to-blue-700' },
@@ -69,9 +76,9 @@ export default function Config() {
             <button
               key={tab.id}
               onClick={() => setActiveTab(tab.id)}
-              className={`${isActive ? colorScheme.bg : 'bg-white dark:bg-gray-800'} ${isActive ? colorScheme.text : 'text-gray-900 dark:text-white'} ${isActive ? '' : 'hover:bg-gray-50 dark:hover:bg-gray-700'} p-4 rounded-xl shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-200 flex flex-col items-center gap-2 border border-gray-200 dark:border-gray-600`}
+              className={`${isActive ? colorScheme.bg : 'bg-white dark:bg-gray-800'} ${isActive ? colorScheme.text : 'text-gray-900 dark:text-white'} ${isActive ? '' : 'hover:bg-gray-50 dark:hover:bg-gray-700'} px-4 py-3 rounded-xl transform hover:scale-105 transition-all duration-200 flex items-center gap-2 border border-gray-200 dark:border-gray-600 shadow-md hover:shadow-lg`}
             >
-              <span className="text-2xl">{tab.icon}</span>
+              <span className="text-lg">{tab.icon}</span>
               <span className="font-semibold text-sm">{tab.label}</span>
             </button>
           );
@@ -83,12 +90,14 @@ export default function Config() {
         {activeTab === "perfil" && (
           <div className="glass-effect rounded-xl shadow-lg p-4 sm:p-6 fade-in-up bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-600">
             <header className="flex items-center gap-2 mb-4">
-              <i className="fa-solid fa-user text-blue-500 dark:text-blue-400 text-sm" />
+              <div className="p-2 bg-blue-100 dark:bg-blue-900/30 rounded-lg">
+                <i className="fa-solid fa-user text-blue-500 dark:text-blue-400 text-sm" />
+              </div>
               <h2 className="text-lg font-bold text-gray-900 dark:text-white">Informações do Perfil</h2>
             </header>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
               <div>
-                <label htmlFor="nome" className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">
+                <label htmlFor="nome" className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-1">
                   Nome Completo
                 </label>
                 <input
@@ -97,11 +106,12 @@ export default function Config() {
                   name="nome"
                   value={formData.nome}
                   onChange={handleInputChange}
-                  className="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-green-400 focus:border-transparent"
+                  className="w-full px-3 py-2 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-blue-400 focus:border-transparent transition-all duration-200"
+                  placeholder="Digite seu nome completo"
                 />
               </div>
               <div>
-                <label htmlFor="email" className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">
+                <label htmlFor="email" className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-1">
                   Email
                 </label>
                 <input
@@ -110,7 +120,8 @@ export default function Config() {
                   name="email"
                   value={formData.email}
                   onChange={handleInputChange}
-                  className="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-green-400 focus:border-transparent"
+                  className="w-full px-3 py-2 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-blue-400 focus:border-transparent transition-all duration-200"
+                  placeholder="Digite seu email"
                 />
               </div>
             </div>
@@ -121,12 +132,14 @@ export default function Config() {
         {activeTab === "seguranca" && (
           <div className="glass-effect rounded-xl shadow-lg p-4 sm:p-6 fade-in-up bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-600">
             <header className="flex items-center gap-2 mb-4">
-              <i className="fa-solid fa-lock text-green-500 dark:text-green-400 text-sm" />
+              <div className="p-2 bg-green-100 dark:bg-green-900/30 rounded-lg">
+                <i className="fa-solid fa-lock text-green-500 dark:text-green-400 text-sm" />
+              </div>
               <h2 className="text-lg font-bold text-gray-900 dark:text-white">Segurança da Conta</h2>
             </header>
-            <div className="space-y-6">
+            <div className="space-y-4">
               <div>
-                <label htmlFor="senhaAtual" className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">
+                <label htmlFor="senhaAtual" className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-1">
                   Senha Atual
                 </label>
                 <input
@@ -135,13 +148,13 @@ export default function Config() {
                   name="senhaAtual"
                   value={formData.senhaAtual}
                   onChange={handleInputChange}
-                  className="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-green-400 focus:border-transparent"
+                  className="w-full px-3 py-2 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-green-400 focus:border-transparent transition-all duration-200"
                   placeholder="Digite sua senha atual"
                 />
               </div>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
                 <div>
-                  <label htmlFor="novaSenha" className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">
+                  <label htmlFor="novaSenha" className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-1">
                     Nova Senha
                   </label>
                   <input
@@ -150,12 +163,12 @@ export default function Config() {
                     name="novaSenha"
                     value={formData.novaSenha}
                     onChange={handleInputChange}
-                    className="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-green-400 focus:border-transparent"
+                    className="w-full px-3 py-2 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-green-400 focus:border-transparent transition-all duration-200"
                     placeholder="Digite a nova senha"
                   />
                 </div>
                 <div>
-                  <label htmlFor="confirmarSenha" className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">
+                  <label htmlFor="confirmarSenha" className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-1">
                     Confirmar Nova Senha
                   </label>
                   <input
@@ -164,7 +177,7 @@ export default function Config() {
                     name="confirmarSenha"
                     value={formData.confirmarSenha}
                     onChange={handleInputChange}
-                    className="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-green-400 focus:border-transparent"
+                    className="w-full px-3 py-2 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-green-400 focus:border-transparent transition-all duration-200"
                     placeholder="Confirme a nova senha"
                   />
                 </div>
@@ -177,12 +190,14 @@ export default function Config() {
         {activeTab === "preferencias" && (
           <div className="glass-effect rounded-xl shadow-lg p-4 sm:p-6 fade-in-up bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-600">
             <header className="flex items-center gap-2 mb-4">
-              <i className="fa-solid fa-cog text-purple-500 dark:text-purple-400 text-sm" />
+              <div className="p-2 bg-purple-100 dark:bg-purple-900/30 rounded-lg">
+                <i className="fa-solid fa-cog text-purple-500 dark:text-purple-400 text-sm" />
+              </div>
               <h2 className="text-lg font-bold text-gray-900 dark:text-white">Preferências do Sistema</h2>
             </header>
-            <div className="space-y-6">
+            <div className="space-y-4">
               <div>
-                <label htmlFor="localidade" className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">
+                <label htmlFor="localidade" className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-1">
                   Localidade Padrão para Busca de Preços
                 </label>
                 <select
@@ -190,7 +205,7 @@ export default function Config() {
                   name="localidade"
                   value={formData.localidade}
                   onChange={handleInputChange}
-                  className="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-green-400 focus:border-transparent"
+                  className="w-full px-3 py-2 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-purple-400 focus:border-transparent transition-all duration-200"
                 >
                   <option value="São Paulo, SP">São Paulo, SP</option>
                   <option value="Rio de Janeiro, RJ">Rio de Janeiro, RJ</option>
@@ -203,16 +218,16 @@ export default function Config() {
                   <option value="Recife, PE">Recife, PE</option>
                   <option value="Porto Alegre, RS">Porto Alegre, RS</option>
                 </select>
-                <p className="text-sm text-gray-500 dark:text-gray-400 mt-2">
+                <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">
                   Esta localidade será usada para buscar preços de produtos no Mercado IA
                 </p>
               </div>
-              <div className="flex items-center justify-between p-4 bg-gray-50 dark:bg-gray-700 rounded-lg">
-                <div>
-                  <h3 className="font-semibold text-gray-900 dark:text-gray-100">Notificações</h3>
-                  <p className="text-sm text-gray-600 dark:text-gray-300">Receber notificações sobre sugestões e lembretes</p>
+              <div className="flex items-center justify-between p-4 bg-gray-50 dark:bg-gray-700 rounded-lg border border-gray-200 dark:border-gray-600">
+                <div className="flex-1">
+                  <h3 className="font-semibold text-gray-900 dark:text-gray-100 mb-1">Notificações</h3>
+                  <p className="text-xs text-gray-600 dark:text-gray-300">Receber notificações sobre sugestões e lembretes</p>
                 </div>
-                <label className="relative inline-flex items-center cursor-pointer">
+                <label className="relative inline-flex items-center cursor-pointer ml-4">
                   <input
                     type="checkbox"
                     name="notificacoes"
@@ -221,7 +236,7 @@ export default function Config() {
                     className="sr-only peer"
                     aria-label="Ativar notificações"
                   />
-                  <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-green-300 dark:peer-focus:ring-green-800 rounded-full peer dark:bg-gray-600 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-green-400"></div>
+                  <div className="w-10 h-5 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-purple-300 dark:peer-focus:ring-purple-800 rounded-full peer dark:bg-gray-600 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all dark:border-gray-600 peer-checked:bg-purple-500"></div>
                 </label>
               </div>
             </div>
@@ -232,14 +247,16 @@ export default function Config() {
         {activeTab === "familia" && (
           <div className="glass-effect rounded-xl shadow-lg p-4 sm:p-6 fade-in-up bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-600">
             <header className="flex items-center gap-2 mb-4">
-              <i className="fa-solid fa-users text-orange-500 dark:text-orange-400 text-sm" />
+              <div className="p-2 bg-orange-100 dark:bg-orange-900/30 rounded-lg">
+                <i className="fa-solid fa-users text-orange-500 dark:text-orange-400 text-sm" />
+              </div>
               <h2 className="text-lg font-bold text-gray-900 dark:text-white">Conta Familiar</h2>
             </header>
-            <div className="space-y-6">
-              <div className="flex items-center justify-between p-6 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-600 rounded-xl shadow-sm">
+            <div className="space-y-4">
+              <div className="flex items-center justify-between p-4 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-600 rounded-lg shadow-sm">
                 <div className="flex-1">
-                  <h3 className="text-lg font-bold text-gray-900 dark:text-gray-100 mb-2">Ativar Conta Familiar</h3>
-                  <p className="text-base text-gray-700 dark:text-gray-300 leading-relaxed">
+                  <h3 className="font-semibold text-gray-900 dark:text-gray-100 mb-1">Ativar Conta Familiar</h3>
+                  <p className="text-sm text-gray-700 dark:text-gray-300">
                     Compartilhe receitas e listas de compras com sua família
                   </p>
                 </div>
@@ -252,41 +269,41 @@ export default function Config() {
                     className="sr-only peer"
                     aria-label="Ativar conta familiar"
                   />
-                  <div className="w-12 h-6 bg-gray-300 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-green-300 dark:peer-focus:ring-green-800 rounded-full peer dark:bg-gray-600 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-green-500"></div>
+                  <div className="w-10 h-5 bg-gray-300 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-orange-300 dark:peer-focus:ring-orange-800 rounded-full peer dark:bg-gray-600 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all dark:border-gray-600 peer-checked:bg-orange-500"></div>
                 </label>
               </div>
               {formData.contaFamiliar && (
-                <div className="space-y-6 p-6 bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800 rounded-xl">
+                <div className="space-y-4 p-4 bg-orange-50 dark:bg-orange-900/20 border border-orange-200 dark:border-orange-800 rounded-lg">
                   <div>
-                    <label htmlFor="nomeFamilia" className="block text-sm font-bold text-gray-900 dark:text-gray-100 mb-3">
+                    <label htmlFor="nomeFamilia" className="block text-sm font-semibold text-gray-900 dark:text-gray-100 mb-1">
                       Nome da Família
                     </label>
                     <input
                       id="nomeFamilia"
                       type="text"
                       placeholder="Ex: Família Silva"
-                      className="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-green-400 focus:border-transparent font-medium"
+                      className="w-full px-3 py-2 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-orange-400 focus:border-transparent transition-all duration-200"
                     />
                   </div>
                   <div>
-                    <label htmlFor="emailFamilia" className="block text-sm font-bold text-gray-900 dark:text-gray-100 mb-3">
+                    <label htmlFor="emailFamilia" className="block text-sm font-semibold text-gray-900 dark:text-gray-100 mb-1">
                       Convidar Membros da Família
                     </label>
-                    <div className="flex gap-3">
+                    <div className="flex gap-2">
                       <input
                         id="emailFamilia"
                         type="email"
                         placeholder="email@exemplo.com"
-                        className="flex-1 px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-green-400 focus:border-transparent font-medium"
+                        className="flex-1 px-3 py-2 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-orange-400 focus:border-transparent transition-all duration-200"
                       />
                       <button
                         type="button"
-                        className="px-6 py-3 bg-green-500 hover:bg-green-600 text-white font-bold rounded-lg transition shadow-lg hover:shadow-xl"
+                        className="px-4 py-2 bg-orange-500 hover:bg-orange-600 text-white font-semibold rounded-lg transition-all duration-200 shadow-md hover:shadow-lg transform hover:scale-105"
                       >
                         Convidar
                       </button>
                     </div>
-                    <p className="text-sm text-gray-600 dark:text-gray-400 mt-2">
+                    <p className="text-xs text-gray-600 dark:text-gray-400 mt-1">
                       Enviaremos um convite por email para o membro da família
                     </p>
                   </div>
@@ -296,19 +313,19 @@ export default function Config() {
           </div>
         )}
 
-        {/* Botões de Ação - Estilo Home */}
-        <div className="flex flex-col sm:flex-row justify-center sm:justify-end gap-3 sm:gap-4">
+        {/* Botões de Ação - Compactos */}
+        <div className="flex flex-col sm:flex-row justify-center sm:justify-end gap-3 sm:gap-4 mt-6">
           <button
             type="button"
-            className="px-6 py-3 bg-gray-200 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600 text-gray-700 dark:text-gray-300 font-semibold rounded-lg transition-all duration-200 hover:scale-105 transform"
+            className="px-6 py-3 bg-gray-200 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600 text-gray-700 dark:text-gray-300 font-semibold rounded-lg transition-all duration-200 hover:scale-105 transform shadow-md hover:shadow-lg"
           >
             Cancelar
           </button>
           <button
             type="submit"
-            className="px-8 py-3 bg-green-500 hover:bg-green-600 text-white font-semibold rounded-lg transition-all duration-200 shadow-lg hover:shadow-xl hover:scale-105 transform flex items-center gap-2"
+            className="px-8 py-3 bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white font-semibold rounded-lg transition-all duration-200 shadow-md hover:shadow-lg hover:scale-105 transform flex items-center gap-2"
           >
-            <i className="fa-solid fa-save text-sm"></i>
+            <i className="fa-solid fa-save text-sm"></i>{' '}
             Salvar Configurações
           </button>
         </div>
