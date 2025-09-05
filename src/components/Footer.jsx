@@ -3,7 +3,7 @@ import { FaGithub, FaLinkedin } from "react-icons/fa";
 
 export default function Footer() {
   return (
-  <footer className="w-full glass-effect shadow-lg py-2 px-3 sm:px-4 flex items-center fixed bottom-0 left-0 right-0 z-10">
+      <footer className="fixed bottom-0 left-0 right-0 w-full glass-effect shadow-lg py-2 px-3 sm:px-4 flex items-center z-50">
       {/* Logo e versão à esquerda */}
       <div className="flex items-center gap-2 absolute left-3 sm:left-4">
         <span className="font-bold text-base sm:text-lg catbutler-title">CatButler</span>

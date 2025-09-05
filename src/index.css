@@ -2,7 +2,35 @@
 .share-tooltip {
   background: #181f2a;
   border: 1px solid #232b3a;
+  z-index: 99999 !important;
+  position: fixed !important;
+  isolation: isolate !important;
 }
+
+/* Garantir que o tooltip apareça acima do header */
+.share-tooltip {
+  z-index: 99999 !important;
+}
+
+/* Reduzir z-index dos containers principais para que o tooltip apareça acima */
+.glass-effect {
+  z-index: 1 !important;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Reduzir z-index de outros elementos que podem interferir */
+main, section, article, .fade-in-up {
+  z-index: 1 !important;
+}
+
+/* Garantir que o header tenha z-index alto */
+header {
+  z-index: 100 !important;
+}
+
 
 /* Cores personalizadas */
 .midnight-text {
@@ -77,6 +105,7 @@ html.light .container {
 /* Footer maior no modo claro e escuro */
 footer {
   font-size: 1.15rem;
+  z-index: 1 !important;
 }
 
 /* Melhor contraste para o footer */
@@ -119,8 +148,6 @@ body {
   min-width: 320px;
   min-height: 100vh;
   background: transparent; /* Permite que o fundo 3D seja visível */
-  overflow-x: hidden; /* Evita scroll horizontal */
-  overflow-y: auto; /* Permite scroll vertical apenas quando necessário */
 }
 
 /* Garantir que o container principal não cause scroll desnecessário */
@@ -159,19 +186,65 @@ button:focus-visible {
   }
 }
 
-/* Estilos para componentes com fundo translúcido */
-.glass-effect {
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  background: rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-}
 
 .dark .glass-effect {
-  background: rgba(0, 0, 0, 0.7);
-  border: 1px solid rgba(255, 255, 255, 0.25);
+  background: rgba(0, 0, 0, 0.7) !important;
+  border: 1px solid rgba(255, 255, 255, 0.25) !important;
   backdrop-filter: blur(15px);
   -webkit-backdrop-filter: blur(15px);
+}
+
+/* Garantir fundos escuros para cards específicos no modo escuro */
+.dark .bg-white {
+  background-color: #1f2937 !important; /* gray-800 */
+}
+
+.dark .bg-gray-50 {
+  background-color: #374151 !important; /* gray-700 */
+}
+
+.dark .bg-blue-50 {
+  background-color: #1e3a8a !important; /* blue-900 */
+}
+
+.dark .bg-green-50 {
+  background-color: #14532d !important; /* green-900 */
+}
+
+.dark .bg-yellow-50 {
+  background-color: #713f12 !important; /* yellow-900 */
+}
+
+.dark .bg-purple-50 {
+  background-color: #581c87 !important; /* purple-900 */
+}
+
+.dark .bg-orange-50 {
+  background-color: #9a3412 !important; /* orange-900 */
+}
+
+/* Forçar cor branca para seletores no modo escuro */
+.dark select {
+  color: #ffffff !important;
+}
+
+.dark select option {
+  color: #ffffff !important;
+  background-color: #374151 !important; /* gray-700 */
+}
+
+.dark select option:hover {
+  background-color: #4b5563 !important; /* gray-600 */
+}
+
+/* Regra mais específica para garantir que funcione */
+html.dark select,
+html.dark select option {
+  color: #ffffff !important;
+}
+
+html.dark select option {
+  background-color: #374151 !important;
 }
 
 /* Animação de entrada suave */
@@ -190,9 +263,72 @@ button:focus-visible {
   animation: fadeInUp 0.6s ease-out;
 }
 
+/* Animações adicionais para galeria */
+@keyframes slideInFromLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+.slide-in-left {
+  animation: slideInFromLeft 0.5s ease-out forwards;
+}
+
+.pulse-animation {
+  animation: pulse 2s infinite;
+}
+
+/* Galeria de tarefas - animações escalonadas */
+.gallery-item {
+  animation: fadeInUp 0.6s ease-out forwards;
+  opacity: 0;
+}
+
+/* Line clamp para descrições */
+.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
 /* Aplicar tema globalmente */
 html {
   scroll-behavior: smooth;
+}
+
+/* Impedir scroll vertical da página */
+body {
+  overflow: hidden;
+}
+
+/* Forçar cores do chat no modo escuro */
+.dark .chat-container {
+  background-color: #111827 !important; /* gray-900 */
+}
+
+.dark .bot-message {
+  background-color: #1e3a8a !important; /* blue-800 */
+  color: white !important;
+}
+
+.dark .chat-input {
+  background-color: #111827 !important; /* gray-900 */
+  color: white !important;
 }
 
 html.light {

@@ -90,7 +90,7 @@ export default function Home() {
   }, []);
 
   return (
-    <main className="min-h-screen p-2 sm:p-3 md:p-4 max-w-7xl mx-auto pb-20">
+    <main className="min-h-screen p-2 sm:p-3 md:p-4 max-w-7xl mx-auto">
       {/* Hero Section - Compacta e proporcional */}
       <section className="relative flex flex-col lg:flex-row items-center justify-center gap-3 lg:gap-6 w-full mx-auto glass-effect rounded-xl shadow-lg p-4 sm:p-6 mb-4 sm:mb-6 fade-in-up bg-white/95 dark:bg-gray-700 border border-gray-200 dark:border-gray-500 min-h-[200px] lg:min-h-[240px]">
         <div className="flex flex-col items-center lg:items-start justify-center gap-3 lg:w-2/3 text-center lg:text-left px-2 sm:px-0">

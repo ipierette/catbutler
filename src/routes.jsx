@@ -19,22 +19,29 @@ import Footer from "./components/Footer";
 export default function AppRoutes() {
   return (
     <>
+      {/* Header fixo */}
       <Header />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/tarefas" element={<Tarefas />} />
-        <Route path="/agenda" element={<Agenda />} />
-        <Route path="/assistente" element={<Assistente />} />
-        <Route path="/config" element={<Config />} />
-        <Route path="/sobre" element={<Sobre />} />
-        <Route path="/dicas" element={<Dicas />} />
-        <Route path="/historico" element={<Historico />} />
-        <Route path="/mercado" element={<Mercado />} />
-        <Route path="/cozinha-ia" element={<CozinhaIA />} />
-        <Route path="/faxina-ia" element={<FaxinaIA />} />
-        <Route path="/mercado-ia" element={<MercadoIA />} />
-        <Route path="*" element={<NotFound />} />
-      </Routes>
+      
+      {/* Conteúdo principal com scroll */}
+      <main className="min-h-screen pt-16 pb-20 mt-8 overflow-y-auto lg:overflow-y-visible">
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/tarefas" element={<Tarefas />} />
+          <Route path="/agenda" element={<Agenda />} />
+          <Route path="/assistente" element={<Assistente />} />
+          <Route path="/config" element={<Config />} />
+          <Route path="/sobre" element={<Sobre />} />
+          <Route path="/dicas" element={<Dicas />} />
+          <Route path="/historico" element={<Historico />} />
+          <Route path="/mercado" element={<Mercado />} />
+          <Route path="/cozinha-ia" element={<CozinhaIA />} />
+          <Route path="/faxina-ia" element={<FaxinaIA />} />
+          <Route path="/mercado-ia" element={<MercadoIA />} />
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </main>
+      
+      {/* Footer fixo */}
       <Footer />
     </>
   );

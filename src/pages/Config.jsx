@@ -37,7 +37,7 @@ export default function Config() {
   ];
 
   return (
-    <main className="min-h-screen p-2 sm:p-3 md:p-4 max-w-7xl mx-auto pb-20">
+    <main className="min-h-screen p-2 sm:p-3 md:p-4 max-w-7xl mx-auto">
       {/* Hero Section - Compacto */}
       <section className="relative flex items-center justify-between w-full mx-auto glass-effect rounded-xl shadow-lg p-4 sm:p-6 mb-4 sm:mb-6 fade-in-up bg-white/95 dark:bg-gray-700 border border-gray-200 dark:border-gray-500 h-20 sm:h-24">
         <div className="flex items-center gap-3">

@@ -2,6 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import { useTheme } from "../contexts/ThemeContext";
+import { createPortal } from "react-dom";
 import logoCatButler from "../assets/images/logo-catbutler.png";
 
 function Header() {
@@ -10,7 +11,7 @@ function Header() {
   
   return (
     <>
-      <header className="w-full glass-effect shadow-lg py-2 px-3 sm:px-4 flex items-center justify-between">
+      <header className="fixed top-0 left-0 right-0 w-full glass-effect shadow-lg py-2 px-3 sm:px-4 flex items-center justify-between z-50">
         <div className="flex items-center gap-2 sm:gap-3 lg:gap-4">
           <div className="flex items-center justify-center">
             <img 
@@ -169,11 +170,11 @@ function ShareTooltip({ theme }) {
           <path strokeLinecap="round" strokeLinejoin="round" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.367 2.684 3 3 0 00-5.367-2.684z" />
         </svg>
       </button>
-      {open && (
-          <div className={
-            `absolute right-0 mt-2 w-80 rounded-lg shadow-lg p-4 z-50 animate-fadeInDown border share-tooltip ` +
-            (theme === 'dark' ? 'bg-[#181f2a] border-[#232b3a] text-white' : 'bg-white border-gray-200 text-gray-900')
-          }>
+      {open && createPortal(
+        <div className={
+          `fixed right-4 top-20 w-80 rounded-lg shadow-lg p-4 z-[99999] animate-fadeInDown border share-tooltip ` +
+          (theme === 'dark' ? 'bg-[#181f2a] border-[#232b3a] text-white' : 'bg-white border-gray-200 text-gray-900')
+        }>
           <div className="font-bold mb-2 text-gray-900 dark:text-gray-100">Compartilhe o CatButler</div>
           <div className="text-sm mb-2 text-gray-700 dark:text-gray-300">Conheça o CatButler! Organize sua casa com IA: receitas, faxina, mercado e mais. Acesse: <span className="font-mono text-blue-600">https://catbutler.app</span></div>
           <div className="flex gap-2">
@@ -185,7 +186,8 @@ function ShareTooltip({ theme }) {
             </button>
           </div>
           <div className="text-xs text-gray-400 mt-2">Ajude a divulgar! 🚀</div>
-        </div>
+        </div>,
+        document.body
       )}
     </div>
   );
