@@ -12,6 +12,49 @@ e este projeto adere ao [Versionamento Semântico](https://semver.org/lang/pt-BR
 - Guias de instalação, desenvolvimento e deploy
 - Templates para contribuição
 
+## [2.0.1] - 2025-01-27
+
+### 🎨 Melhorias de UX/UI
+
+#### Melhorado
+- **Assistente Culinário no Modo Claro**
+  - Fundo do chat mais claro e harmonioso (gray-50)
+  - Mensagens do bot com azul suave e bordas sutis
+  - Input com fundo branco e placeholder mais suave
+  - Gradiente laranja nas mensagens do usuário
+  - Sombras sutis para profundidade visual
+  - Hover effects elegantes
+  - Botão de envio com estado disabled
+  - Mensagem de boas-vindas mais atrativa
+
+- **Menu Responsivo**
+  - Corrigido problema da aba "Home" sumindo no menu mobile
+  - Adicionado posicionamento fixo com z-index adequado
+  - Overlay de fundo para melhor UX
+  - Classes CSS específicas para garantir visibilidade
+  - Menu posicionado abaixo do header (top: 4rem)
+  - Overlay clicável para fechar o menu
+
+- **Responsividade Geral**
+  - Gatinho mordomo escondido em telas menores que 1024px
+  - Footer reorganizado em telas menores que 926px
+  - Layout vertical do footer em dispositivos móveis
+  - Evita sobreposição da frase "Curtiu" com versão
+  - Melhor experiência em todos os tamanhos de tela
+
+#### Técnico
+- **CSS Responsivo**
+  - Media queries específicas para footer
+  - Classes `.footer-desktop` e `.footer-mobile`
+  - Breakpoints customizados (926px, 1024px)
+  - Z-index otimizado para menu mobile
+
+- **Componentes**
+  - Header com menu mobile melhorado
+  - Footer com layout adaptativo
+  - Home com gatinho responsivo
+  - CozinhaIA com chat estilizado
+
 ## [2.0.0] - 2025-01-27
 
 ### 🚀 Funcionalidades Avançadas de UX/UI

@@ -186,6 +186,13 @@ catbutler-react/
 - **Animações**: Entrada e saída suaves
 - **Portal**: Renderização fora da hierarquia DOM
 
+### 📱 Responsividade Inteligente
+- **Breakpoints Customizados**: 926px e 1024px para otimização
+- **Menu Mobile**: Overlay e posicionamento fixo
+- **Footer Adaptativo**: Layout vertical em telas pequenas
+- **Gatinho Mordomo**: Escondido em telas < 1024px
+- **Assistente Culinário**: Estilos otimizados para modo claro
+
 ### ⚡ Estados de Loading
 - **LoadingSpinner**: Spinner animado com tamanhos e cores
 - **LoadingButton**: Botões com estado de carregamento
