@@ -1,44 +1,12 @@
 import { useState, useEffect } from "react";
-import PropTypes from "prop-types";
 import gatoGif from "../assets/images/gato-unscreen.gif";
+import { TermsModal, useModal } from "../components/Modals";
 
-function TermsModal({ open, onClose }) {
-  if (!open) return null;
-  return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 backdrop-blur-sm">
-      <div className="glass-effect rounded-xl shadow-lg max-w-md w-full p-6 relative fade-in-up">
-        <button onClick={onClose} className="absolute top-2 right-2 text-gray-500 hover:text-red-500 text-xl transition-colors">&times;</button>
-        <h3 className="text-xl font-bold mb-2 flex items-center gap-2"><i className="fa-solid fa-file-contract text-green-400"></i> Termos de uso</h3>
-        <p className="text-gray-600 dark:text-gray-300 mb-2">Versão resumida dos termos. Ao continuar, você concorda com as condições abaixo.</p>
-        <h4 className="font-semibold mt-4 mb-1">Uso do serviço</h4>
-        <ul className="list-disc pl-5 text-gray-700 dark:text-gray-300 mb-2">
-          <li>Conteúdo "como está", sem garantias.</li>
-          <li>Não use para atividades ilegais ou que violem direitos de terceiros.</li>
-          <li>Funcionalidades e políticas podem mudar a qualquer momento.</li>
-        </ul>
-        <h4 className="font-semibold mt-4 mb-1">Dados e privacidade</h4>
-        <ul className="list-disc pl-5 text-gray-700 dark:text-gray-300 mb-4">
-          <li>Coletamos dados de uso para melhorar a experiência.</li>
-          <li>Você pode solicitar remoção de dados identificáveis.</li>
-        </ul>
-        <div className="flex justify-end gap-2">
-          <button onClick={onClose} className="btn px-4 py-2 rounded-lg bg-gray-200 hover:bg-gray-300 text-gray-900 font-semibold shadow transition">Fechar</button>
-          <button onClick={onClose} className="btn px-4 py-2 rounded-lg bg-green-400 hover:bg-green-500 text-white font-semibold shadow transition"><i className="fa-solid fa-check"></i> Aceito</button>
-        </div>
-      </div>
-    </div>
-  );
-}
-
-TermsModal.propTypes = {
-  open: PropTypes.bool.isRequired,
-  onClose: PropTypes.func.isRequired,
-};
 
 export default function Home() {
-  const [showTerms, setShowTerms] = useState(false);
   const [currentTime, setCurrentTime] = useState(new Date());
   const [recentActivity, setRecentActivity] = useState([]);
+  const termsModal = useModal();
 
   // Atualizar horário a cada minuto
   useEffect(() => {
@@ -112,7 +80,7 @@ export default function Home() {
           <div className="flex flex-wrap gap-2 justify-center lg:justify-start mb-2">
             <a href="/cozinha-ia" className="btn px-2.5 py-1.5 rounded-lg bg-green-400 hover:bg-green-500 text-white dark:text-white font-semibold shadow-md transition text-xs flex items-center gap-1 hover:scale-105 transform"><i className="fa-solid fa-bolt"></i> Começar</a>
             <a href="/mercado-ia" className="btn px-2.5 py-1.5 rounded-lg bg-blue-400 hover:bg-blue-500 text-white dark:text-white font-semibold shadow-md transition text-xs flex items-center gap-1 hover:scale-105 transform"><i className="fa-solid fa-tags"></i> Comparar preços</a>
-            <button type="button" onClick={() => setShowTerms(true)} className="btn px-2.5 py-1.5 rounded-lg bg-purple-200 hover:bg-purple-300 dark:bg-purple-800 dark:hover:bg-purple-700 text-purple-800 dark:text-purple-200 font-semibold shadow-md transition text-xs flex items-center gap-1 hover:scale-105 transform"><i className="fa-solid fa-file-contract"></i> Termos</button>
+            <button type="button" onClick={termsModal.openModal} className="btn px-2.5 py-1.5 rounded-lg bg-purple-200 hover:bg-purple-300 dark:bg-purple-800 dark:hover:bg-purple-700 text-purple-800 dark:text-purple-200 font-semibold shadow-md transition text-xs flex items-center gap-1 hover:scale-105 transform"><i className="fa-solid fa-file-contract"></i> Termos</button>
           </div>
           <ul className="flex flex-wrap gap-1 sm:gap-2 items-center justify-center lg:justify-start text-center lg:text-left text-gray-700 dark:text-white text-xs font-semibold feature-list">
             <li className="flex items-center gap-1 sm:gap-2 whitespace-nowrap"><i className="fa-solid fa-wand-magic-sparkles text-green-500 dark:text-green-300"></i> Sugestões inteligentes</li>
@@ -220,6 +188,7 @@ export default function Home() {
 
       {/* Seção de Estatísticas - Compacta */}
       <section className="w-full mx-auto mb-4 sm:mb-6">
+
         <article className="glass-effect rounded-lg shadow-md p-3 sm:p-4 fade-in-up bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-600" style={{animationDelay: '0.4s'}}>
           <header className="flex items-center gap-2 text-xs font-bold mb-3 text-gray-900 dark:text-white">
             <i className="fa-solid fa-trophy text-purple-500 dark:text-purple-400 text-xs card-icon-trophy" />
@@ -245,7 +214,7 @@ export default function Home() {
           </div>
         </article>
       </section>
-      <TermsModal open={showTerms} onClose={() => setShowTerms(false)} />
+      <TermsModal open={termsModal.isOpen} onClose={termsModal.closeModal} />
     </main>
   );
 }

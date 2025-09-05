@@ -65,7 +65,20 @@ function Header() {
               </svg>
             )}
           </button>
-          <button className="px-3 sm:px-4 py-1.5 sm:py-2 rounded-lg bg-green-400 hover:bg-green-500 text-white dark:text-midnight-800 font-bold text-xs sm:text-sm shadow-lg transition hover:scale-105 transform">Entrar</button>
+          <div className="flex gap-2">
+            <Link 
+              to="/criar-conta" 
+              className="px-3 sm:px-4 py-1.5 sm:py-2 rounded-lg bg-blue-400 hover:bg-blue-500 text-white dark:text-midnight-800 font-bold text-xs sm:text-sm shadow-lg transition hover:scale-105 transform"
+            >
+              Criar Conta
+            </Link>
+            <Link 
+              to="/login" 
+              className="px-3 sm:px-4 py-1.5 sm:py-2 rounded-lg bg-green-400 hover:bg-green-500 text-white dark:text-midnight-800 font-bold text-xs sm:text-sm shadow-lg transition hover:scale-105 transform"
+            >
+              Entrar
+            </Link>
+          </div>
         </div>
       </header>
 

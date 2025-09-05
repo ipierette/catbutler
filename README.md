@@ -25,10 +25,18 @@ O **CatButler** é uma aplicação web moderna que utiliza inteligência artific
   - **Guia de Produtos**: Recomendações de produtos e técnicas por superfície
   - **Análise por Ambiente**: Checklists específicos para cada cômodo
   - **Sustentabilidade**: Práticas eco-friendly com cálculo de impacto
-- 🛒 **Mercado IA**: Comparação de preços por localidade
+- 🛒 **Mercado IA**: Sistema inteligente de compras
+  - **Comparar Preços**: Análise de preços por localidade
+  - **Lista Inteligente**: Sugestões automáticas e organização por seções
+  - **Ofertas**: Descontos e promoções
+  - **Orçamento**: Controle financeiro das compras
 - 📅 **Tarefas**: Galeria vertical animada para organização de tarefas
 - 🔥 **Descobertas do Dia**: Dicas personalizadas e novidades
 - ⚙️ **Configurações**: Personalização completa da experiência
+- 🔐 **Autenticação**: Sistema de login e cadastro
+  - **SignUp**: Cadastro com validação em tempo real
+  - **Login**: Acesso seguro com validação
+  - **Modais**: Termos de Uso e Política de Privacidade
 
 ## 🚀 Tecnologias Utilizadas
 
@@ -94,15 +102,28 @@ catbutler-react/
 │   ├── components/            # Componentes reutilizáveis
 │   │   ├── CustomBackground.jsx
 │   │   ├── Footer.jsx
-│   │   └── Header.jsx
+│   │   ├── Header.jsx
+│   │   ├── Toast.jsx          # Sistema de notificações
+│   │   ├── Loading.jsx        # Componentes de loading
+│   │   ├── ErrorBoundary.jsx  # Captura de erros
+│   │   ├── ConfirmationDialog.jsx # Diálogos de confirmação
+│   │   ├── LazyWrapper.jsx    # Lazy loading
+│   │   └── Modals.jsx         # Modais reutilizáveis
 │   ├── contexts/              # Contextos React
 │   │   └── ThemeContext.jsx
+│   ├── hooks/                 # Hooks customizados
+│   │   ├── useValidation.js   # Validação em tempo real
+│   │   └── useKeyboardShortcuts.js # Atalhos de teclado
+│   ├── utils/                 # Utilitários
+│   │   └── security.js        # Funções de segurança
 │   ├── pages/                 # Páginas da aplicação
 │   │   ├── Home.jsx
 │   │   ├── Config.jsx
 │   │   ├── CozinhaIA.jsx
 │   │   ├── FaxinaIA.jsx
 │   │   ├── MercadoIA.jsx
+│   │   ├── SignUp.jsx         # Página de cadastro
+│   │   ├── Login.jsx          # Página de login
 │   │   └── ...
 │   ├── App.jsx               # Componente principal
 │   ├── main.jsx              # Ponto de entrada
@@ -155,6 +176,45 @@ catbutler-react/
 - **Cards**: Bordas arredondadas e sombras suaves
 - **Tabs**: Navegação intuitiva entre seções
 - **Scroll Interno**: Controle de altura para SPA
+
+## 🚀 Funcionalidades Avançadas de UX/UI
+
+### 🔔 Sistema de Notificações
+- **Toast Notifications**: Feedback visual para ações do usuário
+- **Tipos**: Success, Error, Warning, Info
+- **Auto-dismiss**: Configurável por notificação
+- **Animações**: Entrada e saída suaves
+- **Portal**: Renderização fora da hierarquia DOM
+
+### ⚡ Estados de Loading
+- **LoadingSpinner**: Spinner animado com tamanhos e cores
+- **LoadingButton**: Botões com estado de carregamento
+- **LoadingCard**: Cards de loading para seções
+- **useLoading**: Hook para gerenciar estados
+
+### ✅ Validação em Tempo Real
+- **useValidation**: Hook completo para formulários
+- **useFieldValidation**: Validação de campo único
+- **Debounce**: Validação com delay para performance
+- **Integração**: Com sistema de segurança existente
+
+### 🛡️ Segurança e Confirmações
+- **Error Boundary**: Captura de erros de renderização
+- **Confirmation Dialogs**: Diálogos para ações críticas
+- **Input Sanitization**: Prevenção de XSS
+- **Validação**: Email, senha, nome com critérios seguros
+
+### ⌨️ Atalhos de Teclado
+- **Navegação**: Ctrl+H (Home), Ctrl+T (Tarefas), etc.
+- **Ações**: Ctrl+K (Tema), Ctrl+Shift+S (Compartilhar)
+- **Formulários**: Ctrl+Enter (Confirmar), Escape (Cancelar)
+- **Help Modal**: Lista completa de atalhos disponíveis
+
+### 🚀 Performance Otimizada
+- **Lazy Loading**: Páginas carregam sob demanda
+- **Memoization**: Evita re-renders desnecessários
+- **Debounce/Throttle**: Hooks para otimização
+- **Intersection Observer**: Carregamento lazy de imagens
 
 ## 🔧 Scripts Disponíveis
 

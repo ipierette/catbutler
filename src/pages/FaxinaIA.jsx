@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { sanitizeInput, processTextInput, validateNumber } from "../utils/security";
 
 export default function FaxinaIA() {
   // Estados principais

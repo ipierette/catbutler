@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { sanitizeInput, processTextInput } from "../utils/security";
 
 export default function CozinhaIA() {
   const [ingredientes, setIngredientes] = useState([]);
@@ -76,9 +77,14 @@ export default function CozinhaIA() {
   ];
 
   const adicionarIngrediente = () => {
-    if (novoIngrediente.trim() && !ingredientes.includes(novoIngrediente.trim())) {
-      setIngredientes([...ingredientes, novoIngrediente.trim()]);
-      setNovoIngrediente("");
+    if (novoIngrediente.trim()) {
+      const processed = processTextInput(novoIngrediente, { maxLength: 50, required: true });
+      if (processed.isValid && !ingredientes.includes(processed.sanitized)) {
+        setIngredientes([...ingredientes, processed.sanitized]);
+        setNovoIngrediente("");
+      } else if (!processed.isValid) {
+        alert(processed.errors[0]);
+      }
     }
   };
 

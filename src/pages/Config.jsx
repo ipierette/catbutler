@@ -60,29 +60,24 @@ export default function Config() {
         </div>
       </section>
 
-      {/* Tabs - Layout Horizontal Compacto */}
-      <section className="flex flex-wrap gap-2 sm:gap-3 w-full mx-auto mb-4 sm:mb-6">
-        {tabs.map((tab, index) => {
-          const colors = [
-            { bg: 'bg-gradient-to-r from-blue-500 to-blue-600', text: 'text-white', hover: 'hover:from-blue-600 hover:to-blue-700' },
-            { bg: 'bg-gradient-to-r from-green-500 to-green-600', text: 'text-white', hover: 'hover:from-green-600 hover:to-green-700' },
-            { bg: 'bg-gradient-to-r from-purple-500 to-purple-600', text: 'text-white', hover: 'hover:from-purple-600 hover:to-purple-700' },
-            { bg: 'bg-gradient-to-r from-orange-500 to-orange-600', text: 'text-white', hover: 'hover:from-orange-600 hover:to-orange-700' }
-          ];
-          const colorScheme = colors[index % colors.length];
-          const isActive = activeTab === tab.id;
-          
-          return (
+      {/* Tabs - Usando o mesmo estilo do MercadoIA */}
+      <section className="glass-effect rounded-xl shadow-lg p-4 sm:p-6 fade-in-up bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-600 mb-4 sm:mb-6">
+        <div className="flex flex-wrap gap-2 sm:gap-4">
+          {tabs.map(tab => (
             <button
               key={tab.id}
               onClick={() => setActiveTab(tab.id)}
-              className={`${isActive ? colorScheme.bg : 'bg-white dark:bg-gray-800'} ${isActive ? colorScheme.text : 'text-gray-900 dark:text-white'} ${isActive ? '' : 'hover:bg-gray-50 dark:hover:bg-gray-700'} px-4 py-3 rounded-xl transform hover:scale-105 transition-all duration-200 flex items-center gap-2 border border-gray-200 dark:border-gray-600 shadow-md hover:shadow-lg`}
+              className={`flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 ${
+                activeTab === tab.id
+                  ? 'bg-blue-500 text-white shadow-md'
+                  : 'bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-600'
+              }`}
             >
               <span className="text-lg">{tab.icon}</span>
-              <span className="font-semibold text-sm">{tab.label}</span>
+              <span className="hidden sm:inline">{tab.label}</span>
             </button>
-          );
-        })}
+          ))}
+        </div>
       </section>
 
       <form onSubmit={handleSubmit} className="space-y-6">
