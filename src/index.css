@@ -1,0 +1,317 @@
+/* Tooltip de compartilhamento mais escuro no modo dark */
+.share-tooltip {
+  background: #181f2a;
+  border: 1px solid #232b3a;
+}
+
+/* Cores personalizadas */
+.midnight-text {
+  color: #191970;
+}
+
+html.dark .midnight-text {
+  color: #191970;
+}
+
+/* Span visitante com cor especial */
+.visitante-span {
+  color: #22c55e;
+}
+
+html.dark .visitante-span {
+  color: #22c55e;
+}
+
+/* CatButler title cor modo claro/escuro */
+.catbutler-title {
+  color: #191970;
+}
+
+html.dark .catbutler-title {
+  color: #22c55e;
+}
+
+/* Ícones sociais modo claro/escuro */
+.icon-social {
+  color: #191970;
+  transition: color 0.2s;
+}
+html.dark .icon-social {
+  color: #22c55e;
+}
+.icon-social:hover {
+  color: #7c3aed;
+}
+html.dark .icon-social:hover {
+  color: #a3e635;
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Cor global de texto para modo claro e escuro, exceto spans */
+html.light body, html.light main, html.light section, html.light article, html.light header, html.light footer, html.light h1, html.light h2, html.light h3, html.light h4, html.light h5, html.light h6, html.light p, html.light ul, html.light ol, html.light li, html.light a, html.light div, html.light label, html.light input, html.light textarea {
+  color: #191970;
+}
+html.dark body, html.dark main, html.dark section, html.dark article, html.dark header, html.dark footer, html.dark h1, html.dark h2, html.dark h3, html.dark h4, html.dark h5, html.dark h6, html.dark p, html.dark ul, html.dark ol, html.dark li, html.dark a, html.dark div, html.dark label, html.dark input, html.dark textarea {
+  color: #fff;
+}
+/* Cor roxa tecnológica para span .visitante no modo claro */
+html.light .visitante-span {
+  color: #7c3aed !important; /* Tailwind purple-600 */
+}
+
+/* Containers, header e footer mais claros no modo claro para destacar texto preto */
+html.light .glass-effect,
+html.light header,
+html.light footer,
+html.light .card,
+html.light .container {
+  background: rgba(255,255,255,0.85) !important;
+  box-shadow: 0 4px 32px 0 rgba(0,0,0,0.07), 0 1.5px 4px 0 rgba(0,0,0,0.03);
+  border: 1px solid rgba(0,0,0,0.04);
+  backdrop-filter: blur(8px);
+}
+
+/* Footer maior no modo claro e escuro */
+footer {
+  font-size: 1.15rem;
+}
+
+/* Melhor contraste para o footer */
+footer .text-gray-900 {
+  color: #1f2937 !important; /* gray-800 */
+}
+
+html.dark footer .text-gray-100 {
+  color: #f9fafb !important; /* gray-50 */
+}
+
+
+:root {
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Transições suaves para mudança de tema */
+* {
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+a {
+  font-weight: 500;
+  color: #646cff;
+  text-decoration: inherit;
+}
+a:hover {
+  color: #535bf2;
+}
+
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  background: transparent; /* Permite que o fundo 3D seja visível */
+  overflow-x: hidden; /* Evita scroll horizontal */
+  overflow-y: auto; /* Permite scroll vertical apenas quando necessário */
+}
+
+/* Garantir que o container principal não cause scroll desnecessário */
+
+h1 {
+  font-size: 3.2em;
+  line-height: 1.1;
+}
+
+button {
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  cursor: pointer;
+  transition: border-color 0.25s;
+}
+button:hover {
+  border-color: #646cff;
+}
+button:focus,
+button:focus-visible {
+  outline: 4px auto -webkit-focus-ring-color;
+}
+
+/* Melhorias para o tema escuro */
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    color: #f5f5f5;
+  }
+  html.light body, html.light main, html.light section, html.light article, html.light header, html.light footer, html.light h1, html.light h2, html.light h3, html.light h4, html.light h5, html.light h6, html.light p, html.light ul, html.light ol, html.light li, html.light a, html.light div, html.light label, html.light input, html.light textarea {
+    color: #191970;
+  }
+}
+
+/* Estilos para componentes com fundo translúcido */
+.glass-effect {
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.dark .glass-effect {
+  background: rgba(0, 0, 0, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+}
+
+/* Animação de entrada suave */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in-up {
+  animation: fadeInUp 0.6s ease-out;
+}
+
+/* Aplicar tema globalmente */
+html {
+  scroll-behavior: smooth;
+}
+
+html.light {
+  color-scheme: light;
+}
+
+html.dark {
+  color-scheme: dark;
+}
+
+/* Estilos para o toggle de tema */
+.theme-toggle {
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
+}
+
+.theme-toggle:hover {
+  transform: scale(1.05);
+}
+
+/* ===== ESTILOS ESPECÍFICOS PARA LEGIBILIDADE NO MODO ESCURO ===== */
+
+/* Caixa de sugestão verde - contraste máximo no modo escuro */
+html.dark .hero-suggestion-box {
+  background: #065f46 !important; /* green-800 */
+  border-color: #10b981 !important; /* green-500 */
+  color: #ffffff !important;
+}
+
+html.dark .hero-suggestion-box .fa-lightbulb {
+  color: #ffffff !important;
+}
+
+/* Caixa de dica amarela - contraste máximo no modo escuro */
+html.dark .tip-box {
+  background: #92400e !important; /* yellow-800 */
+  border-color: #f59e0b !important; /* yellow-500 */
+  color: #ffffff !important;
+}
+
+/* Ícones dos cards - contraste máximo no modo escuro */
+html.dark .card-icon-clock {
+  color: #60a5fa !important; /* blue-400 */
+}
+
+html.dark .card-icon-chart {
+  color: #4ade80 !important; /* green-400 */
+}
+
+html.dark .card-icon-star {
+  color: #fbbf24 !important; /* yellow-400 */
+}
+
+html.dark .card-icon-trophy {
+  color: #a78bfa !important; /* purple-400 */
+}
+
+/* Horário no card Agora - contraste máximo */
+html.dark .time-display {
+  color: #60a5fa !important; /* blue-400 */
+}
+
+/* Textos secundários - contraste máximo no modo escuro */
+html.dark .secondary-text {
+  color: #e5e7eb !important; /* gray-200 */
+}
+
+html.dark .timestamp-text {
+  color: #042968 !important; /* gray-400 */
+}
+
+/* Ícones das atividades recentes - contraste máximo */
+html.dark .activity-icon {
+  color: #ffffff !important;
+}
+
+/* Lista de características - contraste máximo */
+html.dark .feature-list {
+  color: #ffffff !important;
+}
+
+html.dark .feature-list .fa-wand-magic-sparkles {
+  color: #4ade80 !important; /* green-400 */
+}
+
+html.dark .feature-list .fa-list-check {
+  color: #60a5fa !important; /* blue-400 */
+}
+
+html.dark .feature-list .fa-location-dot {
+  color: #f472b6 !important; /* pink-400 */
+}
+
+/* Cards de conquistas - contraste máximo no modo escuro */
+html.dark .achievement-card-green {
+  background: #065f46 !important; /* green-800 */
+  border-color: #10b981 !important; /* green-500 */
+}
+
+html.dark .achievement-card-blue {
+  background: #1e40af !important; /* blue-800 */
+  border-color: #3b82f6 !important; /* blue-500 */
+}
+
+html.dark .achievement-card-orange {
+  background: #9a3412 !important; /* orange-800 */
+  border-color: #f97316 !important; /* orange-500 */
+}
+
+html.dark .achievement-card-purple {
+  background: #6b21a8 !important; /* purple-800 */
+  border-color: #a855f7 !important; /* purple-500 */
+}
+
+html.dark .achievement-number {
+  color: #ffffff !important;
+}
+
+html.dark .achievement-label {
+  color: #ffffff !important;
+}
