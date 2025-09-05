@@ -1,12 +1,18 @@
 import { useState, useEffect } from "react";
 import gatoGif from "../assets/images/gato-unscreen.gif";
 import { TermsModal, useModal } from "../components/Modals";
+import { useNavigate } from "react-router-dom";
 
 
 export default function Home() {
   const [currentTime, setCurrentTime] = useState(new Date());
   const [recentActivity, setRecentActivity] = useState([]);
+  const [dailyTip, setDailyTip] = useState("");
+  const [catFact, setCatFact] = useState("");
+  const [achievements, setAchievements] = useState({});
+  const [showCatFact, setShowCatFact] = useState(false);
   const termsModal = useModal();
+  const navigate = useNavigate();
 
   // Atualizar horário a cada minuto
   useEffect(() => {
@@ -48,14 +54,97 @@ export default function Home() {
     return "Que tal planejar o dia de amanhã?";
   };
 
-  // Simular dados de atividade recente
+  // Dicas do dia e fatos sobre gatos
+  const dailyTips = [
+    "Organize sua geladeira por categorias para facilitar o acesso!",
+    "Use vinagre branco para limpar superfícies de vidro sem manchas.",
+    "Mantenha temperos em potes herméticos para preservar o sabor.",
+    "Faça uma lista de compras antes de ir ao supermercado.",
+    "Limpe a pia da cozinha imediatamente após o uso.",
+    "Use papel alumínio para manter alimentos frescos por mais tempo.",
+    "Organize utensílios por frequência de uso.",
+    "Mantenha um calendário de limpeza para não esquecer nada."
+  ];
+
+  const catFacts = [
+    "Os gatos passam 70% da vida dormindo! 😴",
+    "Um gato pode fazer mais de 100 sons diferentes! 🐱",
+    "Os bigodes dos gatos são sensores de movimento ultra-sensíveis! 🧐",
+    "Gatos não conseguem sentir o sabor doce! 🍭",
+    "O ronronar dos gatos pode curar ossos quebrados! 🦴",
+    "Gatos têm 3 pálpebras em cada olho! 👁️",
+    "Um gato pode correr até 48 km/h! 🏃‍♂️",
+    "Gatos suam apenas pelas patas! 🐾"
+  ];
+
+  // Simular dados de atividade recente baseados no localStorage
   useEffect(() => {
-    setRecentActivity([
-      { id: 1, action: "Receita sugerida", item: "Pasta Carbonara", time: "2h atrás", icon: "🍝" },
-      { id: 2, action: "Lista de compras", item: "Mercado Central", time: "Ontem", icon: "🛒" },
-      { id: 3, action: "Rotina de faxina", item: "Cozinha", time: "2 dias atrás", icon: "🧹" }
-    ]);
+    const savedActivity = localStorage.getItem('catbutler-activity');
+    if (savedActivity) {
+      setRecentActivity(JSON.parse(savedActivity));
+    } else {
+      const defaultActivity = [
+        { id: 1, action: "Receita sugerida", item: "Pasta Carbonara", time: "2h atrás", icon: "🍝", type: "recipe" },
+        { id: 2, action: "Lista de compras", item: "Mercado Central", time: "Ontem", icon: "🛒", type: "shopping" },
+        { id: 3, action: "Rotina de faxina", item: "Cozinha", time: "2 dias atrás", icon: "🧹", type: "cleaning" }
+      ];
+      setRecentActivity(defaultActivity);
+      localStorage.setItem('catbutler-activity', JSON.stringify(defaultActivity));
+    }
   }, []);
+
+  // Gerar dica do dia baseada na data
+  useEffect(() => {
+    const today = new Date().getDate();
+    const tipIndex = today % dailyTips.length;
+    setDailyTip(dailyTips[tipIndex]);
+  }, [dailyTips]);
+
+  // Gerar fato sobre gatos
+  useEffect(() => {
+    const today = new Date().getDate();
+    const factIndex = today % catFacts.length;
+    setCatFact(catFacts[factIndex]);
+  }, [catFacts]);
+
+  // Simular conquistas baseadas no localStorage
+  useEffect(() => {
+    const savedAchievements = localStorage.getItem('catbutler-achievements');
+    if (savedAchievements) {
+      setAchievements(JSON.parse(savedAchievements));
+    } else {
+      const defaultAchievements = {
+        recipes: Math.floor(Math.random() * 20) + 5,
+        shopping: Math.floor(Math.random() * 15) + 3,
+        tasks: Math.floor(Math.random() * 25) + 10,
+        days: Math.floor(Math.random() * 10) + 1
+      };
+      setAchievements(defaultAchievements);
+      localStorage.setItem('catbutler-achievements', JSON.stringify(defaultAchievements));
+    }
+  }, []);
+
+  // Função para alternar entre dica e fato sobre gatos
+  const toggleTipFact = () => {
+    setShowCatFact(!showCatFact);
+  };
+
+  // Função para navegar para seções específicas
+  const handleActivityClick = (activity) => {
+    switch(activity.type) {
+      case 'recipe':
+        navigate('/cozinha-ia');
+        break;
+      case 'shopping':
+        navigate('/mercado-ia');
+        break;
+      case 'cleaning':
+        navigate('/faxina-ia');
+        break;
+      default:
+        navigate('/historico');
+    }
+  };
 
   return (
     <main className="min-h-screen p-2 sm:p-3 md:p-4 max-w-7xl mx-auto">
@@ -80,7 +169,7 @@ export default function Home() {
           <div className="flex flex-wrap gap-2 justify-center lg:justify-start mb-2">
             <a href="/cozinha-ia" className="btn px-2.5 py-1.5 rounded-lg bg-green-400 hover:bg-green-500 text-white dark:text-white font-semibold shadow-md transition text-xs flex items-center gap-1 hover:scale-105 transform"><i className="fa-solid fa-bolt"></i> Começar</a>
             <a href="/mercado-ia" className="btn px-2.5 py-1.5 rounded-lg bg-blue-400 hover:bg-blue-500 text-white dark:text-white font-semibold shadow-md transition text-xs flex items-center gap-1 hover:scale-105 transform"><i className="fa-solid fa-tags"></i> Comparar preços</a>
-            <button type="button" onClick={termsModal.openModal} className="btn px-2.5 py-1.5 rounded-lg bg-purple-200 hover:bg-purple-300 dark:bg-purple-800 dark:hover:bg-purple-700 text-purple-800 dark:text-purple-200 font-semibold shadow-md transition text-xs flex items-center gap-1 hover:scale-105 transform"><i className="fa-solid fa-file-contract"></i> Termos</button>
+            <button type="button" onClick={termsModal.openModal} className="btn px-2.5 py-1.5 rounded-lg bg-purple-200 hover:bg-purple-300 dark:bg-purple-800 dark:hover:bg-purple-700 text-purple-800 dark:text-purple-200 font-semibold shadow-md transition text-xs flex items-center gap-1 hover:scale-105 transform"><i className="fa-solid fa-file-contract"></i> Termos de Uso</button>
           </div>
           <ul className="flex flex-wrap gap-1 sm:gap-2 items-center justify-center lg:justify-start text-center lg:text-left text-gray-700 dark:text-white text-xs font-semibold feature-list">
             <li className="flex items-center gap-1 sm:gap-2 whitespace-nowrap"><i className="fa-solid fa-wand-magic-sparkles text-green-500 dark:text-green-300"></i> Sugestões inteligentes</li>
@@ -137,14 +226,18 @@ export default function Home() {
                 const colorScheme = colors[index % colors.length];
                 
                 return (
-                  <div key={activity.id} className={`${colorScheme.bg} p-4 rounded-xl shadow-md hover:shadow-lg transform hover:scale-[1.02] transition-all duration-200 cursor-pointer`}>
+                  <div 
+                    key={activity.id} 
+                    onClick={() => handleActivityClick(activity)}
+                    className={`${colorScheme.bg} p-4 rounded-xl shadow-md hover:shadow-lg transform hover:scale-[1.02] transition-all duration-200 cursor-pointer group`}
+                  >
                     <div className="flex items-center justify-between">
                       <div className="flex-1">
-                        <h4 className={`font-semibold text-sm ${colorScheme.text} mb-1`}>{activity.item}</h4>
+                        <h4 className={`font-semibold text-sm ${colorScheme.text} mb-1 group-hover:underline`}>{activity.item}</h4>
                         <p className={`text-xs ${colorScheme.time} opacity-90`}>{activity.time}</p>
                       </div>
                       <div className="ml-3">
-                        <div className="w-2 h-2 bg-white/30 rounded-full"></div>
+                        <div className="w-2 h-2 bg-white/30 rounded-full group-hover:bg-white/50 transition-all duration-200"></div>
                       </div>
                     </div>
                   </div>
@@ -167,12 +260,22 @@ export default function Home() {
               <h3 className="text-sm font-bold text-gray-900 dark:text-white">Dicas do Dia</h3>
             </header>
             <div className="flex-1">
-              <div className="bg-gradient-to-r from-yellow-100 to-orange-100 dark:from-yellow-600/20 dark:to-orange-600/20 border border-yellow-200 dark:border-yellow-500/30 rounded-xl p-3 tip-box h-full flex items-center">
+              <div 
+                onClick={toggleTipFact}
+                className="bg-gradient-to-r from-yellow-100 to-orange-100 dark:from-yellow-600/20 dark:to-orange-600/20 border border-yellow-200 dark:border-yellow-500/30 rounded-xl p-3 tip-box h-full flex items-center cursor-pointer hover:shadow-md transition-all duration-200 group"
+              >
                 <div className="flex items-start gap-3">
-                  <div className="text-yellow-600 dark:text-yellow-400 text-lg">💡</div>
-                  <p className="text-sm text-yellow-800 dark:text-yellow-100 font-medium leading-relaxed">
-                    <strong>Dica:</strong> Organize sua geladeira por categorias!
-                  </p>
+                  <div className="text-yellow-600 dark:text-yellow-400 text-lg group-hover:scale-110 transition-transform duration-200">
+                    {showCatFact ? "🐱" : "💡"}
+                  </div>
+                  <div className="flex-1">
+                    <p className="text-sm text-yellow-800 dark:text-yellow-100 font-medium leading-relaxed">
+                      <strong>{showCatFact ? "Fato Curioso:" : "Dica:"}</strong> {showCatFact ? catFact : dailyTip}
+                    </p>
+                    <p className="text-xs text-yellow-700 dark:text-yellow-200 mt-1 opacity-75">
+                      Clique para {showCatFact ? "ver dica" : "ver fato sobre gatos"}
+                    </p>
+                  </div>
                 </div>
               </div>
             </div>
@@ -195,20 +298,40 @@ export default function Home() {
             {' '}Suas Conquistas
           </header>
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4">
-            <div className="text-center p-2 bg-green-100 dark:bg-green-600 border border-green-200 dark:border-green-400 rounded-lg achievement-card-green">
-              <div className="text-xs font-bold text-green-700 dark:text-white achievement-number">12</div>
+            <div 
+              onClick={() => navigate('/cozinha-ia')}
+              className="text-center p-2 bg-green-100 dark:bg-green-600 border border-green-200 dark:border-green-400 rounded-lg achievement-card-green cursor-pointer hover:shadow-md hover:scale-105 transition-all duration-200 group"
+            >
+              <div className="text-xs font-bold text-green-700 dark:text-white achievement-number group-hover:scale-110 transition-transform duration-200">
+                {achievements.recipes || 0}
+              </div>
               <div className="text-xs text-green-800 dark:text-white font-semibold achievement-label">Receitas</div>
             </div>
-            <div className="text-center p-2 bg-blue-100 dark:bg-blue-600 border border-blue-200 dark:border-blue-400 rounded-lg achievement-card-blue">
-              <div className="text-xs font-bold text-blue-700 dark:text-white achievement-number">8</div>
+            <div 
+              onClick={() => navigate('/mercado-ia')}
+              className="text-center p-2 bg-blue-100 dark:bg-blue-600 border border-blue-200 dark:border-blue-400 rounded-lg achievement-card-blue cursor-pointer hover:shadow-md hover:scale-105 transition-all duration-200 group"
+            >
+              <div className="text-xs font-bold text-blue-700 dark:text-white achievement-number group-hover:scale-110 transition-transform duration-200">
+                {achievements.shopping || 0}
+              </div>
               <div className="text-xs text-blue-800 dark:text-white font-semibold achievement-label">Compras</div>
             </div>
-            <div className="text-center p-2 bg-orange-100 dark:bg-orange-600 border border-orange-200 dark:border-orange-400 rounded-lg achievement-card-orange">
-              <div className="text-xs font-bold text-orange-700 dark:text-white achievement-number">15</div>
+            <div 
+              onClick={() => navigate('/faxina-ia')}
+              className="text-center p-2 bg-orange-100 dark:bg-orange-600 border border-orange-200 dark:border-orange-400 rounded-lg achievement-card-orange cursor-pointer hover:shadow-md hover:scale-105 transition-all duration-200 group"
+            >
+              <div className="text-xs font-bold text-orange-700 dark:text-white achievement-number group-hover:scale-110 transition-transform duration-200">
+                {achievements.tasks || 0}
+              </div>
               <div className="text-xs text-orange-800 dark:text-white font-semibold achievement-label">Tarefas</div>
             </div>
-            <div className="text-center p-2 bg-purple-100 dark:bg-purple-600 border border-purple-200 dark:border-purple-400 rounded-lg achievement-card-purple">
-              <div className="text-xs font-bold text-purple-700 dark:text-white achievement-number">5</div>
+            <div 
+              onClick={() => navigate('/config')}
+              className="text-center p-2 bg-purple-100 dark:bg-purple-600 border border-purple-200 dark:border-purple-400 rounded-lg achievement-card-purple cursor-pointer hover:shadow-md hover:scale-105 transition-all duration-200 group"
+            >
+              <div className="text-xs font-bold text-purple-700 dark:text-white achievement-number group-hover:scale-110 transition-transform duration-200">
+                {achievements.days || 0}
+              </div>
               <div className="text-xs text-purple-800 dark:text-white font-semibold achievement-label">Dias</div>
             </div>
           </div>
