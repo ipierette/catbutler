@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useModal } from "../components/Modals";
 
 export default function CozinhaIA() {
   const [ingredientes, setIngredientes] = useState([]);
@@ -13,6 +14,8 @@ export default function CozinhaIA() {
   const [mensagemChat, setMensagemChat] = useState("");
   const [conversa, setConversa] = useState([]);
   const [receitaSelecionada, setReceitaSelecionada] = useState(null);
+  const [activeAccordion, setActiveAccordion] = useState('ingredientes'); // 'ingredientes' ou 'receitas'
+  const filtrosModal = useModal();
 
   const ingredientesSugeridos = [
     "Arroz", "Feijão", "Frango", "Carne", "Peixe", "Ovos", "Leite", "Queijo",
@@ -108,6 +111,8 @@ export default function CozinhaIA() {
     });
     
     setReceitas(receitasFiltradas.slice(0, 3));
+    // Abrir automaticamente o card de receitas após gerar
+    setActiveAccordion('receitas');
   };
 
   const enviarMensagem = () => {
@@ -159,15 +164,27 @@ export default function CozinhaIA() {
         </div>
       </section>
 
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 sm:gap-6">
-        {/* Coluna 1: Input de Ingredientes */}
-        <div className="lg:col-span-2 space-y-4 sm:space-y-6">
-          {/* Input de Ingredientes */}
-          <section className="glass-effect rounded-xl shadow-lg p-4 sm:p-6 fade-in-up bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-600">
-            <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-4 flex items-center gap-2">
-              <span>🥘</span>
-              {' '}Ingredientes Disponíveis
-            </h2>
+      <div className="grid grid-cols-1 xl:grid-cols-3 gap-4 sm:gap-6">
+        {/* Coluna 1: Ingredientes e Receitas - Accordion */}
+        <div className="xl:col-span-2 space-y-4 sm:space-y-6">
+          {/* Input de Ingredientes - Sanfona */}
+          <section className="glass-effect rounded-xl shadow-lg fade-in-up bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-600">
+            <button
+              onClick={() => setActiveAccordion(activeAccordion === 'ingredientes' ? null : 'ingredientes')}
+              className="w-full p-4 sm:p-6 flex items-center justify-between text-left hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors rounded-xl"
+            >
+              <h2 className="text-lg font-bold text-gray-900 dark:text-white flex items-center gap-2">
+                <span>🥘</span>
+                Ingredientes Disponíveis
+                <span className="text-sm font-normal text-gray-500 dark:text-gray-400">
+                  ({ingredientes.length} adicionado{ingredientes.length !== 1 ? 's' : ''})
+                </span>
+              </h2>
+              <i className={`fa-solid fa-chevron-${activeAccordion === 'ingredientes' ? 'up' : 'down'} text-gray-400 transition-transform duration-200`}></i>
+            </button>
+            
+            {activeAccordion === 'ingredientes' && (
+              <div className="px-4 sm:px-6 pb-4 sm:pb-6">
             
             <div className="flex gap-2 mb-4">
               <input
@@ -222,78 +239,93 @@ export default function CozinhaIA() {
                   </button>
                 ))}
               </div>
-            </div>
+                            </div>
+                
+                {/* Botões de Filtros e Gerar Receitas dentro do card */}
+                <div className="flex gap-3 mt-4">
+                  <button
+                    onClick={filtrosModal.openModal}
+                    className="flex-1 px-4 py-3 bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 text-gray-700 dark:text-gray-300 font-semibold rounded-lg transition-all duration-200 flex items-center justify-center gap-2"
+                  >
+                    <i className="fa-solid fa-filter"></i>
+                    Filtros
+                  </button>
+                  <button
+                    onClick={gerarReceitas}
+                    disabled={ingredientes.length === 0}
+                    className="flex-1 px-4 py-3 bg-orange-500 hover:bg-orange-600 disabled:bg-gray-300 disabled:cursor-not-allowed text-white font-semibold rounded-lg transition-all duration-200 flex items-center justify-center gap-2"
+                  >
+                    <i className="fa-solid fa-search"></i>
+                    Gerar Receitas
+                  </button>
+                </div>
+              </div>
+            )}
           </section>
 
-          {/* Filtros */}
-          <section className="glass-effect rounded-xl shadow-lg p-4 sm:p-6 fade-in-up bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-600">
-            <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-4 flex items-center gap-2">
-              <span>⚙️</span>
-              {' '}Filtros
-            </h3>
-            
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-              <div>
-                <label htmlFor="tempo-preparo" className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-1">
-                  Tempo de Preparo
-                </label>
-                <select
-                  id="tempo-preparo"
-                  value={filtros.tempo}
-                  onChange={(e) => setFiltros({...filtros, tempo: e.target.value})}
-                  className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-orange-500 bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
-                >
-                  {temposPreparo.map(tempo => (
-                    <option key={tempo} value={tempo}>{tempo}</option>
-                  ))}
-                </select>
-              </div>
-              
-              <div>
-                <label htmlFor="dificuldade" className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-1">
-                  Dificuldade
-                </label>
-                <select
-                  id="dificuldade"
-                  value={filtros.dificuldade}
-                  onChange={(e) => setFiltros({...filtros, dificuldade: e.target.value})}
-                  className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-orange-500 bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
-                >
-                  {niveisDificuldade.map(nivel => (
-                    <option key={nivel} value={nivel}>{nivel}</option>
-                  ))}
-                </select>
-              </div>
-              
-              <div>
-                <label htmlFor="tipo-refeicao" className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-1">
-                  Tipo de Refeição
-                </label>
-                <select
-                  id="tipo-refeicao"
-                  value={filtros.tipo}
-                  onChange={(e) => setFiltros({...filtros, tipo: e.target.value})}
-                  className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-orange-500 bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
-                >
-                  {tiposRefeicao.map(tipo => (
-                    <option key={tipo} value={tipo}>{tipo}</option>
-                  ))}
-                </select>
-              </div>
-            </div>
-            
+          {/* Receitas Geradas - Accordion */}
+          <section className="glass-effect rounded-xl shadow-lg fade-in-up bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-600">
             <button
-              onClick={gerarReceitas}
-              disabled={ingredientes.length === 0}
-              className="w-full mt-4 px-6 py-3 bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 disabled:from-gray-300 disabled:to-gray-400 disabled:cursor-not-allowed text-white font-semibold rounded-lg transition-all duration-200 shadow-lg hover:shadow-xl transform hover:scale-105 disabled:transform-none"
+              onClick={() => setActiveAccordion(activeAccordion === 'receitas' ? null : 'receitas')}
+              className="w-full p-4 sm:p-6 flex items-center justify-between text-left hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors rounded-xl"
             >
-              🍳 Gerar Receitas com IA
+              <h3 className="text-lg font-bold text-gray-900 dark:text-white flex items-center gap-2">
+                <span>📋</span>
+                Receitas Sugeridas
+                <span className="text-sm font-normal text-gray-500 dark:text-gray-400">
+                  ({receitas.length} encontrada{receitas.length !== 1 ? 's' : ''})
+                </span>
+              </h3>
+              <i className={`fa-solid fa-chevron-${activeAccordion === 'receitas' ? 'up' : 'down'} text-gray-400 transition-transform duration-200`}></i>
             </button>
+            
+            {activeAccordion === 'receitas' && (
+              <div className="px-4 sm:px-6 pb-4 sm:pb-6">
+                {receitas.length > 0 ? (
+                  <div className="space-y-4">
+                    {receitas.map((receita) => (
+                      <button
+                        key={receita.id}
+                        className="w-full p-4 border border-gray-200 dark:border-gray-600 rounded-lg hover:shadow-md transition-all duration-200 cursor-pointer text-left"
+                        onClick={() => setReceitaSelecionada(receita)}
+                      >
+                        <div className="flex items-start justify-between">
+                          <div className="flex-1">
+                            <h4 className="font-bold text-gray-900 dark:text-white mb-2">{receita.nome}</h4>
+                            <div className="flex items-center gap-4 text-sm text-gray-600 dark:text-gray-400 mb-2">
+                              <span>⏱️ {receita.tempo}</span>
+                              <span>📊 {receita.dificuldade}</span>
+                              <span>👥 {receita.porcoes} porções</span>
+                            </div>
+                            <p className="text-sm text-gray-600 dark:text-gray-300">
+                              Ingredientes: {receita.ingredientes.join(", ")}
+                            </p>
+                          </div>
+                          <span className="ml-4 px-3 py-1 bg-orange-500 text-white text-sm rounded-lg">
+                            Ver Receita
+                          </span>
+                        </div>
+                      </button>
+                    ))}
+                  </div>
+                ) : (
+                  <div className="text-center py-8">
+                    <div className="text-4xl mb-4">🍳</div>
+                    <p className="text-gray-500 dark:text-gray-400 mb-2">
+                      Nenhuma receita gerada ainda
+                    </p>
+                    <p className="text-sm text-gray-400 dark:text-gray-500">
+                      Adicione ingredientes e clique em "Gerar Receitas"
+                    </p>
+                  </div>
+                )}
+              </div>
+            )}
           </section>
         </div>
 
-        {/* Coluna 2: Chat com IA */}
-        <div className="space-y-4 sm:space-y-6">
+        {/* Coluna 2: Assistente e Dicas */}
+        <div className="xl:col-span-1 space-y-4 sm:space-y-6">
           <section className="glass-effect rounded-xl shadow-lg p-4 sm:p-6 fade-in-up bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-600">
             <div className="flex items-center justify-between mb-4">
               <h3 className="text-lg font-bold text-gray-900 dark:text-white flex items-center gap-2">
@@ -389,43 +421,6 @@ export default function CozinhaIA() {
               </div>
             </div>
           </section>
-
-          {/* Receitas Geradas */}
-          {receitas.length > 0 && (
-            <section className="glass-effect rounded-xl shadow-lg p-4 sm:p-6 fade-in-up bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-600">
-              <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-4 flex items-center gap-2">
-                <span>📋</span>
-                {' '}Receitas Sugeridas
-              </h3>
-              
-              <div className="space-y-4">
-                {receitas.map((receita) => (
-                  <button
-                    key={receita.id}
-                    className="w-full p-4 border border-gray-200 dark:border-gray-600 rounded-lg hover:shadow-md transition-all duration-200 cursor-pointer text-left"
-                    onClick={() => setReceitaSelecionada(receita)}
-                  >
-                    <div className="flex items-start justify-between">
-                      <div className="flex-1">
-                        <h4 className="font-bold text-gray-900 dark:text-white mb-2">{receita.nome}</h4>
-                        <div className="flex items-center gap-4 text-sm text-gray-600 dark:text-gray-400 mb-2">
-                          <span>⏱️ {receita.tempo}</span>
-                          <span>📊 {receita.dificuldade}</span>
-                          <span>👥 {receita.porcoes} porções</span>
-                        </div>
-                        <p className="text-sm text-gray-600 dark:text-gray-300">
-                          Ingredientes: {receita.ingredientes.join(", ")}
-                        </p>
-                      </div>
-                      <span className="ml-4 px-3 py-1 bg-orange-500 text-white text-sm rounded-lg">
-                        Ver Receita
-                      </span>
-                    </div>
-                  </button>
-                ))}
-              </div>
-            </section>
-          )}
         </div>
       </div>
 
@@ -484,6 +479,93 @@ export default function CozinhaIA() {
                 <p className="text-yellow-700 dark:text-yellow-300">{receitaSelecionada.dicas}</p>
               </div>
             )}
+          </div>
+        </div>
+      )}
+
+      {/* Modal de Filtros */}
+      {filtrosModal.isOpen && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
+          <div className="bg-white dark:bg-gray-800 rounded-xl shadow-xl max-w-md w-full max-h-[90vh] overflow-y-auto">
+            <div className="p-6">
+              <div className="flex items-center justify-between mb-6">
+                <h3 className="text-xl font-bold text-gray-900 dark:text-white flex items-center gap-2">
+                  <i className="fa-solid fa-filter text-orange-500"></i>
+                  Filtros de Receitas
+                </h3>
+                <button
+                  onClick={filtrosModal.closeModal}
+                  className="text-gray-400 hover:text-gray-600 dark:hover:text-gray-300"
+                >
+                  <i className="fa-solid fa-times text-xl"></i>
+                </button>
+              </div>
+              
+              <div className="space-y-4">
+                <div>
+                  <label htmlFor="tempo-preparo" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                    Tempo de Preparo
+                  </label>
+                  <select
+                    id="tempo-preparo"
+                    value={filtros.tempo}
+                    onChange={(e) => setFiltros({...filtros, tempo: e.target.value})}
+                    className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-orange-500 bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
+                  >
+                    {temposPreparo.map(tempo => (
+                      <option key={tempo} value={tempo}>{tempo}</option>
+                    ))}
+                  </select>
+                </div>
+                
+                <div>
+                  <label htmlFor="dificuldade" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                    Dificuldade
+                  </label>
+                  <select
+                    id="dificuldade"
+                    value={filtros.dificuldade}
+                    onChange={(e) => setFiltros({...filtros, dificuldade: e.target.value})}
+                    className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-orange-500 bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
+                  >
+                    {niveisDificuldade.map(dificuldade => (
+                      <option key={dificuldade} value={dificuldade}>{dificuldade}</option>
+                    ))}
+                  </select>
+                </div>
+                
+                <div>
+                  <label htmlFor="tipo-refeicao" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                    Tipo de Refeição
+                  </label>
+                  <select
+                    id="tipo-refeicao"
+                    value={filtros.tipo}
+                    onChange={(e) => setFiltros({...filtros, tipo: e.target.value})}
+                    className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-orange-500 bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
+                  >
+                    {tiposRefeicao.map(tipo => (
+                      <option key={tipo} value={tipo}>{tipo}</option>
+                    ))}
+                  </select>
+                </div>
+              </div>
+              
+              <div className="flex gap-3 mt-6">
+                <button
+                  onClick={() => setFiltros({tempo: "Qualquer", dificuldade: "Qualquer", tipo: "Qualquer"})}
+                  className="flex-1 px-4 py-2 bg-gray-200 dark:bg-gray-600 text-gray-700 dark:text-gray-300 rounded-lg hover:bg-gray-300 dark:hover:bg-gray-500 transition-colors"
+                >
+                  Limpar
+                </button>
+                <button
+                  onClick={filtrosModal.closeModal}
+                  className="flex-1 px-4 py-2 bg-orange-500 hover:bg-orange-600 text-white rounded-lg transition-colors"
+                >
+                  Aplicar
+                </button>
+              </div>
+            </div>
           </div>
         </div>
       )}
