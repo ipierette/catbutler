@@ -12,6 +12,46 @@ e este projeto adere ao [Versionamento Semântico](https://semver.org/lang/pt-BR
 - Guias de instalação, desenvolvimento e deploy
 - Templates para contribuição
 
+## [2.1.0] - 2025-01-27
+
+### 🍳 Cozinha IA - Funcionalidades Avançadas
+
+#### Adicionado
+- **Cardápio Semanal Inteligente**
+  - Geração automática de cardápios baseada nos ingredientes disponíveis
+  - Layout organizado por dias da semana e refeições (Café da Manhã, Almoço, Jantar)
+  - Botão de copiar que formata o cardápio para área de transferência
+  - Design moderno com gradientes e elementos decorativos
+  - Estado de loading durante a geração
+
+- **Sistema Accordion Inteligente**
+  - Accordions que se fecham automaticamente para otimizar espaço
+  - Card de dicas fecha quando assistente culinário é aberto
+  - Card de dicas fecha quando cardápio semanal é gerado
+  - Setinhas indicativas (chevron) em todos os accordions
+  - Transições suaves entre estados
+
+#### Melhorado
+- **Contraste e Legibilidade no Modo Claro**
+  - Análise cirúrgica das cores para melhor contraste
+  - Textos mais escuros em gradientes claros
+  - Inputs e labels com melhor visibilidade
+  - Chat com mensagens mais legíveis
+  - Cores específicas para cada tipo de gradiente
+
+- **Interface do Assistente Culinário**
+  - Botão de cardápio semanal restaurado com texto completo
+  - Layout mais compacto e organizado
+  - Melhor integração entre chat e cardápio
+  - Estados sincronizados entre componentes
+
+#### Corrigido
+- **Problemas de Contraste**
+  - Modo escuro restaurado sem alterações desnecessárias
+  - Modo claro com legibilidade significativamente melhorada
+  - Cores específicas para gradientes claros
+  - Textos secundários com contraste adequado
+
 ## [2.0.2] - 2025-01-27
 
 ### 🎨 Melhorias de UX/UI

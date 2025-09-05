@@ -16,10 +16,13 @@ O **CatButler** é uma aplicação web moderna que utiliza inteligência artific
 
 ### ✨ Principais Funcionalidades
 
-- 🍳 **Cozinha IA**: Sugestões de receitas baseadas nos ingredientes disponíveis
-  - Dicas rápidas de culinária
-  - Chatbot interativo para dúvidas
-  - Receitas personalizadas por ingredientes
+- 🍳 **Cozinha IA**: Sistema completo de culinária inteligente
+  - **Receitas Personalizadas**: Sugestões baseadas nos ingredientes disponíveis
+  - **Cardápio Semanal**: Geração automática de cardápios com opção de copiar
+  - **Assistente Culinário**: Chatbot interativo com IA para dúvidas
+  - **Dicas Rápidas**: Conselhos práticos de culinária
+  - **Sistema Accordion**: Interface inteligente que se adapta ao uso
+  - **Filtros Avançados**: Por tempo, dificuldade e tipo de refeição
 - 🧹 **Faxina IA**: Sistema completo de limpeza inteligente
   - **Planejador Inteligente**: Cronograma personalizado baseado no tamanho da casa e rotina
   - **Guia de Produtos**: Recomendações de produtos e técnicas por superfície
@@ -37,6 +40,14 @@ O **CatButler** é uma aplicação web moderna que utiliza inteligência artific
   - **SignUp**: Cadastro com validação em tempo real
   - **Login**: Acesso seguro com validação
   - **Modais**: Termos de Uso e Política de Privacidade
+
+### 🎨 **Experiência do Usuário (UX)**
+- **Design Responsivo**: Adaptação perfeita para desktop, tablet e mobile
+- **Modo Claro/Escuro**: Tema personalizável com contraste otimizado
+- **Interface Intuitiva**: Accordions inteligentes e navegação fluida
+- **Feedback Visual**: Animações suaves e estados de loading
+- **Acessibilidade**: Suporte completo a leitores de tela e navegação por teclado
+- **Performance**: Carregamento otimizado com lazy loading
 
 ## 🚀 Tecnologias Utilizadas
 

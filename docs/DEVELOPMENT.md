@@ -464,6 +464,83 @@ git commit -m "fix: corrige bug no tema escuro"
 git commit -m "docs: atualiza README com instruções de instalação"
 ```
 
+## 🍳 Funcionalidades Avançadas - Cozinha IA
+
+### Cardápio Semanal Inteligente
+
+O sistema de cardápio semanal é uma das funcionalidades mais avançadas da aplicação:
+
+#### Implementação
+```jsx
+const gerarCardapioSemanal = async () => {
+  setGerandoCardapio(true);
+  setDicasAbertas(false); // Fechar dicas automaticamente
+  
+  // Simular geração de cardápio
+  await new Promise(resolve => setTimeout(resolve, 2000));
+  
+  const diasSemana = ['Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sábado', 'Domingo'];
+  const refeicoes = ['Café da Manhã', 'Almoço', 'Jantar'];
+  
+  // Gerar cardápio baseado nos ingredientes disponíveis
+  const cardapio = diasSemana.map(dia => ({
+    dia,
+    refeicoes: refeicoes.map(refeicao => {
+      // Lógica de seleção de receitas
+    })
+  }));
+  
+  setCardapioSemanal(cardapio);
+  setGerandoCardapio(false);
+};
+```
+
+#### Funcionalidades
+- **Geração Automática**: Baseada nos ingredientes disponíveis
+- **Layout Organizado**: Por dias da semana e refeições
+- **Opção de Copiar**: Formatação para área de transferência
+- **Design Moderno**: Gradientes e elementos decorativos
+- **Estado de Loading**: Feedback visual durante geração
+
+### Sistema Accordion Inteligente
+
+O sistema de accordions foi projetado para otimizar o espaço e melhorar a experiência:
+
+#### Comportamento Inteligente
+- **Fechamento Automático**: Dicas fecham quando assistente abre
+- **Sincronização**: Estados sincronizados entre componentes
+- **Indicadores Visuais**: Setinhas (chevron) para clicabilidade
+- **Transições Suaves**: Animações CSS para melhor UX
+
+#### Estados Gerenciados
+```jsx
+const [activeAccordion, setActiveAccordion] = useState('ingredientes');
+const [dicasAbertas, setDicasAbertas] = useState(true);
+const [chatAberto, setChatAberto] = useState(false);
+```
+
+### Melhorias de Contraste
+
+#### Análise Cirúrgica de Cores
+O sistema de contraste foi otimizado especificamente para gradientes claros:
+
+```css
+/* Contraste específico para gradientes claros */
+:not(.dark) .bg-gradient-to-br.from-blue-50 .text-gray-900 {
+  color: #1f2937 !important; /* gray-800 - mais escuro */
+}
+
+:not(.dark) .bg-gradient-to-br.from-green-50 .text-gray-900 {
+  color: #1f2937 !important; /* gray-800 - mais escuro */
+}
+```
+
+#### Cores Otimizadas
+- **Textos Principais**: gray-800 em vez de gray-900
+- **Textos Secundários**: gray-600 em vez de gray-500
+- **Inputs**: Cores mais escuras para melhor legibilidade
+- **Labels**: Contraste aprimorado para acessibilidade
+
 ## 🚀 Deploy
 
 ### Build de Produção

@@ -246,7 +246,9 @@ export default function CozinhaIA() {
                   ({ingredientes.length} adicionado{ingredientes.length !== 1 ? 's' : ''})
                 </span>
               </h2>
-              <i className={`fa-solid fa-chevron-${activeAccordion === 'ingredientes' ? 'up' : 'down'} text-gray-400 transition-transform duration-200`}></i>
+              <div className="flex items-center justify-center w-6 h-6 bg-gray-200 dark:bg-gray-600 rounded-full">
+                <i className={`fa-solid fa-chevron-${activeAccordion === 'ingredientes' ? 'up' : 'down'} text-gray-700 dark:text-gray-200 text-sm`}></i>
+              </div>
             </button>
             
             {activeAccordion === 'ingredientes' && (
@@ -348,7 +350,9 @@ export default function CozinhaIA() {
                   ({receitas.length} encontrada{receitas.length !== 1 ? 's' : ''})
                 </span>
               </h3>
-              <i className={`fa-solid fa-chevron-${activeAccordion === 'receitas' ? 'up' : 'down'} text-gray-400 transition-transform duration-200`}></i>
+              <div className="flex items-center justify-center w-6 h-6 bg-gray-200 dark:bg-gray-600 rounded-full">
+                <i className={`fa-solid fa-chevron-${activeAccordion === 'receitas' ? 'up' : 'down'} text-gray-700 dark:text-gray-200 text-sm`}></i>
+              </div>
             </button>
             
             {activeAccordion === 'receitas' && (
@@ -556,7 +560,9 @@ export default function CozinhaIA() {
                 </div>
                 Dicas Rápidas
               </h3>
-              <i className={`fa-solid fa-chevron-${dicasAbertas ? 'up' : 'down'} text-gray-400 transition-transform duration-200`}></i>
+              <div className="flex items-center justify-center w-6 h-6 bg-gray-200 dark:bg-gray-600 rounded-full">
+                <i className={`fa-solid fa-chevron-${dicasAbertas ? 'up' : 'down'} text-gray-700 dark:text-gray-200 text-sm`}></i>
+              </div>
             </button>
             
             {dicasAbertas && (

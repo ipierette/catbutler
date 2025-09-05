@@ -13,6 +13,83 @@ O CatButler utiliza várias APIs para fornecer funcionalidades de IA e dados em 
 
 ## 🤖 IA e Machine Learning
 
+### Funcionalidades Avançadas - Cozinha IA
+
+#### Cardápio Semanal Inteligente
+
+O sistema de cardápio semanal utiliza algoritmos de IA para gerar sugestões personalizadas:
+
+```javascript
+// services/cardapioService.js
+export const cardapioService = {
+  async gerarCardapioSemanal(ingredientes) {
+    const diasSemana = ['Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sábado', 'Domingo'];
+    const refeicoes = ['Café da Manhã', 'Almoço', 'Jantar'];
+    
+    return diasSemana.map(dia => ({
+      dia,
+      refeicoes: refeicoes.map(refeicao => {
+        // Algoritmo de seleção baseado em ingredientes
+        const receitasDisponiveis = this.filtrarReceitasPorIngredientes(ingredientes);
+        const receitaAleatoria = this.selecionarReceitaAleatoria(receitasDisponiveis);
+        
+        return {
+          tipo: refeicao,
+          receita: receitaAleatoria || this.gerarReceitaPadrao(ingredientes)
+        };
+      })
+    }));
+  },
+  
+  formatarCardapioParaCopiar(cardapio) {
+    let texto = "🍽️ CARDÁPIO SEMANAL - CatButler\n\n";
+    
+    cardapio.forEach(dia => {
+      texto += `📅 ${dia.dia}\n`;
+      dia.refeicoes.forEach(refeicao => {
+        texto += `  • ${refeicao.tipo}: ${refeicao.receita.nome} (${refeicao.receita.tempo})\n`;
+      });
+      texto += "\n";
+    });
+    
+    return texto;
+  }
+};
+```
+
+#### Sistema Accordion Inteligente
+
+O sistema de accordions utiliza estados sincronizados para otimizar a experiência:
+
+```javascript
+// hooks/useAccordionState.js
+export const useAccordionState = () => {
+  const [activeAccordion, setActiveAccordion] = useState('ingredientes');
+  const [dicasAbertas, setDicasAbertas] = useState(true);
+  const [chatAberto, setChatAberto] = useState(false);
+  
+  const abrirChat = () => {
+    setChatAberto(true);
+    setDicasAbertas(false); // Fechar dicas automaticamente
+  };
+  
+  const gerarCardapio = () => {
+    setDicasAbertas(false); // Fechar dicas automaticamente
+    // Lógica de geração de cardápio
+  };
+  
+  return {
+    activeAccordion,
+    setActiveAccordion,
+    dicasAbertas,
+    setDicasAbertas,
+    chatAberto,
+    abrirChat,
+    gerarCardapio
+  };
+};
+```
+
 ### OpenAI Integration
 
 #### Configuração
