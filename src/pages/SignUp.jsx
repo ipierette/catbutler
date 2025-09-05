@@ -2,9 +2,6 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { sanitizeInput, validateEmail, validatePassword, validateName } from '../utils/security';
 import { TermsModal, PrivacyModal, useModal } from '../components/Modals';
-import { useValidation } from '../hooks/useValidation';
-import { useToast } from '../components/Toast';
-import { useConfirm } from '../components/ConfirmationDialog';
 import { LoadingButton } from '../components/Loading';
 
 export default function SignUp() {

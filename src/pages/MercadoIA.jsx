@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { sanitizeInput, processTextInput, validateNumber } from '../utils/security';
 
 export default function MercadoIA() {
   const [abaAtiva, setAbaAtiva] = useState('comparar');
@@ -10,7 +9,6 @@ export default function MercadoIA() {
   const [orcamento, setOrcamento] = useState('');
   const [localizacao, setLocalizacao] = useState('');
   const [sugestoes, setSugestoes] = useState([]);
-  const [mostrarCompartilhar, setMostrarCompartilhar] = useState(false);
 
   // Abas do sistema de mercado
   const abas = [

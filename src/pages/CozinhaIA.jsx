@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { sanitizeInput, processTextInput } from "../utils/security";
 
 export default function CozinhaIA() {
   const [ingredientes, setIngredientes] = useState([]);
@@ -313,9 +312,17 @@ export default function CozinhaIA() {
               <div className="space-y-4">
                 <div className="h-48 overflow-y-auto border border-gray-200 dark:border-gray-600 rounded-lg p-3 bg-gray-50 dark:bg-gray-900 chat-container">
                   {conversa.length === 0 ? (
-                    <p className="text-sm text-gray-500 dark:text-gray-300 text-center">
-                      Olá! Sou seu assistente culinário. Como posso ajudar?
-                    </p>
+                    <div className="flex items-center justify-center h-full">
+                      <div className="text-center">
+                        <div className="text-2xl mb-2">👨‍🍳</div>
+                        <p className="text-sm text-gray-600 dark:text-gray-300 font-medium">
+                          Olá! Sou seu assistente culinário.
+                        </p>
+                        <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">
+                          Como posso ajudar?
+                        </p>
+                      </div>
+                    </div>
                   ) : (
                     conversa.map((msg) => (
                       <div
@@ -323,10 +330,10 @@ export default function CozinhaIA() {
                         className={`mb-3 ${msg.isUser ? 'text-right' : 'text-left'}`}
                       >
                         <div
-                          className={`inline-block p-2 rounded-lg text-sm ${
+                          className={`inline-block p-3 rounded-lg text-sm max-w-xs ${
                             msg.isUser
-                              ? 'bg-orange-500 text-white'
-                              : 'bg-gray-200 dark:bg-blue-800 text-gray-900 dark:text-white bot-message'
+                              ? 'bg-orange-500 text-white shadow-sm'
+                              : 'bg-gray-200 dark:bg-blue-800 text-gray-900 dark:text-white bot-message shadow-sm'
                           }`}
                         >
                           {msg.texto}
@@ -343,11 +350,12 @@ export default function CozinhaIA() {
                     onChange={(e) => setMensagemChat(e.target.value)}
                     onKeyPress={(e) => e.key === 'Enter' && enviarMensagem()}
                     placeholder="Pergunte sobre culinária..."
-                    className="flex-1 px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-orange-500 bg-white dark:bg-gray-900 text-gray-900 dark:text-white text-sm chat-input"
+                    className="flex-1 px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-orange-500 bg-white dark:bg-gray-900 text-gray-900 dark:text-white text-sm chat-input transition-all duration-200"
                   />
                   <button
                     onClick={enviarMensagem}
-                    className="px-4 py-2 bg-orange-500 hover:bg-orange-600 text-white rounded-lg transition-colors"
+                    disabled={!mensagemChat.trim()}
+                    className="px-4 py-2 bg-orange-500 hover:bg-orange-600 disabled:bg-gray-300 disabled:cursor-not-allowed text-white rounded-lg transition-all duration-200 shadow-sm hover:shadow-md disabled:shadow-none"
                   >
                     Enviar
                   </button>
