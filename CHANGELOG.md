@@ -12,6 +12,37 @@ e este projeto adere ao [Versionamento Semântico](https://semver.org/lang/pt-BR
 - Guias de instalação, desenvolvimento e deploy
 - Templates para contribuição
 
+## [1.1.0] - 2025-01-27
+
+### Adicionado
+- 🧹 **Faxina IA - Sistema Completo**
+  - Sistema de abas internas (Planejador, Produtos, Ambientes, Sustentabilidade)
+  - Planejador Inteligente com layout em duas colunas
+  - Guia de Produtos com seleção por superfície
+  - Análise por Ambiente com galeria de 3 cards
+  - Sustentabilidade com checkboxes múltiplos e cálculo de impacto
+- 🎨 **Melhorias de Interface**
+  - Scroll interno para controle de altura em SPA
+  - Layout fixo com header e footer
+  - Cores dos seletores corrigidas no modo escuro
+  - Hover effects e transições melhoradas
+- 🔧 **Otimizações Técnicas**
+  - Verificações de segurança para evitar crashes
+  - Código refatorado para melhor manutenibilidade
+  - Linting errors corrigidos
+  - Responsividade aprimorada
+
+### Corrigido
+- Erro crítico na aba Sustentabilidade que causava crash
+- Overflow de conteúdo que ultrapassava os limites da SPA
+- Cores dos seletores não visíveis no modo escuro
+- Problemas de aninhamento de funções (linting)
+
+### Melhorado
+- Layout mais compacto e organizado
+- Experiência do usuário mais fluida
+- Performance e estabilidade geral
+
 ## [1.0.0] - 2025-01-27
 
 ### Adicionado

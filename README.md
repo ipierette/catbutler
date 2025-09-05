@@ -17,11 +17,17 @@ O **CatButler** é uma aplicação web moderna que utiliza inteligência artific
 ### ✨ Principais Funcionalidades
 
 - 🍳 **Cozinha IA**: Sugestões de receitas baseadas nos ingredientes disponíveis
-- 🧹 **Faxina IA**: Rotinas de limpeza personalizadas e realistas
+  - Dicas rápidas de culinária
+  - Chatbot interativo para dúvidas
+  - Receitas personalizadas por ingredientes
+- 🧹 **Faxina IA**: Sistema completo de limpeza inteligente
+  - **Planejador Inteligente**: Cronograma personalizado baseado no tamanho da casa e rotina
+  - **Guia de Produtos**: Recomendações de produtos e técnicas por superfície
+  - **Análise por Ambiente**: Checklists específicos para cada cômodo
+  - **Sustentabilidade**: Práticas eco-friendly com cálculo de impacto
 - 🛒 **Mercado IA**: Comparação de preços por localidade
-- 📅 **Plano Semanal**: Organização de tarefas e sugestões automáticas
+- 📅 **Tarefas**: Galeria vertical animada para organização de tarefas
 - 🔥 **Descobertas do Dia**: Dicas personalizadas e novidades
-- 👨‍👩‍👧‍👦 **Conta Familiar**: Compartilhamento de receitas e listas
 - ⚙️ **Configurações**: Personalização completa da experiência
 
 ## 🚀 Tecnologias Utilizadas
@@ -108,6 +114,32 @@ catbutler-react/
 └── README.md
 ```
 
+## 🧹 Faxina IA - Funcionalidades Detalhadas
+
+### 🎯 Planejador Inteligente
+- **Configuração Personalizada**: Seleção do tamanho da casa e rotina
+- **Cronograma Dinâmico**: Geração automática baseada nas preferências
+- **Lembretes Automáticos**: Sistema de notificações para tarefas pendentes
+- **Layout Responsivo**: Duas colunas em desktop, uma em mobile
+
+### 🧴 Guia de Produtos e Técnicas
+- **Seleção por Superfície**: Vidro, Madeira, Metal, Cerâmica, etc.
+- **Produtos Recomendados**: Sugestões específicas para cada material
+- **Técnicas Passo a Passo**: Instruções detalhadas de limpeza
+- **Substituições Caseiras**: Alternativas eco-friendly
+
+### 🏠 Análise por Ambiente
+- **Galeria Interativa**: 3 cards por visualização com navegação
+- **Checklists Específicos**: Tarefas personalizadas por cômodo
+- **Frequência Recomendada**: Sugestões de periodicidade
+- **Produtos por Ambiente**: Recomendações específicas
+
+### 🌱 Sustentabilidade
+- **Seleção Múltipla**: Checkboxes para práticas eco-friendly
+- **Cálculo de Impacto**: Métricas de água, energia e produtos economizados
+- **Categorias Organizadas**: Água, Energia, Produtos e Upcycling
+- **Botão Analisar**: Geração de relatório de impacto
+
 ## 🎨 Design System
 
 ### Cores Principais
@@ -122,6 +154,7 @@ catbutler-react/
 - **Botões**: Cores vibrantes com hover effects
 - **Cards**: Bordas arredondadas e sombras suaves
 - **Tabs**: Navegação intuitiva entre seções
+- **Scroll Interno**: Controle de altura para SPA
 
 ## 🔧 Scripts Disponíveis
 
@@ -153,6 +186,9 @@ O projeto suporta alternância automática entre modos claro e escuro:
 - **Breakpoints**: sm, md, lg, xl, 2xl
 - **Grid System**: Layout flexível e adaptável
 - **Touch Friendly**: Botões e elementos otimizados para toque
+- **SPA Otimizada**: Scroll interno para evitar overflow
+- **Layout Fixo**: Header e footer fixos, conteúdo scrollável
+- **Galeria Responsiva**: Adaptação automática de colunas
 
 ## 🚀 Deploy
 
