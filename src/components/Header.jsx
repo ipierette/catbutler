@@ -84,8 +84,15 @@ function Header() {
 
       {/* Menu Mobile */}
       {mobileMenuOpen && (
-        <div className="md:hidden glass-effect shadow-lg border-t border-gray-200 dark:border-gray-600">
-          <nav className="flex flex-col p-4 space-y-2">
+        <>
+          {/* Overlay de fundo */}
+          <div 
+            className="md:hidden mobile-menu-overlay bg-black bg-opacity-50"
+            onClick={() => setMobileMenuOpen(false)}
+          />
+          {/* Menu */}
+          <div className="md:hidden mobile-menu glass-effect shadow-lg border-t border-gray-200 dark:border-gray-600">
+            <nav className="flex flex-col p-4 space-y-2">
             <Link 
               to="/" 
               className="text-gray-800 dark:text-gray-200 hover:text-green-500 transition font-bold text-sm py-2 px-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700"
@@ -130,6 +137,7 @@ function Header() {
             </Link>
           </nav>
         </div>
+        </>
       )}
   {/* Dock removido para evitar navegação duplicada */}
     </>
