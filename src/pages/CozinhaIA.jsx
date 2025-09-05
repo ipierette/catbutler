@@ -15,6 +15,9 @@ export default function CozinhaIA() {
   const [conversa, setConversa] = useState([]);
   const [receitaSelecionada, setReceitaSelecionada] = useState(null);
   const [activeAccordion, setActiveAccordion] = useState('ingredientes'); // 'ingredientes' ou 'receitas'
+  const [cardapioSemanal, setCardapioSemanal] = useState(null);
+  const [gerandoCardapio, setGerandoCardapio] = useState(false);
+  const [dicasAbertas, setDicasAbertas] = useState(true);
   const filtrosModal = useModal();
 
   const ingredientesSugeridos = [
@@ -115,6 +118,63 @@ export default function CozinhaIA() {
     setActiveAccordion('receitas');
   };
 
+  const gerarCardapioSemanal = async () => {
+    setGerandoCardapio(true);
+    setDicasAbertas(false); // Fechar dicas quando gerar cardápio
+    
+    // Simular geração de cardápio
+    await new Promise(resolve => setTimeout(resolve, 2000));
+    
+    const diasSemana = ['Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sábado', 'Domingo'];
+    const refeicoes = ['Café da Manhã', 'Almoço', 'Jantar'];
+    
+    const cardapio = diasSemana.map(dia => ({
+      dia,
+      refeicoes: refeicoes.map(refeicao => {
+        const receitasDisponiveis = receitasExemplo.filter(r => 
+          ingredientes.some(ing => 
+            r.ingredientes.some(ingReceita => 
+              ingReceita.toLowerCase().includes(ing.toLowerCase())
+            )
+          )
+        );
+        
+        const receitaAleatoria = receitasDisponiveis[Math.floor(Math.random() * receitasDisponiveis.length)];
+        
+        return {
+          tipo: refeicao,
+          receita: receitaAleatoria || {
+            nome: "Receita Sugerida",
+            tempo: "30 min",
+            dificuldade: "Fácil",
+            ingredientes: ingredientes.slice(0, 3)
+          }
+        };
+      })
+    }));
+    
+    setCardapioSemanal(cardapio);
+    setGerandoCardapio(false);
+  };
+
+  const copiarCardapio = () => {
+    if (!cardapioSemanal) return;
+    
+    let textoCardapio = "🍽️ CARDÁPIO SEMANAL - CatButler\n\n";
+    
+    cardapioSemanal.forEach(dia => {
+      textoCardapio += `📅 ${dia.dia}\n`;
+      dia.refeicoes.forEach(refeicao => {
+        textoCardapio += `  • ${refeicao.tipo}: ${refeicao.receita.nome} (${refeicao.receita.tempo})\n`;
+      });
+      textoCardapio += "\n";
+    });
+    
+    navigator.clipboard.writeText(textoCardapio).then(() => {
+      alert("Cardápio copiado para a área de transferência!");
+    });
+  };
+
   const enviarMensagem = () => {
     if (mensagemChat.trim()) {
       const novaMensagem = {
@@ -168,13 +228,19 @@ export default function CozinhaIA() {
         {/* Coluna 1: Ingredientes e Receitas - Accordion */}
         <div className="xl:col-span-2 space-y-4 sm:space-y-6">
           {/* Input de Ingredientes - Sanfona */}
-          <section className="glass-effect rounded-xl shadow-lg fade-in-up bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-600">
+          <section className="glass-effect rounded-xl shadow-lg fade-in-up bg-gradient-to-br from-orange-50 to-red-100 dark:from-gray-800 dark:to-gray-700 border border-orange-200 dark:border-gray-600 relative overflow-hidden">
+            {/* Decorative background elements */}
+            <div className="absolute top-0 right-0 w-20 h-20 bg-orange-200 dark:bg-orange-600 rounded-full -translate-y-10 translate-x-10 opacity-20"></div>
+            <div className="absolute bottom-0 left-0 w-16 h-16 bg-red-200 dark:bg-red-600 rounded-full translate-y-8 -translate-x-8 opacity-30"></div>
+            
             <button
               onClick={() => setActiveAccordion(activeAccordion === 'ingredientes' ? null : 'ingredientes')}
-              className="w-full p-4 sm:p-6 flex items-center justify-between text-left hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors rounded-xl"
+              className="w-full p-4 sm:p-6 flex items-center justify-between text-left hover:bg-orange-50/50 dark:hover:bg-gray-700/50 transition-colors rounded-xl relative z-10"
             >
               <h2 className="text-lg font-bold text-gray-900 dark:text-white flex items-center gap-2">
-                <span>🥘</span>
+                <div className="w-8 h-8 bg-orange-500 dark:bg-orange-600 rounded-lg flex items-center justify-center">
+                  <span className="text-white text-sm">🥘</span>
+                </div>
                 Ingredientes Disponíveis
                 <span className="text-sm font-normal text-gray-500 dark:text-gray-400">
                   ({ingredientes.length} adicionado{ingredientes.length !== 1 ? 's' : ''})
@@ -264,13 +330,19 @@ export default function CozinhaIA() {
           </section>
 
           {/* Receitas Geradas - Accordion */}
-          <section className="glass-effect rounded-xl shadow-lg fade-in-up bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-600">
+          <section className="glass-effect rounded-xl shadow-lg fade-in-up bg-gradient-to-br from-blue-50 to-indigo-100 dark:from-gray-800 dark:to-gray-700 border border-blue-200 dark:border-gray-600 relative overflow-hidden">
+            {/* Decorative background elements */}
+            <div className="absolute top-0 right-0 w-20 h-20 bg-blue-200 dark:bg-blue-600 rounded-full -translate-y-10 translate-x-10 opacity-20"></div>
+            <div className="absolute bottom-0 left-0 w-16 h-16 bg-indigo-200 dark:bg-indigo-600 rounded-full translate-y-8 -translate-x-8 opacity-30"></div>
+            
             <button
               onClick={() => setActiveAccordion(activeAccordion === 'receitas' ? null : 'receitas')}
-              className="w-full p-4 sm:p-6 flex items-center justify-between text-left hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors rounded-xl"
+              className="w-full p-4 sm:p-6 flex items-center justify-between text-left hover:bg-blue-50/50 dark:hover:bg-gray-700/50 transition-colors rounded-xl relative z-10"
             >
               <h3 className="text-lg font-bold text-gray-900 dark:text-white flex items-center gap-2">
-                <span>📋</span>
+                <div className="w-8 h-8 bg-blue-500 dark:bg-blue-600 rounded-lg flex items-center justify-center">
+                  <span className="text-white text-sm">📋</span>
+                </div>
                 Receitas Sugeridas
                 <span className="text-sm font-normal text-gray-500 dark:text-gray-400">
                   ({receitas.length} encontrada{receitas.length !== 1 ? 's' : ''})
@@ -326,18 +398,48 @@ export default function CozinhaIA() {
 
         {/* Coluna 2: Assistente e Dicas */}
         <div className="xl:col-span-1 space-y-4 sm:space-y-6">
-          <section className="glass-effect rounded-xl shadow-lg p-4 sm:p-6 fade-in-up bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-600">
-            <div className="flex items-center justify-between mb-4">
+          <section className="glass-effect rounded-xl shadow-lg p-4 sm:p-6 fade-in-up bg-gradient-to-br from-purple-50 to-pink-100 dark:from-gray-800 dark:to-gray-700 border border-purple-200 dark:border-gray-600 relative overflow-hidden">
+            {/* Decorative background elements */}
+            <div className="absolute top-0 right-0 w-16 h-16 bg-purple-200 dark:bg-purple-600 rounded-full -translate-y-8 translate-x-8 opacity-20"></div>
+            <div className="absolute bottom-0 left-0 w-12 h-12 bg-pink-200 dark:bg-pink-600 rounded-full translate-y-6 -translate-x-6 opacity-30"></div>
+            
+            <div className="flex items-center justify-between mb-4 relative z-10">
               <h3 className="text-lg font-bold text-gray-900 dark:text-white flex items-center gap-2">
-                <span>🤖</span>
-                {' '}Assistente Culinário
+                <div className="w-8 h-8 bg-purple-500 dark:bg-purple-600 rounded-lg flex items-center justify-center">
+                  <span className="text-white text-sm">🤖</span>
+                </div>
+                Assistente Culinário
               </h3>
-              <button
-                onClick={() => setChatAberto(!chatAberto)}
-                className="p-2 bg-orange-100 dark:bg-orange-900/30 text-orange-600 dark:text-orange-400 rounded-lg hover:bg-orange-200 dark:hover:bg-orange-900/50 transition-colors"
-              >
-                {chatAberto ? "✕" : "💬"}
-              </button>
+              <div className="flex gap-2">
+                <button
+                  onClick={gerarCardapioSemanal}
+                  disabled={gerandoCardapio || ingredientes.length === 0}
+                  className="px-3 py-2 bg-green-500 hover:bg-green-600 disabled:bg-gray-300 disabled:cursor-not-allowed text-white rounded-lg transition-colors text-xs font-semibold flex items-center gap-1"
+                >
+                  {gerandoCardapio ? (
+                    <>
+                      <i className="fa-solid fa-spinner fa-spin"></i>
+                      Gerando...
+                    </>
+                  ) : (
+                    <>
+                      <i className="fa-solid fa-calendar-week"></i>
+                      Cardápio Semanal
+                    </>
+                  )}
+                </button>
+                <button
+                  onClick={() => {
+                    setChatAberto(!chatAberto);
+                    if (!chatAberto) {
+                      setDicasAbertas(false); // Fechar dicas quando abrir chat
+                    }
+                  }}
+                  className="p-2 bg-orange-100 dark:bg-orange-900/30 text-orange-600 dark:text-orange-400 rounded-lg hover:bg-orange-200 dark:hover:bg-orange-900/50 transition-colors"
+                >
+                  {chatAberto ? "✕" : "💬"}
+                </button>
+              </div>
             </div>
             
             {chatAberto && (
@@ -394,14 +496,71 @@ export default function CozinhaIA() {
                 </div>
               </div>
             )}
+
+            {/* Cardápio Semanal */}
+            {cardapioSemanal && (
+              <div className="mt-6 p-4 bg-gradient-to-br from-green-50 to-emerald-100 dark:from-gray-700 dark:to-gray-600 rounded-xl border border-green-200 dark:border-gray-500 relative overflow-hidden">
+                {/* Decorative background elements */}
+                <div className="absolute top-0 right-0 w-12 h-12 bg-green-200 dark:bg-green-600 rounded-full -translate-y-6 translate-x-6 opacity-20"></div>
+                <div className="absolute bottom-0 left-0 w-8 h-8 bg-emerald-200 dark:bg-emerald-600 rounded-full translate-y-4 -translate-x-4 opacity-30"></div>
+                
+                <div className="flex items-center justify-between mb-4 relative z-10">
+                  <h4 className="text-lg font-bold text-gray-900 dark:text-white flex items-center gap-2">
+                    <div className="w-6 h-6 bg-green-500 dark:bg-green-600 rounded-lg flex items-center justify-center">
+                      <i className="fa-solid fa-calendar-week text-white text-xs"></i>
+                    </div>
+                    Cardápio Semanal
+                  </h4>
+                  <button
+                    onClick={copiarCardapio}
+                    className="px-3 py-1.5 bg-green-500 hover:bg-green-600 text-white rounded-lg transition-colors text-xs font-semibold flex items-center gap-1"
+                  >
+                    <i className="fa-solid fa-copy"></i>
+                    Copiar
+                  </button>
+                </div>
+                
+                <div className="space-y-3 max-h-64 overflow-y-auto relative z-10">
+                  {cardapioSemanal.map((dia, index) => (
+                    <div key={index} className="bg-white dark:bg-gray-800 rounded-lg p-3 border border-gray-200 dark:border-gray-600">
+                      <h5 className="font-semibold text-gray-900 dark:text-white mb-2 text-sm">{dia.dia}</h5>
+                      <div className="space-y-1">
+                        {dia.refeicoes.map((refeicao, refIndex) => (
+                          <div key={refIndex} className="flex justify-between items-center text-xs">
+                            <span className="text-gray-600 dark:text-gray-300 font-medium">{refeicao.tipo}:</span>
+                            <span className="text-gray-800 dark:text-gray-200 font-semibold">{refeicao.receita.nome}</span>
+                            <span className="text-gray-500 dark:text-gray-400 text-xs">({refeicao.receita.tempo})</span>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
           </section>
 
-          {/* Dicas Rápidas */}
-          <section className="glass-effect rounded-xl shadow-lg p-4 sm:p-6 fade-in-up bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-600">
-            <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-4 flex items-center gap-2">
-              <span>💡</span>
-              {' '}Dicas Rápidas
-            </h3>
+          {/* Dicas Rápidas - Accordion */}
+          <section className="glass-effect rounded-xl shadow-lg fade-in-up bg-gradient-to-br from-yellow-50 to-orange-100 dark:from-gray-800 dark:to-gray-700 border border-yellow-200 dark:border-gray-600 relative overflow-hidden">
+            {/* Decorative background elements */}
+            <div className="absolute top-0 right-0 w-16 h-16 bg-yellow-200 dark:bg-yellow-600 rounded-full -translate-y-8 translate-x-8 opacity-20"></div>
+            <div className="absolute bottom-0 left-0 w-12 h-12 bg-orange-200 dark:bg-orange-600 rounded-full translate-y-6 -translate-x-6 opacity-30"></div>
+            
+            <button
+              onClick={() => setDicasAbertas(!dicasAbertas)}
+              className="w-full p-4 sm:p-6 flex items-center justify-between text-left hover:bg-yellow-50/50 dark:hover:bg-gray-700/50 transition-colors rounded-xl relative z-10"
+            >
+              <h3 className="text-lg font-bold text-gray-900 dark:text-white flex items-center gap-2">
+                <div className="w-8 h-8 bg-yellow-500 dark:bg-yellow-600 rounded-lg flex items-center justify-center">
+                  <span className="text-white text-sm">💡</span>
+                </div>
+                Dicas Rápidas
+              </h3>
+              <i className={`fa-solid fa-chevron-${dicasAbertas ? 'up' : 'down'} text-gray-400 transition-transform duration-200`}></i>
+            </button>
+            
+            {dicasAbertas && (
+              <div className="px-4 sm:px-6 pb-4 sm:pb-6 relative z-10">
             
             <div className="space-y-3 text-sm">
               <div className="border border-blue-200 dark:border-blue-500/30 rounded-xl p-3">
@@ -420,6 +579,8 @@ export default function CozinhaIA() {
                 </p>
               </div>
             </div>
+              </div>
+            )}
           </section>
         </div>
       </div>

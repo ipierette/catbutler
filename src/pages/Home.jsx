@@ -289,10 +289,16 @@ export default function Home() {
           </div>
         </article>
 
-        <article className="glass-effect rounded-xl shadow-lg p-4 sm:p-5 flex flex-col justify-between gap-3 fade-in-up hover:scale-105 transition-all duration-300 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-600 min-h-[160px] sm:min-h-[180px]" style={{animationDelay: '0.2s'}}>
-          <div className="flex-1">
+        <article className="glass-effect rounded-xl shadow-lg p-4 sm:p-5 flex flex-col justify-between gap-3 fade-in-up hover:scale-105 transition-all duration-300 bg-gradient-to-br from-green-50 to-emerald-100 dark:from-gray-800 dark:to-gray-700 border border-green-200 dark:border-gray-600 min-h-[160px] sm:min-h-[180px] relative overflow-hidden" style={{animationDelay: '0.2s'}}>
+          {/* Decorative background elements */}
+          <div className="absolute top-0 right-0 w-16 h-16 bg-green-200 dark:bg-green-600 rounded-full -translate-y-8 translate-x-8 opacity-20"></div>
+          <div className="absolute bottom-0 left-0 w-12 h-12 bg-emerald-200 dark:bg-emerald-600 rounded-full translate-y-6 -translate-x-6 opacity-30"></div>
+          
+          <div className="flex-1 relative z-10">
             <header className="flex items-center gap-2 mb-3">
-              <i className="fa-solid fa-chart-line text-green-500 dark:text-green-400 text-sm" />
+              <div className="w-8 h-8 bg-green-500 dark:bg-green-600 rounded-lg flex items-center justify-center">
+                <i className="fa-solid fa-chart-line text-white text-sm" />
+              </div>
               <h3 className="text-sm font-bold text-gray-900 dark:text-white">Atividade Recente</h3>
             </header>
             <div className="space-y-3">
@@ -331,10 +337,16 @@ export default function Home() {
           </div>
         </article>
 
-        <article className="glass-effect rounded-xl shadow-lg p-4 sm:p-5 flex flex-col justify-between gap-3 fade-in-up hover:scale-105 transition-all duration-300 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-600 min-h-[160px] sm:min-h-[180px]" style={{animationDelay: '0.3s'}}>
-          <div className="flex-1">
+        <article className="glass-effect rounded-xl shadow-lg p-4 sm:p-5 flex flex-col justify-between gap-3 fade-in-up hover:scale-105 transition-all duration-300 bg-gradient-to-br from-yellow-50 to-orange-100 dark:from-gray-800 dark:to-gray-700 border border-yellow-200 dark:border-gray-600 min-h-[160px] sm:min-h-[180px] relative overflow-hidden" style={{animationDelay: '0.3s'}}>
+          {/* Decorative background elements */}
+          <div className="absolute top-0 right-0 w-16 h-16 bg-yellow-200 dark:bg-yellow-600 rounded-full -translate-y-8 translate-x-8 opacity-20"></div>
+          <div className="absolute bottom-0 left-0 w-12 h-12 bg-orange-200 dark:bg-orange-600 rounded-full translate-y-6 -translate-x-6 opacity-30"></div>
+          
+          <div className="flex-1 relative z-10">
             <header className="flex items-center gap-2 mb-3">
-              <i className="fa-solid fa-star text-yellow-500 dark:text-yellow-400 text-sm" />
+              <div className="w-8 h-8 bg-yellow-500 dark:bg-yellow-600 rounded-lg flex items-center justify-center">
+                <i className="fa-solid fa-star text-white text-sm" />
+              </div>
               <h3 className="text-sm font-bold text-gray-900 dark:text-white">Dicas do Dia</h3>
             </header>
             <div className="flex-1">
@@ -400,47 +412,57 @@ export default function Home() {
       {/* Seção de Estatísticas - Compacta */}
       <section className="w-full mx-auto mb-4 sm:mb-6">
 
-        <article className="glass-effect rounded-lg shadow-md p-3 sm:p-4 fade-in-up bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-600" style={{animationDelay: '0.4s'}}>
-          <header className="flex items-center gap-2 text-xs font-bold mb-3 text-gray-900 dark:text-white">
-            <i className="fa-solid fa-trophy text-purple-500 dark:text-purple-400 text-xs card-icon-trophy" />
-            {' '}Suas Conquistas
+        <article className="glass-effect rounded-xl shadow-lg p-4 sm:p-5 fade-in-up bg-gradient-to-br from-purple-50 to-pink-100 dark:from-gray-800 dark:to-gray-700 border border-purple-200 dark:border-gray-600 relative overflow-hidden" style={{animationDelay: '0.4s'}}>
+          {/* Decorative background elements */}
+          <div className="absolute top-0 right-0 w-16 h-16 bg-purple-200 dark:bg-purple-600 rounded-full -translate-y-8 translate-x-8 opacity-20"></div>
+          <div className="absolute bottom-0 left-0 w-12 h-12 bg-pink-200 dark:bg-pink-600 rounded-full translate-y-6 -translate-x-6 opacity-30"></div>
+          
+          <header className="flex items-center gap-2 text-sm font-bold mb-4 text-gray-900 dark:text-white relative z-10">
+            <div className="w-8 h-8 bg-purple-500 dark:bg-purple-600 rounded-lg flex items-center justify-center">
+              <i className="fa-solid fa-trophy text-white text-sm" />
+            </div>
+            Suas Conquistas
           </header>
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4">
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 relative z-10">
             <button 
               onClick={() => navigate('/cozinha-ia')}
-              className="text-center p-2 bg-green-100 dark:bg-green-600 border border-green-200 dark:border-green-400 rounded-lg achievement-card-green cursor-pointer hover:shadow-md hover:scale-105 transition-all duration-200 group w-full"
+              className="text-center p-3 bg-gradient-to-br from-green-100 to-emerald-100 dark:from-green-600 dark:to-emerald-600 border border-green-200 dark:border-green-400 rounded-xl achievement-card-green cursor-pointer hover:shadow-lg hover:scale-105 transition-all duration-200 group w-full relative overflow-hidden"
             >
-              <div className="text-xs font-bold text-green-700 dark:text-white achievement-number group-hover:scale-110 transition-transform duration-200">
+              <div className="absolute top-0 right-0 w-8 h-8 bg-green-200 dark:bg-green-500 rounded-full -translate-y-4 translate-x-4 opacity-20"></div>
+              <div className="text-sm font-bold text-green-700 dark:text-white achievement-number group-hover:scale-110 transition-transform duration-200 relative z-10">
                 {achievements.recipes || 0}
               </div>
-              <div className="text-xs text-green-800 dark:text-white font-semibold achievement-label">Receitas</div>
+              <div className="text-xs text-green-800 dark:text-white font-semibold achievement-label relative z-10">Receitas</div>
             </button>
             <button 
               onClick={() => navigate('/mercado-ia')}
-              className="text-center p-2 bg-blue-100 dark:bg-blue-600 border border-blue-200 dark:border-blue-400 rounded-lg achievement-card-blue cursor-pointer hover:shadow-md hover:scale-105 transition-all duration-200 group w-full"
+              className="text-center p-3 bg-gradient-to-br from-blue-100 to-cyan-100 dark:from-blue-600 dark:to-cyan-600 border border-blue-200 dark:border-blue-400 rounded-xl achievement-card-blue cursor-pointer hover:shadow-lg hover:scale-105 transition-all duration-200 group w-full relative overflow-hidden"
             >
-              <div className="text-xs font-bold text-blue-700 dark:text-white achievement-number group-hover:scale-110 transition-transform duration-200">
+              <div className="absolute top-0 right-0 w-8 h-8 bg-blue-200 dark:bg-blue-500 rounded-full -translate-y-4 translate-x-4 opacity-20"></div>
+              <div className="text-sm font-bold text-blue-700 dark:text-white achievement-number group-hover:scale-110 transition-transform duration-200 relative z-10">
                 {achievements.shopping || 0}
               </div>
-              <div className="text-xs text-blue-800 dark:text-white font-semibold achievement-label">Compras</div>
+              <div className="text-xs text-blue-800 dark:text-white font-semibold achievement-label relative z-10">Compras</div>
             </button>
             <button 
               onClick={() => navigate('/faxina-ia')}
-              className="text-center p-2 bg-orange-100 dark:bg-orange-600 border border-orange-200 dark:border-orange-400 rounded-lg achievement-card-orange cursor-pointer hover:shadow-md hover:scale-105 transition-all duration-200 group w-full"
+              className="text-center p-3 bg-gradient-to-br from-orange-100 to-red-100 dark:from-orange-600 dark:to-red-600 border border-orange-200 dark:border-orange-400 rounded-xl achievement-card-orange cursor-pointer hover:shadow-lg hover:scale-105 transition-all duration-200 group w-full relative overflow-hidden"
             >
-              <div className="text-xs font-bold text-orange-700 dark:text-white achievement-number group-hover:scale-110 transition-transform duration-200">
+              <div className="absolute top-0 right-0 w-8 h-8 bg-orange-200 dark:bg-orange-500 rounded-full -translate-y-4 translate-x-4 opacity-20"></div>
+              <div className="text-sm font-bold text-orange-700 dark:text-white achievement-number group-hover:scale-110 transition-transform duration-200 relative z-10">
                 {achievements.tasks || 0}
               </div>
-              <div className="text-xs text-orange-800 dark:text-white font-semibold achievement-label">Tarefas</div>
+              <div className="text-xs text-orange-800 dark:text-white font-semibold achievement-label relative z-10">Tarefas</div>
             </button>
             <button 
               onClick={() => navigate('/config')}
-              className="text-center p-2 bg-purple-100 dark:bg-purple-600 border border-purple-200 dark:border-purple-400 rounded-lg achievement-card-purple cursor-pointer hover:shadow-md hover:scale-105 transition-all duration-200 group w-full"
+              className="text-center p-3 bg-gradient-to-br from-purple-100 to-pink-100 dark:from-purple-600 dark:to-pink-600 border border-purple-200 dark:border-purple-400 rounded-xl achievement-card-purple cursor-pointer hover:shadow-lg hover:scale-105 transition-all duration-200 group w-full relative overflow-hidden"
             >
-              <div className="text-xs font-bold text-purple-700 dark:text-white achievement-number group-hover:scale-110 transition-transform duration-200">
+              <div className="absolute top-0 right-0 w-8 h-8 bg-purple-200 dark:bg-purple-500 rounded-full -translate-y-4 translate-x-4 opacity-20"></div>
+              <div className="text-sm font-bold text-purple-700 dark:text-white achievement-number group-hover:scale-110 transition-transform duration-200 relative z-10">
                 {achievements.days || 0}
               </div>
-              <div className="text-xs text-purple-800 dark:text-white font-semibold achievement-label">Dias</div>
+              <div className="text-xs text-purple-800 dark:text-white font-semibold achievement-label relative z-10">Dias</div>
             </button>
           </div>
         </article>

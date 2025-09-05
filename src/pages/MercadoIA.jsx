@@ -192,10 +192,16 @@ export default function MercadoIA() {
   // Renderizar Comparar Preços
   const renderizarCompararPrecos = () => (
     <div className="space-y-6">
-      <section className="glass-effect rounded-xl shadow-lg p-4 sm:p-6 fade-in-up bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-600">
-        <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-4 flex items-center gap-2">
-          <span>🔍</span>
-          {' '}Pesquisar Produtos
+      <section className="glass-effect rounded-xl shadow-lg p-4 sm:p-6 fade-in-up bg-gradient-to-br from-blue-50 to-indigo-100 dark:from-gray-800 dark:to-gray-700 border border-blue-200 dark:border-gray-600 relative overflow-hidden">
+        {/* Decorative background elements */}
+        <div className="absolute top-0 right-0 w-16 h-16 bg-blue-200 dark:bg-blue-600 rounded-full -translate-y-8 translate-x-8 opacity-20"></div>
+        <div className="absolute bottom-0 left-0 w-12 h-12 bg-indigo-200 dark:bg-indigo-600 rounded-full translate-y-6 -translate-x-6 opacity-30"></div>
+        
+        <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-4 flex items-center gap-2 relative z-10">
+          <div className="w-8 h-8 bg-blue-500 dark:bg-blue-600 rounded-lg flex items-center justify-center">
+            <span className="text-white text-sm">🔍</span>
+          </div>
+          Pesquisar Produtos
         </h3>
         
         <div className="flex gap-3 mb-4">
@@ -251,11 +257,17 @@ export default function MercadoIA() {
   // Renderizar Lista Inteligente
   const renderizarListaInteligente = () => (
     <div className="space-y-6">
-      <section className="glass-effect rounded-xl shadow-lg p-4 sm:p-6 fade-in-up bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-600 max-h-[calc(100vh-300px)] overflow-y-auto">
-        <div className="flex items-center justify-between mb-4">
+      <section className="glass-effect rounded-xl shadow-lg p-4 sm:p-6 fade-in-up bg-gradient-to-br from-green-50 to-emerald-100 dark:from-gray-800 dark:to-gray-700 border border-green-200 dark:border-gray-600 max-h-[calc(100vh-300px)] overflow-y-auto relative overflow-hidden">
+        {/* Decorative background elements */}
+        <div className="absolute top-0 right-0 w-16 h-16 bg-green-200 dark:bg-green-600 rounded-full -translate-y-8 translate-x-8 opacity-20"></div>
+        <div className="absolute bottom-0 left-0 w-12 h-12 bg-emerald-200 dark:bg-emerald-600 rounded-full translate-y-6 -translate-x-6 opacity-30"></div>
+        
+        <div className="flex items-center justify-between mb-4 relative z-10">
           <h3 className="text-lg font-bold text-gray-900 dark:text-white flex items-center gap-2">
-            <span>📝</span>
-            {' '}Lista de Compras Inteligente
+            <div className="w-8 h-8 bg-green-500 dark:bg-green-600 rounded-lg flex items-center justify-center">
+              <span className="text-white text-sm">📝</span>
+            </div>
+            Lista de Compras Inteligente
           </h3>
           <div className="flex gap-2">
             <button
@@ -414,10 +426,16 @@ export default function MercadoIA() {
   // Renderizar Ofertas
   const renderizarOfertas = () => (
     <div className="space-y-6">
-      <section className="glass-effect rounded-xl shadow-lg p-4 sm:p-6 fade-in-up bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-600">
-        <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-4 flex items-center gap-2">
-          <span>🎯</span>
-          {' '}Ofertas em Destaque
+      <section className="glass-effect rounded-xl shadow-lg p-4 sm:p-6 fade-in-up bg-gradient-to-br from-yellow-50 to-orange-100 dark:from-gray-800 dark:to-gray-700 border border-yellow-200 dark:border-gray-600 relative overflow-hidden">
+        {/* Decorative background elements */}
+        <div className="absolute top-0 right-0 w-16 h-16 bg-yellow-200 dark:bg-yellow-600 rounded-full -translate-y-8 translate-x-8 opacity-20"></div>
+        <div className="absolute bottom-0 left-0 w-12 h-12 bg-orange-200 dark:bg-orange-600 rounded-full translate-y-6 -translate-x-6 opacity-30"></div>
+        
+        <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-4 flex items-center gap-2 relative z-10">
+          <div className="w-8 h-8 bg-yellow-500 dark:bg-yellow-600 rounded-lg flex items-center justify-center">
+            <span className="text-white text-sm">🎯</span>
+          </div>
+          Ofertas em Destaque
         </h3>
         
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -454,10 +472,16 @@ export default function MercadoIA() {
   // Renderizar Orçamento
   const renderizarOrcamento = () => (
     <div className="space-y-6">
-      <section className="glass-effect rounded-xl shadow-lg p-4 sm:p-6 fade-in-up bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-600">
-        <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-4 flex items-center gap-2">
-          <span>📊</span>
-          {' '}Controle de Orçamento
+      <section className="glass-effect rounded-xl shadow-lg p-4 sm:p-6 fade-in-up bg-gradient-to-br from-purple-50 to-pink-100 dark:from-gray-800 dark:to-gray-700 border border-purple-200 dark:border-gray-600 relative overflow-hidden">
+        {/* Decorative background elements */}
+        <div className="absolute top-0 right-0 w-16 h-16 bg-purple-200 dark:bg-purple-600 rounded-full -translate-y-8 translate-x-8 opacity-20"></div>
+        <div className="absolute bottom-0 left-0 w-12 h-12 bg-pink-200 dark:bg-pink-600 rounded-full translate-y-6 -translate-x-6 opacity-30"></div>
+        
+        <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-4 flex items-center gap-2 relative z-10">
+          <div className="w-8 h-8 bg-purple-500 dark:bg-purple-600 rounded-lg flex items-center justify-center">
+            <span className="text-white text-sm">📊</span>
+          </div>
+          Controle de Orçamento
         </h3>
         
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">

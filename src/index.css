@@ -158,6 +158,107 @@ html.dark footer .text-gray-100 {
   color: #f9fafb !important; /* gray-50 */
 }
 
+/* Melhorias específicas e cirúrgicas para modo claro */
+:not(.dark) .text-gray-500 {
+  color: #6b7280 !important; /* gray-500 - mais escuro que gray-400 */
+}
+
+:not(.dark) .text-gray-400 {
+  color: #9ca3af !important; /* gray-400 - mais escuro que gray-300 */
+}
+
+/* Contraste específico para gradientes claros */
+:not(.dark) .bg-gradient-to-br.from-blue-50 .text-gray-900 {
+  color: #1f2937 !important; /* gray-800 - mais escuro */
+}
+
+:not(.dark) .bg-gradient-to-br.from-green-50 .text-gray-900 {
+  color: #1f2937 !important; /* gray-800 - mais escuro */
+}
+
+:not(.dark) .bg-gradient-to-br.from-yellow-50 .text-gray-900 {
+  color: #1f2937 !important; /* gray-800 - mais escuro */
+}
+
+:not(.dark) .bg-gradient-to-br.from-purple-50 .text-gray-900 {
+  color: #1f2937 !important; /* gray-800 - mais escuro */
+}
+
+:not(.dark) .bg-gradient-to-br.from-orange-50 .text-gray-900 {
+  color: #1f2937 !important; /* gray-800 - mais escuro */
+}
+
+:not(.dark) .bg-gradient-to-br.from-pink-50 .text-gray-900 {
+  color: #1f2937 !important; /* gray-800 - mais escuro */
+}
+
+:not(.dark) .bg-gradient-to-br.from-indigo-50 .text-gray-900 {
+  color: #1f2937 !important; /* gray-800 - mais escuro */
+}
+
+:not(.dark) .bg-gradient-to-br.from-emerald-50 .text-gray-900 {
+  color: #1f2937 !important; /* gray-800 - mais escuro */
+}
+
+:not(.dark) .bg-gradient-to-br.from-teal-50 .text-gray-900 {
+  color: #1f2937 !important; /* gray-800 - mais escuro */
+}
+
+/* Contraste para textos secundários em gradientes claros */
+:not(.dark) .bg-gradient-to-br .text-gray-600 {
+  color: #4b5563 !important; /* gray-600 - mais escuro */
+}
+
+:not(.dark) .bg-gradient-to-br .text-gray-500 {
+  color: #6b7280 !important; /* gray-500 - mais escuro */
+}
+
+/* Melhor contraste para inputs no modo claro */
+:not(.dark) input[type="text"],
+:not(.dark) input[type="email"],
+:not(.dark) input[type="password"],
+:not(.dark) textarea,
+:not(.dark) select {
+  color: #111827 !important; /* gray-900 - mais escuro */
+  border-color: #d1d5db !important; /* gray-300 - mais visível */
+}
+
+:not(.dark) input::placeholder,
+:not(.dark) textarea::placeholder {
+  color: #9ca3af !important; /* gray-400 - mais escuro */
+}
+
+/* Melhor contraste para labels no modo claro */
+:not(.dark) label {
+  color: #374151 !important; /* gray-700 - mais escuro */
+}
+
+/* Melhor contraste para o chat no modo claro */
+:not(.dark) .chat-container {
+  background-color: #f9fafb !important; /* gray-50 - mais escuro */
+  border-color: #d1d5db !important; /* gray-300 - mais visível */
+}
+
+:not(.dark) .chat-input {
+  color: #111827 !important; /* gray-900 - mais escuro */
+  border-color: #d1d5db !important; /* gray-300 - mais visível */
+}
+
+:not(.dark) .chat-input::placeholder {
+  color: #9ca3af !important; /* gray-400 - mais escuro */
+}
+
+/* Melhor contraste para mensagens do chat no modo claro */
+:not(.dark) .chat-message.bot {
+  background-color: #f3f4f6 !important; /* gray-100 - mais escuro */
+  color: #111827 !important; /* gray-900 - mais escuro */
+}
+
+:not(.dark) .chat-message.user {
+  background-color: #dbeafe !important; /* blue-100 - mais escuro */
+  color: #1e40af !important; /* blue-800 - mais escuro */
+}
+
 
 :root {
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;

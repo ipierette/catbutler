@@ -323,10 +323,16 @@ export default function FaxinaIA() {
       {/* Layout em duas colunas: Configuração à esquerda, Cronograma à direita */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         {/* Configuração Personalizada */}
-        <section className="glass-effect rounded-xl shadow-lg p-4 sm:p-6 fade-in-up bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-600">
-          <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-4 flex items-center gap-2">
-            <span>⚙️</span>
-            {' '}Configuração Personalizada
+        <section className="glass-effect rounded-xl shadow-lg p-4 sm:p-6 fade-in-up bg-gradient-to-br from-blue-50 to-indigo-100 dark:from-gray-800 dark:to-gray-700 border border-blue-200 dark:border-gray-600 relative overflow-hidden">
+          {/* Decorative background elements */}
+          <div className="absolute top-0 right-0 w-16 h-16 bg-blue-200 dark:bg-blue-600 rounded-full -translate-y-8 translate-x-8 opacity-20"></div>
+          <div className="absolute bottom-0 left-0 w-12 h-12 bg-indigo-200 dark:bg-indigo-600 rounded-full translate-y-6 -translate-x-6 opacity-30"></div>
+          
+          <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-4 flex items-center gap-2 relative z-10">
+            <div className="w-8 h-8 bg-blue-500 dark:bg-blue-600 rounded-lg flex items-center justify-center">
+              <span className="text-white text-sm">⚙️</span>
+            </div>
+            Configuração Personalizada
           </h3>
           
           <div className="space-y-4">
@@ -380,10 +386,16 @@ export default function FaxinaIA() {
 
         {/* Cronograma Inteligente - Aparece apenas quando gerado */}
         {cronograma.length > 0 && (
-          <section className="glass-effect rounded-xl shadow-lg p-4 sm:p-6 fade-in-up bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-600">
-            <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-4 flex items-center gap-2">
-              <span>📅</span>
-              {' '}Cronograma Inteligente
+          <section className="glass-effect rounded-xl shadow-lg p-4 sm:p-6 fade-in-up bg-gradient-to-br from-green-50 to-emerald-100 dark:from-gray-800 dark:to-gray-700 border border-green-200 dark:border-gray-600 relative overflow-hidden">
+            {/* Decorative background elements */}
+            <div className="absolute top-0 right-0 w-16 h-16 bg-green-200 dark:bg-green-600 rounded-full -translate-y-8 translate-x-8 opacity-20"></div>
+            <div className="absolute bottom-0 left-0 w-12 h-12 bg-emerald-200 dark:bg-emerald-600 rounded-full translate-y-6 -translate-x-6 opacity-30"></div>
+            
+            <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-4 flex items-center gap-2 relative z-10">
+              <div className="w-8 h-8 bg-green-500 dark:bg-green-600 rounded-lg flex items-center justify-center">
+                <span className="text-white text-sm">📅</span>
+              </div>
+              Cronograma Inteligente
             </h3>
             
             <div className="space-y-3 max-h-80 overflow-y-auto">
@@ -422,10 +434,16 @@ export default function FaxinaIA() {
 
       {/* Lembretes Automáticos - Aparece abaixo quando há lembretes */}
       {lembretes.length > 0 && (
-        <section className="glass-effect rounded-xl shadow-lg p-4 sm:p-6 fade-in-up bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-600">
-          <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-4 flex items-center gap-2">
-            <span>⏰</span>
-            {' '}Lembretes Automáticos
+        <section className="glass-effect rounded-xl shadow-lg p-4 sm:p-6 fade-in-up bg-gradient-to-br from-yellow-50 to-orange-100 dark:from-gray-800 dark:to-gray-700 border border-yellow-200 dark:border-gray-600 relative overflow-hidden">
+          {/* Decorative background elements */}
+          <div className="absolute top-0 right-0 w-16 h-16 bg-yellow-200 dark:bg-yellow-600 rounded-full -translate-y-8 translate-x-8 opacity-20"></div>
+          <div className="absolute bottom-0 left-0 w-12 h-12 bg-orange-200 dark:bg-orange-600 rounded-full translate-y-6 -translate-x-6 opacity-30"></div>
+          
+          <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-4 flex items-center gap-2 relative z-10">
+            <div className="w-8 h-8 bg-yellow-500 dark:bg-yellow-600 rounded-lg flex items-center justify-center">
+              <span className="text-white text-sm">⏰</span>
+            </div>
+            Lembretes Automáticos
           </h3>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
@@ -446,10 +464,16 @@ export default function FaxinaIA() {
   // Renderizar Guia de Produtos e Técnicas
   const renderizarProdutos = () => (
     <div className="space-y-6">
-      <section className="glass-effect rounded-xl shadow-lg p-4 sm:p-6 fade-in-up bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-600">
-        <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-4 flex items-center gap-2">
-          <span>🧴</span>
-          {' '}Guia de Produtos e Técnicas
+      <section className="glass-effect rounded-xl shadow-lg p-4 sm:p-6 fade-in-up bg-gradient-to-br from-purple-50 to-pink-100 dark:from-gray-800 dark:to-gray-700 border border-purple-200 dark:border-gray-600 relative overflow-hidden">
+        {/* Decorative background elements */}
+        <div className="absolute top-0 right-0 w-16 h-16 bg-purple-200 dark:bg-purple-600 rounded-full -translate-y-8 translate-x-8 opacity-20"></div>
+        <div className="absolute bottom-0 left-0 w-12 h-12 bg-pink-200 dark:bg-pink-600 rounded-full translate-y-6 -translate-x-6 opacity-30"></div>
+        
+        <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-4 flex items-center gap-2 relative z-10">
+          <div className="w-8 h-8 bg-purple-500 dark:bg-purple-600 rounded-lg flex items-center justify-center">
+            <span className="text-white text-sm">🧴</span>
+          </div>
+          Guia de Produtos e Técnicas
         </h3>
         
         <div className="space-y-4">
@@ -564,11 +588,17 @@ export default function FaxinaIA() {
 
     return (
       <div className="space-y-6">
-        <section className="glass-effect rounded-xl shadow-lg p-4 sm:p-6 fade-in-up bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-600">
-          <div className="flex items-center justify-between mb-4">
+        <section className="glass-effect rounded-xl shadow-lg p-4 sm:p-6 fade-in-up bg-gradient-to-br from-green-50 to-teal-100 dark:from-gray-800 dark:to-gray-700 border border-green-200 dark:border-gray-600 relative overflow-hidden">
+          {/* Decorative background elements */}
+          <div className="absolute top-0 right-0 w-16 h-16 bg-green-200 dark:bg-green-600 rounded-full -translate-y-8 translate-x-8 opacity-20"></div>
+          <div className="absolute bottom-0 left-0 w-12 h-12 bg-teal-200 dark:bg-teal-600 rounded-full translate-y-6 -translate-x-6 opacity-30"></div>
+          
+          <div className="flex items-center justify-between mb-4 relative z-10">
             <h3 className="text-lg font-bold text-gray-900 dark:text-white flex items-center gap-2">
-              <span>🏠</span>
-              {' '}Análise por Ambiente
+              <div className="w-8 h-8 bg-green-500 dark:bg-green-600 rounded-lg flex items-center justify-center">
+                <span className="text-white text-sm">🏠</span>
+              </div>
+              Análise por Ambiente
             </h3>
             <div className="flex gap-2">
               <button
@@ -623,11 +653,17 @@ export default function FaxinaIA() {
   // Renderizar Sustentabilidade
   const renderizarSustentabilidade = () => (
       <div className="space-y-4 max-h-[calc(100vh-200px)] overflow-y-auto">
-        <section className="glass-effect rounded-xl shadow-lg p-4 sm:p-6 fade-in-up bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-600">
-        <div className="flex items-center justify-between mb-6">
+        <section className="glass-effect rounded-xl shadow-lg p-4 sm:p-6 fade-in-up bg-gradient-to-br from-emerald-50 to-green-100 dark:from-gray-800 dark:to-gray-700 border border-emerald-200 dark:border-gray-600 relative overflow-hidden">
+        {/* Decorative background elements */}
+        <div className="absolute top-0 right-0 w-16 h-16 bg-emerald-200 dark:bg-emerald-600 rounded-full -translate-y-8 translate-x-8 opacity-20"></div>
+        <div className="absolute bottom-0 left-0 w-12 h-12 bg-green-200 dark:bg-green-600 rounded-full translate-y-6 -translate-x-6 opacity-30"></div>
+        
+        <div className="flex items-center justify-between mb-6 relative z-10">
           <h3 className="text-lg font-bold text-gray-900 dark:text-white flex items-center gap-2">
-            <span>🌱</span>
-            {' '}Sustentabilidade
+            <div className="w-8 h-8 bg-emerald-500 dark:bg-emerald-600 rounded-lg flex items-center justify-center">
+              <span className="text-white text-sm">🌱</span>
+            </div>
+            Sustentabilidade
           </h3>
           <button
             onClick={analisarImpactoSustentabilidade}

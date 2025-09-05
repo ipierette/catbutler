@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { sanitizeInput, validateEmail, validatePassword, validateName } from '../utils/security';
 import { TermsModal, PrivacyModal, useModal } from '../components/Modals';
-import { LoadingButton } from '../components/Loading';
+import logoCatButler from '../assets/images/logo-catbutler.png';
 
 export default function SignUp() {
   const [formData, setFormData] = useState({
@@ -119,7 +119,11 @@ export default function SignUp() {
       {/* Hero Section */}
       <section className="relative flex items-center justify-center w-full mx-auto glass-effect rounded-xl shadow-lg p-4 sm:p-6 mb-4 sm:mb-6 fade-in-up bg-white/95 dark:bg-gray-700 border border-gray-200 dark:border-gray-500 h-20 sm:h-24">
         <div className="flex items-center gap-3">
-          <div className="text-2xl sm:text-3xl">🐱</div>
+          <img 
+            src={logoCatButler} 
+            alt="CatButler Logo" 
+            className="w-16 h-16 sm:w-20 sm:h-20 object-contain"
+          />
           <div>
             <h1 className="text-lg sm:text-xl font-bold text-gray-900 dark:text-white">Criar Conta</h1>
             <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-300">Junte-se ao CatButler</p>
@@ -128,8 +132,12 @@ export default function SignUp() {
       </section>
 
       {/* Formulário de Cadastro */}
-      <section className="glass-effect rounded-xl shadow-lg p-6 sm:p-8 fade-in-up bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-600">
-        <form onSubmit={handleSubmit} className="space-y-6">
+      <section className="glass-effect rounded-xl shadow-lg p-6 sm:p-8 fade-in-up bg-gradient-to-br from-blue-50 to-indigo-100 dark:from-gray-800 dark:to-gray-700 border border-blue-200 dark:border-gray-600 relative overflow-hidden">
+        {/* Decorative background elements */}
+        <div className="absolute top-0 right-0 w-20 h-20 bg-blue-200 dark:bg-blue-600 rounded-full -translate-y-10 translate-x-10 opacity-20"></div>
+        <div className="absolute bottom-0 left-0 w-16 h-16 bg-indigo-200 dark:bg-indigo-600 rounded-full translate-y-8 -translate-x-8 opacity-30"></div>
+        
+        <form onSubmit={handleSubmit} className="space-y-6 relative z-10">
           {/* Nome */}
           <div>
             <label htmlFor="nome" className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-3">

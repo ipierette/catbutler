@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { sanitizeInput, validateEmail } from '../utils/security';
+import logoCatButler from '../assets/images/logo-catbutler.png';
 
 export default function Login() {
   const [formData, setFormData] = useState({
@@ -89,7 +90,11 @@ export default function Login() {
       {/* Hero Section */}
       <section className="relative flex items-center justify-center w-full mx-auto glass-effect rounded-xl shadow-lg p-4 sm:p-6 mb-4 sm:mb-6 fade-in-up bg-white/95 dark:bg-gray-700 border border-gray-200 dark:border-gray-500 h-20 sm:h-24">
         <div className="flex items-center gap-3">
-          <div className="text-2xl sm:text-3xl">🐱</div>
+          <img 
+            src={logoCatButler} 
+            alt="CatButler Logo" 
+            className="w-16 h-16 sm:w-20 sm:h-20 object-contain"
+          />
           <div>
             <h1 className="text-lg sm:text-xl font-bold text-gray-900 dark:text-white">Fazer Login</h1>
             <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-300">Bem-vindo de volta!</p>
@@ -98,8 +103,12 @@ export default function Login() {
       </section>
 
       {/* Formulário de Login */}
-      <section className="glass-effect rounded-xl shadow-lg p-4 sm:p-6 fade-in-up bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-600">
-        <form onSubmit={handleSubmit} className="space-y-4">
+      <section className="glass-effect rounded-xl shadow-lg p-4 sm:p-6 fade-in-up bg-gradient-to-br from-green-50 to-emerald-100 dark:from-gray-800 dark:to-gray-700 border border-green-200 dark:border-gray-600 relative overflow-hidden">
+        {/* Decorative background elements */}
+        <div className="absolute top-0 right-0 w-16 h-16 bg-green-200 dark:bg-green-600 rounded-full -translate-y-8 translate-x-8 opacity-20"></div>
+        <div className="absolute bottom-0 left-0 w-12 h-12 bg-emerald-200 dark:bg-emerald-600 rounded-full translate-y-6 -translate-x-6 opacity-30"></div>
+        
+        <form onSubmit={handleSubmit} className="space-y-4 relative z-10">
           {/* Email */}
           <div>
             <label htmlFor="email" className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">
