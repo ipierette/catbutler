@@ -1,7 +1,7 @@
 import { useState, useEffect, useMemo } from "react";
 import gatoGif from "../assets/images/gato-unscreen.gif";
 import { TermsModal, useModal } from "../components/Modals";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 
 
 export default function Home() {
@@ -53,6 +53,30 @@ export default function Home() {
       return "Vamos preparar um jantar especial?";
     }
     return "Que tal planejar o dia de amanhã?";
+  };
+
+  // Obter rota baseada na sugestão do horário
+  const getSuggestionRoute = () => {
+    const hour = currentTime.getHours();
+    if (hour >= 6 && hour < 10) {
+      return "/cozinha-ia"; // Café da manhã
+    }
+    if (hour >= 10 && hour < 12) {
+      return "/tarefas"; // Organizar tarefas
+    }
+    if (hour >= 12 && hour < 14) {
+      return "/cozinha-ia"; // Almoço
+    }
+    if (hour >= 14 && hour < 16) {
+      return "/faxina-ia"; // Faxina
+    }
+    if (hour >= 16 && hour < 18) {
+      return "/mercado-ia"; // Compras
+    }
+    if (hour >= 18 && hour < 20) {
+      return "/cozinha-ia"; // Jantar
+    }
+    return "/tarefas"; // Planejar o dia de amanhã
   };
 
   // Dicas do dia e fatos sobre gatos - memoizados para performance
@@ -182,11 +206,11 @@ export default function Home() {
             Organize sua casa com IA — receitas, faxina e compras numa experiência fluida.
           </p>
           <div className="flex flex-wrap gap-2 justify-center lg:justify-start mb-2">
-            <a href="/cozinha-ia" className="btn px-2.5 py-1.5 rounded-lg bg-green-400 hover:bg-green-500 text-white dark:text-white font-semibold shadow-md transition text-xs flex items-center gap-1 hover:scale-105 transform"><i className="fa-solid fa-bolt"></i> Começar</a>
-            <a href="/mercado-ia" className="btn px-2.5 py-1.5 rounded-lg bg-blue-400 hover:bg-blue-500 text-white dark:text-white font-semibold shadow-md transition text-xs flex items-center gap-1 hover:scale-105 transform"><i className="fa-solid fa-tags"></i> Comparar preços</a>
+            <Link to="/cozinha-ia" className="btn px-2.5 py-1.5 rounded-lg bg-green-400 hover:bg-green-500 text-white dark:text-white font-semibold shadow-md transition text-xs flex items-center gap-1 hover:scale-105 transform"><i className="fa-solid fa-bolt"></i> Começar</Link>
+            <Link to="/mercado-ia" className="btn px-2.5 py-1.5 rounded-lg bg-blue-400 hover:bg-blue-500 text-white dark:text-white font-semibold shadow-md transition text-xs flex items-center gap-1 hover:scale-105 transform"><i className="fa-solid fa-tags"></i> Comparar preços</Link>
             <button type="button" onClick={termsModal.openModal} className="btn px-2.5 py-1.5 rounded-lg bg-purple-200 hover:bg-purple-300 dark:bg-purple-800 dark:hover:bg-purple-700 text-purple-800 dark:text-purple-200 font-semibold shadow-md transition text-xs flex items-center gap-1 hover:scale-105 transform"><i className="fa-solid fa-file-contract"></i> Termos de Uso</button>
           </div>
-          <ul className="flex flex-wrap gap-1 sm:gap-2 items-center justify-center lg:justify-start text-center lg:text-left text-gray-700 dark:text-white text-xs font-semibold feature-list">
+          <ul className="flex flex-wrap gap-1 sm:gap-2 items-center justify-center lg:justify-start text-center lg:text-left text-gray-800 dark:text-white text-xs font-semibold feature-list">
             <li className="flex items-center gap-1 sm:gap-2 whitespace-nowrap"><i className="fa-solid fa-wand-magic-sparkles text-green-500 dark:text-green-300"></i> Sugestões inteligentes</li>
             <li className="flex items-center gap-1 sm:gap-2 whitespace-nowrap"><i className="fa-solid fa-list-check text-blue-500 dark:text-blue-300"></i> Rotinas realistas</li>
             <li className="flex items-center gap-1 sm:gap-2 whitespace-nowrap"><i className="fa-solid fa-location-dot text-pink-500 dark:text-pink-300"></i> Preços locais</li>
@@ -203,7 +227,7 @@ export default function Home() {
       </section>
       {/* Seção de Ações Rápidas - Melhorada */}
       <section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 w-full mx-auto mb-6 sm:mb-8">
-        <article className="glass-effect rounded-xl shadow-lg p-4 sm:p-5 flex flex-col justify-between gap-4 fade-in-up hover:scale-105 transition-all duration-300 bg-gradient-to-br from-blue-50 to-indigo-100 dark:from-gray-800 dark:to-gray-700 border border-blue-200 dark:border-gray-600 min-h-[200px] sm:min-h-[220px] relative overflow-hidden" style={{animationDelay: '0.1s'}}>
+        <article className="agora-card glass-effect rounded-xl shadow-lg p-4 sm:p-5 flex flex-col justify-between gap-4 fade-in-up hover:scale-105 transition-all duration-300 bg-gradient-to-br from-blue-50 to-indigo-100 dark:from-gray-800 dark:to-gray-700 border border-blue-200 dark:border-gray-600 min-h-[200px] sm:min-h-[220px] relative overflow-hidden" style={{animationDelay: '0.1s'}}>
           {/* Decorative background elements */}
           <div className="absolute top-0 right-0 w-20 h-20 bg-blue-200 dark:bg-blue-600 rounded-full -translate-y-10 translate-x-10 opacity-20"></div>
           <div className="absolute bottom-0 left-0 w-16 h-16 bg-indigo-200 dark:bg-indigo-600 rounded-full translate-y-8 -translate-x-8 opacity-30"></div>
@@ -245,16 +269,16 @@ export default function Home() {
                 </div>
               </div>
               
-              <div className="bg-blue-600 dark:bg-gray-800 rounded-lg p-3 border border-blue-500 dark:border-gray-600 suggestion-card">
+              <div className="bg-blue-100 dark:bg-gray-800 rounded-lg p-3 border border-blue-200 dark:border-gray-600 suggestion-card">
                 <div className="flex items-start gap-3">
                   <div className="w-6 h-6 bg-yellow-400 dark:bg-green-900 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
                     <i className="fa-solid fa-lightbulb text-white dark:text-green-400 text-xs"></i>
                   </div>
                   <div className="flex-1">
-                    <p className="text-sm text-white dark:text-gray-200 font-bold leading-relaxed suggestion-text">
+                    <p className="text-sm text-blue-800 dark:text-gray-200 font-bold leading-relaxed suggestion-text">
                       {getTimeBasedSuggestion()}
                     </p>
-                    <p className="text-xs text-gray-200 dark:text-gray-400 mt-1 font-medium suggestion-subtitle">
+                    <p className="text-xs text-blue-600 dark:text-gray-400 mt-1 font-medium suggestion-subtitle">
                       Sugestão baseada no horário
                     </p>
                   </div>
@@ -265,19 +289,13 @@ export default function Home() {
           
           <div className="flex justify-between items-center mt-4 relative z-10">
             <div className="flex gap-2">
-              <a 
-                href="/cozinha-ia" 
+              <Link 
+                to={getSuggestionRoute()} 
                 className="btn px-4 py-2 rounded-lg bg-blue-500 hover:bg-blue-600 text-white font-semibold shadow-md transition-all duration-200 flex items-center gap-2 hover:scale-105 transform"
               >
                 <i className="fa-solid fa-play text-sm"></i> 
                 <span className="text-sm">Começar</span>
-              </a>
-              <a 
-                href="/config" 
-                className="btn px-3 py-2 rounded-lg bg-gray-100 hover:bg-gray-200 dark:bg-gray-700 dark:hover:bg-gray-600 text-gray-700 dark:text-gray-300 font-semibold shadow-md transition-all duration-200 flex items-center gap-2 hover:scale-105 transform"
-              >
-                <i className="fa-solid fa-cog text-sm"></i>
-              </a>
+              </Link>
             </div>
             <div className="text-xs text-gray-500 dark:text-gray-400 font-medium">
               {currentTime.toLocaleTimeString('pt-BR', { 
@@ -330,10 +348,10 @@ export default function Home() {
             </div>
           </div>
           <div className="flex justify-end mt-4">
-            <a href="/historico" className="btn px-4 py-2 rounded-lg bg-green-500 hover:bg-green-600 text-white font-semibold shadow-md transition-all duration-200 flex items-center gap-2 hover:scale-105 transform">
+            <Link to="/historico" className="btn px-4 py-2 rounded-lg bg-green-500 hover:bg-green-600 text-white font-semibold shadow-md transition-all duration-200 flex items-center gap-2 hover:scale-105 transform">
               <i className="fa-solid fa-history text-sm"></i> 
               <span className="text-sm">Ver tudo</span>
-            </a>
+            </Link>
           </div>
         </article>
 

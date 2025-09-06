@@ -246,8 +246,8 @@ export default function CozinhaIA() {
                   ({ingredientes.length} adicionado{ingredientes.length !== 1 ? 's' : ''})
                 </span>
               </h2>
-              <div className="flex items-center justify-center w-6 h-6 bg-gray-200 dark:bg-gray-600 rounded-full">
-                <i className={`fa-solid fa-chevron-${activeAccordion === 'ingredientes' ? 'up' : 'down'} text-gray-700 dark:text-gray-200 text-sm`}></i>
+              <div className="flex items-center justify-center w-6 h-6 bg-gray-300 dark:bg-gray-600 rounded-full">
+                <i className={`fa-solid fa-chevron-${activeAccordion === 'ingredientes' ? 'up' : 'down'} text-gray-800 dark:text-gray-200 text-sm`}></i>
               </div>
             </button>
             
@@ -321,7 +321,7 @@ export default function CozinhaIA() {
                   <button
                     onClick={gerarReceitas}
                     disabled={ingredientes.length === 0}
-                    className="flex-1 px-4 py-3 bg-orange-500 hover:bg-orange-600 disabled:bg-gray-300 disabled:cursor-not-allowed text-white font-semibold rounded-lg transition-all duration-200 flex items-center justify-center gap-2"
+                    className="flex-1 px-4 py-3 bg-orange-500 hover:bg-orange-600 disabled:bg-gray-400 disabled:text-gray-600 dark:disabled:bg-gray-600 dark:disabled:text-gray-300 disabled:cursor-not-allowed text-white font-semibold rounded-lg transition-all duration-200 flex items-center justify-center gap-2"
                   >
                     <i className="fa-solid fa-search"></i>
                     Gerar Receitas
@@ -350,8 +350,8 @@ export default function CozinhaIA() {
                   ({receitas.length} encontrada{receitas.length !== 1 ? 's' : ''})
                 </span>
               </h3>
-              <div className="flex items-center justify-center w-6 h-6 bg-gray-200 dark:bg-gray-600 rounded-full">
-                <i className={`fa-solid fa-chevron-${activeAccordion === 'receitas' ? 'up' : 'down'} text-gray-700 dark:text-gray-200 text-sm`}></i>
+              <div className="flex items-center justify-center w-6 h-6 bg-gray-300 dark:bg-gray-600 rounded-full">
+                <i className={`fa-solid fa-chevron-${activeAccordion === 'receitas' ? 'up' : 'down'} text-gray-800 dark:text-gray-200 text-sm`}></i>
               </div>
             </button>
             
@@ -564,8 +564,8 @@ export default function CozinhaIA() {
                 </div>
                 Dicas Rápidas
               </h3>
-              <div className="flex items-center justify-center w-6 h-6 bg-gray-200 dark:bg-gray-600 rounded-full">
-                <i className={`fa-solid fa-chevron-${dicasAbertas ? 'up' : 'down'} text-gray-700 dark:text-gray-200 text-sm`}></i>
+              <div className="flex items-center justify-center w-6 h-6 bg-gray-300 dark:bg-gray-600 rounded-full">
+                <i className={`fa-solid fa-chevron-${dicasAbertas ? 'up' : 'down'} text-gray-800 dark:text-gray-200 text-sm`}></i>
               </div>
             </button>
             

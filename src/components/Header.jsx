@@ -52,7 +52,7 @@ function Header() {
           {/* Toggle de tema */}
           <button
             onClick={toggleTheme}
-            className="p-1 sm:p-1.5 rounded-lg bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-all duration-300 border border-gray-200 dark:border-gray-600"
+            className="p-1 sm:p-1.5 rounded-lg bg-gray-200 dark:bg-gray-800 hover:bg-gray-300 dark:hover:bg-gray-700 transition-all duration-300 border border-gray-300 dark:border-gray-600"
             title={`Alternar para tema ${theme === "light" ? "escuro" : "claro"}`}
           >
             {theme === "light" ? (

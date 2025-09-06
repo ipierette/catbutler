@@ -327,6 +327,85 @@ html.light footer .text-gray-900 {
   color: #1f2937 !important;
 }
 
+/* ===== CARD AGORA - MODO CLARO ===== */
+html.light .agora-card .suggestion-card {
+  background-color: #dbeafe !important; /* Fundo azul claro */
+  border-color: #93c5fd !important;
+}
+
+html.light .agora-card .suggestion-text {
+  color: #1e40af !important;
+}
+
+html.light .agora-card .suggestion-subtitle {
+  color: #3b82f6 !important;
+}
+
+html.light .agora-card .fa-lightbulb {
+  color: #ffffff !important;
+}
+
+/* Botões do card Agora */
+html.light .agora-card .btn {
+  color: #ffffff !important;
+}
+
+html.light .agora-card .btn i {
+  color: #ffffff !important;
+}
+
+/* ===== BOTÕES ESCUROS - MODO CLARO ===== */
+html.light .bg-gray-700,
+html.light .bg-gray-800,
+html.light .bg-gray-600 {
+  color: #ffffff !important;
+}
+
+html.light .bg-gray-700 *,
+html.light .bg-gray-800 *,
+html.light .bg-gray-600 * {
+  color: #ffffff !important;
+}
+
+html.light button.bg-gray-700,
+html.light button.bg-gray-800,
+html.light button.bg-gray-600 {
+  color: #ffffff !important;
+}
+
+html.light button.bg-gray-700 *,
+html.light button.bg-gray-800 *,
+html.light button.bg-gray-600 * {
+  color: #ffffff !important;
+}
+
+/* ===== BOTÕES DE COMPARTILHAR E TEMA - MODO CLARO ===== */
+html.light .bg-blue-100 {
+  background-color: #ffffff !important;
+  border-color: #d1d5db !important;
+}
+
+html.light .bg-blue-100:hover {
+  background-color: #f3f4f6 !important;
+}
+
+html.light .bg-blue-100 svg {
+  color: #374151 !important;
+}
+
+html.light .bg-gray-200 {
+  background-color: #ffffff !important;
+  border-color: #d1d5db !important;
+}
+
+html.light .bg-gray-200:hover {
+  background-color: #f3f4f6 !important;
+}
+
+html.light .bg-gray-200 svg {
+  color: #374151 !important;
+}
+
 /* ===== MODO ESCURO - CONFIGURAÇÕES ESPECÍFICAS ===== */
 html.dark {
   color-scheme: dark;

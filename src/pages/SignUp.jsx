@@ -285,9 +285,17 @@ export default function SignUp() {
             </button>
           </div>
 
+          {/* Informações de Segurança - Dentro do formulário */}
+          <div className="mt-4 p-3 bg-green-100 dark:bg-green-900/20 rounded-lg border border-green-300 dark:border-green-500/30">
+            <div className="flex items-center gap-2 text-sm text-green-800 dark:text-green-200">
+              <i className="fa-solid fa-lock text-green-600 dark:text-green-400"></i>
+              <span className="font-medium">Dados criptografados • LGPD • Validação de entrada</span>
+            </div>
+          </div>
+
           {/* Link para Login */}
           <div className="text-center pt-2">
-            <p className="text-sm text-gray-600 dark:text-gray-400">
+            <p className="text-sm text-gray-700 dark:text-gray-400 font-medium">
               Já tem uma conta?{' '}
               <Link to="/login" className="text-blue-600 hover:text-blue-800 dark:text-blue-400 font-semibold underline">
                 Faça login
@@ -296,14 +304,6 @@ export default function SignUp() {
           </div>
         </form>
       </section>
-
-      {/* Informações de Segurança - Versão Compacta */}
-      <div className="mt-4 p-2 bg-green-50 dark:bg-green-900/20 rounded-lg border border-green-200 dark:border-green-500/30">
-        <div className="flex items-center gap-2 text-xs text-green-700 dark:text-green-200">
-          <i className="fa-solid fa-lock text-green-600 dark:text-green-400"></i>
-          <span className="font-medium">Dados criptografados • LGPD • Validação de entrada</span>
-        </div>
-      </div>
 
       {/* Modais */}
       <TermsModal open={termsModal.isOpen} onClose={termsModal.closeModal} />

@@ -12,6 +12,48 @@ e este projeto adere ao [Versionamento Semântico](https://semver.org/lang/pt-BR
 - Guias de instalação, desenvolvimento e deploy
 - Templates para contribuição
 
+## [2.2.1] - 2025-01-27
+
+### 🎨 Melhorias de Interface e Usabilidade
+
+#### Adicionado
+- **Card "Agora" Inteligente**
+  - Botão "Começar" dinâmico que redireciona baseado na sugestão do horário
+  - Função `getSuggestionRoute()` para determinar rota correta automaticamente
+  - Mapeamento inteligente: café da manhã → Cozinha IA, tarefas → Tarefas, etc.
+  - Remoção do botão de engrenagem para interface mais limpa
+
+- **Sistema de Navegação Contextual**
+  - Links do Home page convertidos de `<a href>` para `<Link to>` (React Router)
+  - Persistência de tema via localStorage no ThemeContext
+  - Navegação mantém tema selecionado entre páginas
+
+#### Melhorado
+- **Contraste e Visibilidade - Modo Claro**
+  - Sugestões do card "Agora" com cores azuis específicas para melhor legibilidade
+  - Fundo do card de sugestão alterado para azul claro (#dbeafe)
+  - Botões de compartilhar e tema com fundo branco no modo claro
+  - Ícones com contraste adequado (cinza escuro em fundos claros)
+  - Botões escuros com texto branco para visibilidade
+
+- **Estilização Específica**
+  - Regras CSS ultra-específicas para `.agora-card` evitando conflitos
+  - Seletores direcionados para botões de header (compartilhar/tema)
+  - Cores específicas para elementos problemáticos no modo claro
+  - Manutenção da funcionalidade no modo escuro
+
+#### Corrigido
+- **Problemas de Visibilidade**
+  - Texto "OU ENTRE COM" na página de login
+  - Sugestões invisíveis no card "Agora"
+  - Botões escuros com texto invisível no modo claro
+  - Ícones sem contraste adequado
+  - Navegação incorreta entre páginas (perdendo tema)
+
+#### Removido
+- Botão de engrenagem do card "Agora" (substituído por funcionalidade inteligente)
+- Regras CSS genéricas que causavam conflitos visuais
+
 ## [2.2.0] - 2025-01-27
 
 ### 🎨 Design e Interface - Melhorias Profissionais

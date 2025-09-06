@@ -163,7 +163,7 @@ export default function Login() {
                 onChange={handleInputChange}
                 className="text-green-600 focus:ring-green-500 rounded"
               />
-              <span className="text-sm text-gray-700 dark:text-gray-300">
+              <span className="text-sm text-gray-900 dark:text-gray-300 font-semibold">
                 Lembrar de mim
               </span>
             </label>
@@ -188,9 +188,22 @@ export default function Login() {
             {isSubmitting ? 'Entrando...' : 'Entrar'}
           </button>
 
+          {/* Informações de Segurança - Dentro do formulário */}
+          <div className="mt-4 p-3 bg-green-100 dark:bg-green-900/20 rounded-lg border border-green-300 dark:border-green-500/30">
+            <h3 className="text-sm font-semibold text-green-800 dark:text-green-100 mb-2">
+              <i className="fa-solid fa-lock mr-2"></i>Login Seguro
+            </h3>
+            <ul className="text-xs text-green-700 dark:text-green-200 space-y-1">
+              <li>• Sua senha é criptografada e protegida</li>
+              <li>• Sessão segura com HTTPS</li>
+              <li>• Dados validados e sanitizados</li>
+              <li>• Conformidade com LGPD</li>
+            </ul>
+          </div>
+
           {/* Link para Cadastro */}
           <div className="text-center">
-            <p className="text-sm text-gray-600 dark:text-gray-400">
+            <p className="text-sm text-gray-700 dark:text-gray-400 font-medium">
               Não tem uma conta?{' '}
               <Link to="/criar-conta" className="text-green-600 hover:text-green-800 dark:text-green-400 font-semibold">
                 Criar conta
@@ -200,22 +213,9 @@ export default function Login() {
         </form>
       </section>
 
-      {/* Informações de Segurança */}
-      <section className="mt-6 p-4 bg-green-50 dark:bg-green-900/20 rounded-lg border border-green-200 dark:border-green-500/30">
-        <h3 className="text-sm font-semibold text-green-800 dark:text-green-100 mb-2">
-          <i className="fa-solid fa-lock mr-2"></i>Login Seguro
-        </h3>
-        <ul className="text-xs text-green-700 dark:text-green-200 space-y-1">
-          <li>• Sua senha é criptografada e protegida</li>
-          <li>• Sessão segura com HTTPS</li>
-          <li>• Dados validados e sanitizados</li>
-          <li>• Conformidade com LGPD</li>
-        </ul>
-      </section>
-
       {/* Login Social (Opcional) */}
-      <section className="mt-6 p-4 bg-gray-50 dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-600">
-        <h3 className="text-sm font-semibold text-gray-800 dark:text-gray-200 mb-3 text-center">
+      <section className="mt-6 p-4 bg-gray-800 dark:bg-gray-800 rounded-lg border border-gray-300 dark:border-gray-600">
+        <h3 className="text-2l font-bold text-gray-700 mb-3 text-center">
           Ou entre com
         </h3>
         <div className="grid grid-cols-2 gap-3">
