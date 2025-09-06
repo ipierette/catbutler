@@ -12,6 +12,49 @@ e este projeto adere ao [Versionamento Semântico](https://semver.org/lang/pt-BR
 - Guias de instalação, desenvolvimento e deploy
 - Templates para contribuição
 
+## [2.2.0] - 2025-01-27
+
+### 🎨 Design e Interface - Melhorias Profissionais
+
+#### Adicionado
+- **Sistema de Temas Separados**
+  - Paletas de cores completamente independentes para modo claro e escuro
+  - Variáveis CSS organizadas em arquivos separados (light-theme.css, dark-theme.css)
+  - Controle total sobre cores de cada modo sem interferência mútua
+  - Documentação completa do sistema de temas
+
+- **Ícones Font Awesome Profissionais**
+  - Substituição completa de todos os emojis por ícones Font Awesome
+  - Ícones responsivos que se adaptam aos temas claro/escuro
+  - Visual consistente e profissional em todo o site
+  - CDN Font Awesome 6.5.1 integrado
+
+- **Cards Modernos Aprimorados**
+  - Upgrade de estilo aplicado em todas as abas (Cozinha IA, Faxina IA, Mercado IA, Configurações, Tarefas)
+  - Gradientes e elementos decorativos de fundo
+  - Efeitos glass aprimorados com z-index otimizado
+  - Setinhas de accordion com melhor visibilidade
+
+#### Melhorado
+- **Contraste e Legibilidade**
+  - Análise cirúrgica de cores para melhor contraste no modo claro
+  - Textos mais legíveis em gradientes claros
+  - Cores específicas para elementos em fundos coloridos
+  - Manutenção da qualidade visual no modo escuro
+
+- **Experiência do Usuário**
+  - Interface mais profissional e moderna
+  - Consistência visual em todas as páginas
+  - Melhor feedback visual com ícones apropriados
+  - Navegação mais intuitiva
+
+#### Corrigido
+- **Problemas de Visibilidade**
+  - Setinhas de accordion agora são claramente visíveis
+  - Contraste adequado em ambos os modos
+  - Ícones com tamanhos e cores apropriados
+  - Elementos decorativos não interferem no conteúdo
+
 ## [2.1.0] - 2025-01-27
 
 ### 🍳 Cozinha IA - Funcionalidades Avançadas

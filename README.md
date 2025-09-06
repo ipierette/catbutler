@@ -18,10 +18,10 @@ O **CatButler** é uma aplicação web moderna que utiliza inteligência artific
 
 - 🍳 **Cozinha IA**: Sistema completo de culinária inteligente
   - **Receitas Personalizadas**: Sugestões baseadas nos ingredientes disponíveis
-  - **Cardápio Semanal**: Geração automática de cardápios com opção de copiar
+  - **Cardápio Semanal Inteligente**: Geração automática de cardápios com opção de copiar
   - **Assistente Culinário**: Chatbot interativo com IA para dúvidas
-  - **Dicas Rápidas**: Conselhos práticos de culinária
-  - **Sistema Accordion**: Interface inteligente que se adapta ao uso
+  - **Dicas Rápidas**: Conselhos práticos de culinária em accordion inteligente
+  - **Sistema Accordion Inteligente**: Interface que se adapta automaticamente ao uso
   - **Filtros Avançados**: Por tempo, dificuldade e tipo de refeição
 - 🧹 **Faxina IA**: Sistema completo de limpeza inteligente
   - **Planejador Inteligente**: Cronograma personalizado baseado no tamanho da casa e rotina
@@ -33,7 +33,7 @@ O **CatButler** é uma aplicação web moderna que utiliza inteligência artific
   - **Lista Inteligente**: Sugestões automáticas e organização por seções
   - **Ofertas**: Descontos e promoções
   - **Orçamento**: Controle financeiro das compras
-- 📅 **Tarefas**: Galeria vertical animada para organização de tarefas
+- 📅 **Tarefas**: Galeria vertical animada com cards modernos para organização
 - 🔥 **Descobertas do Dia**: Dicas personalizadas e novidades
 - ⚙️ **Configurações**: Personalização completa da experiência
 - 🔐 **Autenticação**: Sistema de login e cadastro
@@ -43,11 +43,13 @@ O **CatButler** é uma aplicação web moderna que utiliza inteligência artific
 
 ### 🎨 **Experiência do Usuário (UX)**
 - **Design Responsivo**: Adaptação perfeita para desktop, tablet e mobile
-- **Modo Claro/Escuro**: Tema personalizável com contraste otimizado
+- **Sistema de Temas Separados**: Modo claro e escuro com paletas de cores independentes
 - **Interface Intuitiva**: Accordions inteligentes e navegação fluida
 - **Feedback Visual**: Animações suaves e estados de loading
 - **Acessibilidade**: Suporte completo a leitores de tela e navegação por teclado
 - **Performance**: Carregamento otimizado com lazy loading
+- **Design Profissional**: Ícones Font Awesome em vez de emojis para visual consistente
+- **Cards Modernos**: Gradientes, elementos decorativos e efeitos glass aprimorados
 
 ## 🚀 Tecnologias Utilizadas
 

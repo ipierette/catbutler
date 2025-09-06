@@ -21,6 +21,10 @@ src/
 │   └── MercadoIA.jsx       # IA de mercado
 ├── assets/              # Recursos estáticos
 │   └── images/             # Imagens
+├── styles/              # Sistema de temas
+│   ├── light-theme.css     # Variáveis do modo claro
+│   ├── dark-theme.css      # Variáveis do modo escuro
+│   └── README.md           # Documentação do sistema de temas
 ├── App.jsx              # Componente principal
 ├── main.jsx             # Ponto de entrada
 ├── routes.jsx           # Configuração de rotas
@@ -462,6 +466,81 @@ chore: tarefas de manutenção
 git commit -m "feat: adiciona página de configurações"
 git commit -m "fix: corrige bug no tema escuro"
 git commit -m "docs: atualiza README com instruções de instalação"
+```
+
+## 🎨 Sistema de Temas e Design
+
+### Sistema de Temas Separados
+
+#### Estrutura
+```
+src/styles/
+├── light-theme.css    # Variáveis do modo claro
+├── dark-theme.css     # Variáveis do modo escuro
+└── README.md          # Documentação completa
+```
+
+#### Variáveis CSS
+```css
+/* Modo Claro */
+:root.light {
+  --primary-color: #191970;
+  --text-primary: #191970;
+  --bg-primary: #ffffff;
+  --gradient-blue: linear-gradient(135deg, #dbeafe, #bfdbfe);
+  /* ... outras variáveis */
+}
+
+/* Modo Escuro */
+:root.dark {
+  --primary-color: #22c55e;
+  --text-primary: #ffffff;
+  --bg-primary: #111827;
+  --gradient-blue: linear-gradient(135deg, #1e3a8a, #1e40af);
+  /* ... outras variáveis */
+}
+```
+
+#### Uso
+```css
+.meu-elemento {
+  color: var(--text-primary);
+  background: var(--gradient-blue);
+  border: 1px solid var(--border-primary);
+}
+```
+
+### Ícones Font Awesome
+
+#### Implementação
+- **CDN**: Font Awesome 6.5.1 carregado via CDN
+- **Substituição Completa**: Todos os emojis substituídos por ícones
+- **Responsividade**: Ícones se adaptam aos temas
+- **Consistência**: Visual profissional em todo o site
+
+#### Exemplos
+```jsx
+// Antes (emoji)
+<span>🍳</span>
+
+// Depois (Font Awesome)
+<i className="fa-solid fa-utensils text-orange-600 dark:text-orange-400"></i>
+```
+
+### Cards Modernos
+
+#### Estrutura
+```jsx
+<div className="glass-effect rounded-xl shadow-lg bg-gradient-to-br from-white to-gray-50 dark:from-gray-800 dark:to-gray-700 border border-gray-200 dark:border-gray-600 relative overflow-hidden">
+  {/* Elementos decorativos de fundo */}
+  <div className="absolute top-0 right-0 w-16 h-16 bg-blue-200 dark:bg-blue-600 rounded-full -translate-y-8 translate-x-8 opacity-20"></div>
+  <div className="absolute bottom-0 left-0 w-12 h-12 bg-green-200 dark:bg-green-600 rounded-full translate-y-6 -translate-x-6 opacity-30"></div>
+  
+  {/* Conteúdo */}
+  <div className="relative z-10">
+    {/* Conteúdo do card */}
+  </div>
+</div>
 ```
 
 ## 🍳 Funcionalidades Avançadas - Cozinha IA
