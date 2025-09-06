@@ -148,7 +148,7 @@ export default function Tarefas() {
       <section className="relative flex items-center justify-between w-full mx-auto glass-effect rounded-xl shadow-lg p-3 sm:p-4 mb-3 sm:mb-4 fade-in-up bg-white/95 dark:bg-gray-700 border border-gray-200 dark:border-gray-500 h-16 sm:h-18">
         <div className="flex items-center gap-3">
           <div className="p-2 bg-green-100 dark:bg-green-900/30 rounded-lg">
-            <span className="text-xl sm:text-2xl" aria-label="tarefas">📋</span>
+            <i className="fa-solid fa-clipboard-list text-xl sm:text-2xl text-green-600 dark:text-green-400" aria-label="tarefas"></i>
           </div>
           <div>
             <h1 className="text-lg sm:text-xl font-bold text-gray-900 dark:text-white">
@@ -177,17 +177,17 @@ export default function Tarefas() {
         </button>
         
         <button className="p-3 rounded-lg bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-200 flex items-center gap-2">
-          <span className="text-xl">🔍</span>
+          <i className="fa-solid fa-search text-xl"></i>
           <span className="font-semibold text-sm">Buscar</span>
         </button>
         
         <button className="p-3 rounded-lg bg-gradient-to-r from-purple-500 to-purple-600 hover:from-purple-600 hover:to-purple-700 text-white shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-200 flex items-center gap-2">
-          <span className="text-xl">📊</span>
+          <i className="fa-solid fa-chart-bar text-xl"></i>
           <span className="font-semibold text-sm">Relatórios</span>
         </button>
         
         <button className="p-3 rounded-lg bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-200 flex items-center gap-2">
-          <span className="text-xl">⚙️</span>
+          <i className="fa-solid fa-cog text-xl"></i>
           <span className="font-semibold text-sm">Configurar</span>
         </button>
       </section>
@@ -259,12 +259,17 @@ export default function Tarefas() {
       {/* Galeria Vertical de Tarefas */}
       <section className="relative">
         {tarefasPaginadas.length === 0 ? (
-          <div className="glass-effect rounded-xl shadow-lg p-8 text-center fade-in-up bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-600">
-            <div className="text-6xl mb-4">📝</div>
-            <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2">
+          <div className="glass-effect rounded-xl shadow-lg p-8 text-center fade-in-up bg-gradient-to-br from-gray-50 to-blue-100 dark:from-gray-800 dark:to-gray-700 border border-gray-200 dark:border-gray-600 relative overflow-hidden">
+            <div className="absolute top-0 right-0 w-16 h-16 bg-gray-200 dark:bg-gray-600 rounded-full -translate-y-8 translate-x-8 opacity-20"></div>
+            <div className="absolute bottom-0 left-0 w-12 h-12 bg-blue-200 dark:bg-blue-600 rounded-full translate-y-6 -translate-x-6 opacity-30"></div>
+            
+            <div className="text-6xl mb-4 relative z-10">
+              <i className="fa-solid fa-clipboard-list text-gray-400"></i>
+            </div>
+            <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2 relative z-10">
               Nenhuma tarefa encontrada
             </h3>
-            <p className="text-gray-600 dark:text-gray-300 mb-4">
+            <p className="text-gray-600 dark:text-gray-300 mb-4 relative z-10">
               {busca || filtroStatus !== "Todas" || filtroCategoria !== "Todas"
                 ? "Tente ajustar os filtros de busca"
                 : "Comece criando sua primeira tarefa"
@@ -272,7 +277,7 @@ export default function Tarefas() {
             </p>
             <button
               onClick={() => alert('Funcionalidade em desenvolvimento')}
-              className="px-6 py-3 bg-green-500 hover:bg-green-600 text-white font-semibold rounded-lg transition-all duration-200 shadow-lg hover:shadow-xl transform hover:scale-105"
+              className="px-6 py-3 bg-green-500 hover:bg-green-600 text-white font-semibold rounded-lg transition-all duration-200 shadow-lg hover:shadow-xl transform hover:scale-105 relative z-10"
             >
               Criar Primeira Tarefa
             </button>
@@ -282,14 +287,17 @@ export default function Tarefas() {
             {tarefasPaginadas.map((tarefa, index) => (
               <div
                 key={tarefa.id}
-                className="glass-effect rounded-xl shadow-lg p-4 sm:p-5 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-600 hover:shadow-xl transition-all duration-300 transform hover:scale-105 hover:-translate-y-1 group cursor-pointer"
+                className="glass-effect rounded-xl shadow-lg p-4 sm:p-5 bg-gradient-to-br from-white to-gray-50 dark:from-gray-800 dark:to-gray-700 border border-gray-200 dark:border-gray-600 hover:shadow-xl transition-all duration-300 transform hover:scale-105 hover:-translate-y-1 group cursor-pointer relative overflow-hidden"
                 style={{
                   animationDelay: `${index * 100}ms`,
                   animation: 'fadeInUp 0.6s ease-out forwards'
                 }}
               >
+                {/* Elementos decorativos de fundo */}
+                <div className="absolute top-0 right-0 w-8 h-8 bg-blue-200 dark:bg-blue-600 rounded-full -translate-y-4 translate-x-4 opacity-20"></div>
+                <div className="absolute bottom-0 left-0 w-6 h-6 bg-green-200 dark:bg-green-600 rounded-full translate-y-3 -translate-x-3 opacity-30"></div>
                 {/* Header da Tarefa */}
-                <div className="flex items-start justify-between mb-3">
+                <div className="flex items-start justify-between mb-3 relative z-10">
                   <div className="flex-1">
                     <h3 className="text-base font-bold text-gray-900 dark:text-white mb-2 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
                       {tarefa.titulo}
@@ -310,19 +318,19 @@ export default function Tarefas() {
                       className="p-1.5 text-blue-600 hover:bg-blue-100 dark:hover:bg-blue-900/30 rounded-lg transition-all duration-200"
                       title="Editar"
                     >
-                      <span className="text-sm">✏️</span>
+                      <i className="fa-solid fa-edit text-sm"></i>
                     </button>
                     <button 
                       className="p-1.5 text-green-600 hover:bg-green-100 dark:hover:bg-green-900/30 rounded-lg transition-all duration-200"
                       title="Concluir"
                     >
-                      <span className="text-sm">✅</span>
+                      <i className="fa-solid fa-check text-sm"></i>
                     </button>
                     <button 
                       className="p-1.5 text-red-600 hover:bg-red-100 dark:hover:bg-red-900/30 rounded-lg transition-all duration-200"
                       title="Excluir"
                     >
-                      <span className="text-sm">🗑️</span>
+                      <i className="fa-solid fa-trash text-sm"></i>
                     </button>
                   </div>
                 </div>
@@ -335,11 +343,11 @@ export default function Tarefas() {
                 {/* Footer da Tarefa */}
                 <div className="flex items-center justify-between text-xs text-gray-500 dark:text-gray-400 pt-2 border-t border-gray-200 dark:border-gray-600">
                   <div className="flex items-center gap-1">
-                    <span>📁</span>
+                    <i className="fa-solid fa-folder text-gray-400"></i>
                     <span className="font-medium">{tarefa.categoria}</span>
                   </div>
                   <div className="flex items-center gap-1">
-                    <span>📅</span>
+                    <i className="fa-solid fa-calendar text-gray-400"></i>
                     <span className="font-medium">{new Date(tarefa.dataVencimento).toLocaleDateString('pt-BR')}</span>
                   </div>
                 </div>
@@ -367,8 +375,10 @@ export default function Tarefas() {
       {/* Controles de Paginação - Horizontal e Compacto */}
       {tarefasFiltradas.length > tarefasPorPagina && (
         <section className="mt-4 flex justify-center">
-          <div className="glass-effect rounded-xl shadow-lg p-3 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-600 w-full max-w-4xl">
-            <div className="flex items-center justify-between">
+          <div className="glass-effect rounded-xl shadow-lg p-3 bg-gradient-to-br from-white to-gray-50 dark:from-gray-800 dark:to-gray-700 border border-gray-200 dark:border-gray-600 w-full max-w-4xl relative overflow-hidden">
+            <div className="absolute top-0 right-0 w-12 h-12 bg-gray-200 dark:bg-gray-600 rounded-full -translate-y-6 translate-x-6 opacity-20"></div>
+            <div className="absolute bottom-0 left-0 w-8 h-8 bg-blue-200 dark:bg-blue-600 rounded-full translate-y-4 -translate-x-4 opacity-30"></div>
+            <div className="flex items-center justify-between relative z-10">
               {/* Informações da página */}
               <div className="text-sm text-gray-600 dark:text-gray-400 font-medium">
                 Mostrando {indiceInicial + 1}-{Math.min(indiceFinal, tarefasFiltradas.length)} de {tarefasFiltradas.length} tarefas
@@ -411,7 +421,7 @@ export default function Tarefas() {
                 </button>
               </div>
             </div>
-          </div>
+      </div>
         </section>
       )}
     </main>

@@ -12,10 +12,10 @@ export default function MercadoIA() {
 
   // Abas do sistema de mercado
   const abas = [
-    { id: 'comparar', nome: 'Comparar Preços', icone: '💰' },
-    { id: 'lista', nome: 'Lista Inteligente', icone: '📝' },
-    { id: 'ofertas', nome: 'Ofertas', icone: '🎯' },
-    { id: 'orcamento', nome: 'Orçamento', icone: '📊' }
+    { id: 'comparar', nome: 'Comparar Preços', icone: 'fa-coins' },
+    { id: 'lista', nome: 'Lista Inteligente', icone: 'fa-clipboard-list' },
+    { id: 'ofertas', nome: 'Ofertas', icone: 'fa-bullseye' },
+    { id: 'orcamento', nome: 'Orçamento', icone: 'fa-chart-bar' }
   ];
 
   // Dados de exemplo para produtos
@@ -152,10 +152,10 @@ export default function MercadoIA() {
   // Função para compartilhar lista
   const compartilharLista = () => {
     const listaTexto = listaCompras.map(item => 
-      `${item.comprado ? '✅' : '⬜'} ${item.nome} (${item.categoria})`
+      `${item.comprado ? '✓' : '○'} ${item.nome} (${item.categoria})`
     ).join('\n');
     
-    const textoCompleto = `🛒 Lista de Compras - CatButler\n\n${listaTexto}\n\nFeito com ❤️ pelo CatButler`;
+    const textoCompleto = `Lista de Compras - CatButler\n\n${listaTexto}\n\nFeito com amor pelo CatButler`;
     
     if (navigator.share) {
       navigator.share({
@@ -199,7 +199,7 @@ export default function MercadoIA() {
         
         <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-4 flex items-center gap-2 relative z-10">
           <div className="w-8 h-8 bg-blue-500 dark:bg-blue-600 rounded-lg flex items-center justify-center">
-            <span className="text-white text-sm">🔍</span>
+            <i className="fa-solid fa-search text-white text-sm"></i>
           </div>
           Pesquisar Produtos
         </h3>
@@ -265,7 +265,7 @@ export default function MercadoIA() {
         <div className="flex items-center justify-between mb-4 relative z-10">
           <h3 className="text-lg font-bold text-gray-900 dark:text-white flex items-center gap-2">
             <div className="w-8 h-8 bg-green-500 dark:bg-green-600 rounded-lg flex items-center justify-center">
-              <span className="text-white text-sm">📝</span>
+              <i className="fa-solid fa-clipboard-list text-white text-sm"></i>
             </div>
             Lista de Compras Inteligente
           </h3>
@@ -274,13 +274,13 @@ export default function MercadoIA() {
               onClick={gerarSugestoes}
               className="px-3 py-1 bg-purple-500 hover:bg-purple-600 text-white rounded-lg transition-colors text-xs font-semibold"
             >
-              💡 Sugestões
+              <i className="fa-solid fa-lightbulb mr-1"></i>Sugestões
             </button>
             <button
               onClick={compartilharLista}
               className="px-3 py-1 bg-blue-500 hover:bg-blue-600 text-white rounded-lg transition-colors text-xs font-semibold"
             >
-              📤 Compartilhar
+              <i className="fa-solid fa-share mr-1"></i>Compartilhar
             </button>
           </div>
         </div>
@@ -316,7 +316,7 @@ export default function MercadoIA() {
         {sugestoes.length > 0 && (
           <div className="mb-3 p-2 bg-purple-50 dark:bg-purple-900/20 rounded-lg border border-purple-200 dark:border-purple-500/30">
             <h4 className="text-xs font-semibold text-purple-800 dark:text-purple-100 mb-1">
-              💡 Sugestões Inteligentes:
+              <i className="fa-solid fa-lightbulb mr-1"></i>Sugestões Inteligentes:
             </h4>
             <div className="flex flex-wrap gap-1">
               {sugestoes.map((sugestao, index) => (
@@ -341,17 +341,17 @@ export default function MercadoIA() {
               <div key={categoria} className="space-y-2">
                 <h4 className="text-sm font-semibold text-gray-700 dark:text-gray-300 flex items-center gap-2">
                   <span className="text-lg">
-                    {categoria === 'Grãos' && '🌾'}
-                    {categoria === 'Laticínios' && '🥛'}
-                    {categoria === 'Frutas' && '🍎'}
-                    {categoria === 'Verduras' && '🥬'}
-                    {categoria === 'Carnes' && '🥩'}
-                    {categoria === 'Limpeza' && '🧽'}
-                    {categoria === 'Higiene' && '🧴'}
-                    {categoria === 'Bebidas' && '🥤'}
-                    {categoria === 'Congelados' && '🧊'}
-                    {categoria === 'Padaria' && '🍞'}
-                    {categoria === 'Outros' && '📦'}
+                    {categoria === 'Grãos' && <i className="fa-solid fa-seedling"></i>}
+                    {categoria === 'Laticínios' && <i className="fa-solid fa-mug-hot"></i>}
+                    {categoria === 'Frutas' && <i className="fa-solid fa-apple-whole"></i>}
+                    {categoria === 'Verduras' && <i className="fa-solid fa-leaf"></i>}
+                    {categoria === 'Carnes' && <i className="fa-solid fa-drumstick-bite"></i>}
+                    {categoria === 'Limpeza' && <i className="fa-solid fa-spray-can"></i>}
+                    {categoria === 'Higiene' && <i className="fa-solid fa-soap"></i>}
+                    {categoria === 'Bebidas' && <i className="fa-solid fa-glass-water"></i>}
+                    {categoria === 'Congelados' && <i className="fa-solid fa-snowflake"></i>}
+                    {categoria === 'Padaria' && <i className="fa-solid fa-bread-slice"></i>}
+                    {categoria === 'Outros' && <i className="fa-solid fa-box"></i>}
                   </span>
                   {categoria}
                 </h4>
@@ -399,7 +399,9 @@ export default function MercadoIA() {
             ))
           ) : (
             <div className="text-center py-8 text-gray-500 dark:text-gray-400">
-              <div className="text-4xl mb-2">🛒</div>
+              <div className="text-4xl mb-2">
+                <i className="fa-solid fa-shopping-cart text-gray-400"></i>
+              </div>
               <p>Nenhum item na lista ainda</p>
               <p className="text-sm">Adicione produtos ou use as sugestões inteligentes!</p>
             </div>
@@ -433,7 +435,7 @@ export default function MercadoIA() {
         
         <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-4 flex items-center gap-2 relative z-10">
           <div className="w-8 h-8 bg-yellow-500 dark:bg-yellow-600 rounded-lg flex items-center justify-center">
-            <span className="text-white text-sm">🎯</span>
+            <i className="fa-solid fa-bullseye text-white text-sm"></i>
           </div>
           Ofertas em Destaque
         </h3>
@@ -479,7 +481,7 @@ export default function MercadoIA() {
         
         <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-4 flex items-center gap-2 relative z-10">
           <div className="w-8 h-8 bg-purple-500 dark:bg-purple-600 rounded-lg flex items-center justify-center">
-            <span className="text-white text-sm">📊</span>
+            <i className="fa-solid fa-chart-bar text-white text-sm"></i>
           </div>
           Controle de Orçamento
         </h3>
@@ -538,7 +540,9 @@ export default function MercadoIA() {
       {/* Hero Section */}
       <section className="relative flex items-center justify-between w-full mx-auto glass-effect rounded-xl shadow-lg p-4 sm:p-6 mb-4 sm:mb-6 fade-in-up bg-white/95 dark:bg-gray-700 border border-gray-200 dark:border-gray-500 h-20 sm:h-24">
         <div className="flex items-center gap-3">
-          <div className="text-2xl sm:text-3xl">🛒</div>
+          <div className="text-2xl sm:text-3xl">
+            <i className="fa-solid fa-shopping-cart text-blue-600 dark:text-blue-400"></i>
+          </div>
           <div>
             <h1 className="text-lg sm:text-xl font-bold text-gray-900 dark:text-white">Mercado IA</h1>
             <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-300">Compras inteligentes e economia</p>
@@ -567,7 +571,7 @@ export default function MercadoIA() {
                     : 'bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-600'
                 }`}
               >
-                <span className="text-lg">{aba.icone}</span>
+                <i className={`fa-solid ${aba.icone} text-lg`}></i>
                 <span className="hidden sm:inline">{aba.nome}</span>
               </button>
             ))}

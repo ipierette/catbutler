@@ -160,10 +160,10 @@ export default function CozinhaIA() {
   const copiarCardapio = () => {
     if (!cardapioSemanal) return;
     
-    let textoCardapio = "🍽️ CARDÁPIO SEMANAL - CatButler\n\n";
+    let textoCardapio = "CARDÁPIO SEMANAL - CatButler\n\n";
     
     cardapioSemanal.forEach(dia => {
-      textoCardapio += `📅 ${dia.dia}\n`;
+              textoCardapio += `${dia.dia}\n`;
       dia.refeicoes.forEach(refeicao => {
         textoCardapio += `  • ${refeicao.tipo}: ${refeicao.receita.nome} (${refeicao.receita.tempo})\n`;
       });
@@ -206,7 +206,7 @@ export default function CozinhaIA() {
       <section className="relative flex items-center justify-between w-full mx-auto glass-effect rounded-xl shadow-lg p-3 sm:p-4 mb-3 sm:mb-4 fade-in-up bg-white/95 dark:bg-gray-700 border border-gray-200 dark:border-gray-500 h-16 sm:h-18">
         <div className="flex items-center gap-3">
           <div className="p-2 bg-orange-100 dark:bg-orange-900/30 rounded-lg">
-            <span className="text-xl sm:text-2xl" aria-label="cozinha">👨‍🍳</span>
+            <i className="fa-solid fa-utensils text-xl sm:text-2xl text-orange-600 dark:text-orange-400" aria-label="cozinha"></i>
           </div>
           <div>
             <h1 className="text-lg sm:text-xl font-bold text-gray-900 dark:text-white">
@@ -239,7 +239,7 @@ export default function CozinhaIA() {
             >
               <h2 className="text-lg font-bold text-gray-900 dark:text-white flex items-center gap-2">
                 <div className="w-8 h-8 bg-orange-500 dark:bg-orange-600 rounded-lg flex items-center justify-center">
-                  <span className="text-white text-sm">🥘</span>
+                  <i className="fa-solid fa-utensils text-white text-sm"></i>
                 </div>
                 Ingredientes Disponíveis
                 <span className="text-sm font-normal text-gray-500 dark:text-gray-400">
@@ -343,7 +343,7 @@ export default function CozinhaIA() {
             >
               <h3 className="text-lg font-bold text-gray-900 dark:text-white flex items-center gap-2">
                 <div className="w-8 h-8 bg-blue-500 dark:bg-blue-600 rounded-lg flex items-center justify-center">
-                  <span className="text-white text-sm">📋</span>
+                  <i className="fa-solid fa-clipboard-list text-white text-sm"></i>
                 </div>
                 Receitas Sugeridas
                 <span className="text-sm font-normal text-gray-500 dark:text-gray-400">
@@ -369,9 +369,9 @@ export default function CozinhaIA() {
                           <div className="flex-1">
                             <h4 className="font-bold text-gray-900 dark:text-white mb-2">{receita.nome}</h4>
                             <div className="flex items-center gap-4 text-sm text-gray-600 dark:text-gray-400 mb-2">
-                              <span>⏱️ {receita.tempo}</span>
-                              <span>📊 {receita.dificuldade}</span>
-                              <span>👥 {receita.porcoes} porções</span>
+                              <span><i className="fa-solid fa-clock mr-1"></i>{receita.tempo}</span>
+                              <span><i className="fa-solid fa-chart-bar mr-1"></i>{receita.dificuldade}</span>
+                              <span><i className="fa-solid fa-users mr-1"></i>{receita.porcoes} porções</span>
                             </div>
                             <p className="text-sm text-gray-600 dark:text-gray-300">
                               Ingredientes: {receita.ingredientes.join(", ")}
@@ -386,7 +386,9 @@ export default function CozinhaIA() {
                   </div>
                 ) : (
                   <div className="text-center py-8">
-                    <div className="text-4xl mb-4">🍳</div>
+                    <div className="text-4xl mb-4">
+                      <i className="fa-solid fa-utensils text-gray-400"></i>
+                    </div>
                     <p className="text-gray-500 dark:text-gray-400 mb-2">
                       Nenhuma receita gerada ainda
                     </p>
@@ -452,7 +454,9 @@ export default function CozinhaIA() {
                   {conversa.length === 0 ? (
                     <div className="flex items-center justify-center h-full">
                       <div className="text-center">
-                        <div className="text-2xl mb-2">👨‍🍳</div>
+                        <div className="text-2xl mb-2">
+                          <i className="fa-solid fa-robot text-blue-500"></i>
+                        </div>
                         <p className="text-sm text-gray-600 dark:text-gray-300 font-medium">
                           Olá! Sou seu assistente culinário.
                         </p>
@@ -556,7 +560,7 @@ export default function CozinhaIA() {
             >
               <h3 className="text-lg font-bold text-gray-900 dark:text-white flex items-center gap-2">
                 <div className="w-8 h-8 bg-yellow-500 dark:bg-yellow-600 rounded-lg flex items-center justify-center">
-                  <span className="text-white text-sm">💡</span>
+                  <i className="fa-solid fa-lightbulb text-white text-sm"></i>
                 </div>
                 Dicas Rápidas
               </h3>
@@ -642,7 +646,9 @@ export default function CozinhaIA() {
             
             {receitaSelecionada.dicas && (
               <div className="p-4 bg-yellow-50 dark:bg-yellow-900/20 rounded-lg">
-                <h4 className="font-bold text-yellow-800 dark:text-yellow-200 mb-2">💡 Dica:</h4>
+                <h4 className="font-bold text-yellow-800 dark:text-yellow-200 mb-2 flex items-center gap-2">
+                  <i className="fa-solid fa-lightbulb"></i>Dica:
+                </h4>
                 <p className="text-yellow-700 dark:text-yellow-300">{receitaSelecionada.dicas}</p>
               </div>
             )}

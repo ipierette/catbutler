@@ -188,8 +188,8 @@ export function PrivacyModal({ open, onClose }) {
               Para exercer seus direitos ou esclarecer dúvidas sobre privacidade, entre em contato:
             </p>
             <ul className="list-none mt-2 space-y-1">
-              <li>📧 Email: <span className="text-blue-600 dark:text-blue-400 font-mono">privacidade@catbutler.app</span></li>
-              <li>📱 WhatsApp: <span className="text-blue-600 dark:text-blue-400">(11) 99999-9999</span></li>
+              <li><i className="fa-solid fa-envelope mr-2"></i>Email: <span className="text-blue-600 dark:text-blue-400 font-mono">privacidade@catbutler.app</span></li>
+              <li><i className="fa-brands fa-whatsapp mr-2"></i>WhatsApp: <span className="text-blue-600 dark:text-blue-400">(11) 99999-9999</span></li>
             </ul>
           </section>
         </div>

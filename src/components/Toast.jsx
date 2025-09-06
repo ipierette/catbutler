@@ -75,15 +75,15 @@ const ToastItem = ({ toast, onRemove }) => {
   const getIcon = () => {
     switch (toast.type) {
       case 'success':
-        return '✅';
+        return 'fa-check-circle';
       case 'error':
-        return '❌';
+        return 'fa-times-circle';
       case 'warning':
-        return '⚠️';
+        return 'fa-exclamation-triangle';
       case 'info':
-        return 'ℹ️';
+        return 'fa-info-circle';
       default:
-        return '📢';
+        return 'fa-bell';
     }
   };
 
@@ -91,7 +91,7 @@ const ToastItem = ({ toast, onRemove }) => {
     <div className={getToastStyles()}>
       <div className={`${getTypeStyles()} w-full`}>
         <div className="flex items-start gap-3">
-          <span className="text-lg flex-shrink-0">{getIcon()}</span>
+          <i className={`fa-solid ${getIcon()} text-lg flex-shrink-0`}></i>
           <div className="flex-1 min-w-0">
             {toast.title && (
               <h4 className="font-semibold text-sm mb-1">{toast.title}</h4>

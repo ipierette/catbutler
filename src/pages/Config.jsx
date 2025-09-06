@@ -30,10 +30,10 @@ export default function Config() {
   };
 
   const tabs = [
-    { id: "perfil", label: "Perfil", icon: "👤" },
-    { id: "seguranca", label: "Segurança", icon: "🔒" },
-    { id: "preferencias", label: "Preferências", icon: "⚙️" },
-    { id: "familia", label: "Conta Familiar", icon: "👨‍👩‍👧‍👦" }
+    { id: "perfil", label: "Perfil", icon: "fa-user" },
+    { id: "seguranca", label: "Segurança", icon: "fa-lock" },
+    { id: "preferencias", label: "Preferências", icon: "fa-cog" },
+    { id: "familia", label: "Conta Familiar", icon: "fa-users" }
   ];
 
   return (
@@ -42,7 +42,7 @@ export default function Config() {
       <section className="relative flex items-center justify-between w-full mx-auto glass-effect rounded-xl shadow-lg p-4 sm:p-6 mb-4 sm:mb-6 fade-in-up bg-white/95 dark:bg-gray-700 border border-gray-200 dark:border-gray-500 h-20 sm:h-24">
         <div className="flex items-center gap-3">
           <div className="p-2 bg-green-100 dark:bg-green-900/30 rounded-lg">
-            <span className="text-xl sm:text-2xl" aria-label="configurações">⚙️</span>
+            <i className="fa-solid fa-cog text-xl sm:text-2xl text-green-600 dark:text-green-400" aria-label="configurações"></i>
           </div>
           <div>
             <h1 className="text-lg sm:text-xl font-bold text-gray-900 dark:text-white">
@@ -73,7 +73,7 @@ export default function Config() {
                   : 'bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-600'
               }`}
             >
-              <span className="text-lg">{tab.icon}</span>
+              <i className={`fa-solid ${tab.icon} text-lg`}></i>
               <span className="hidden sm:inline">{tab.label}</span>
             </button>
           ))}

@@ -92,28 +92,28 @@ const ConfirmationDialog = ({ isOpen, config, onConfirm, onCancel }) => {
     switch (config.type) {
       case 'danger':
         return {
-          icon: '⚠️',
+          icon: 'fa-exclamation-triangle',
           iconColor: 'text-red-600 dark:text-red-400',
           buttonColor: 'bg-red-500 hover:bg-red-600 text-white',
           borderColor: 'border-red-200 dark:border-red-500/30',
         };
       case 'warning':
         return {
-          icon: '⚠️',
+          icon: 'fa-exclamation-triangle',
           iconColor: 'text-yellow-600 dark:text-yellow-400',
           buttonColor: 'bg-yellow-500 hover:bg-yellow-600 text-white',
           borderColor: 'border-yellow-200 dark:border-yellow-500/30',
         };
       case 'info':
         return {
-          icon: 'ℹ️',
+          icon: 'fa-info-circle',
           iconColor: 'text-blue-600 dark:text-blue-400',
           buttonColor: 'bg-blue-500 hover:bg-blue-600 text-white',
           borderColor: 'border-blue-200 dark:border-blue-500/30',
         };
       default:
         return {
-          icon: '❓',
+          icon: 'fa-question-circle',
           iconColor: 'text-gray-600 dark:text-gray-400',
           buttonColor: 'bg-gray-500 hover:bg-gray-600 text-white',
           borderColor: 'border-gray-200 dark:border-gray-500/30',
@@ -144,7 +144,7 @@ const ConfirmationDialog = ({ isOpen, config, onConfirm, onCancel }) => {
           {/* Header */}
           <div className="flex items-start gap-4 mb-4">
             <div className={`text-3xl ${typeStyles.iconColor} flex-shrink-0`}>
-              {typeStyles.icon}
+              <i className={`fa-solid ${typeStyles.icon}`}></i>
             </div>
             <div className="flex-1">
               <h3 

@@ -23,10 +23,10 @@ export default function FaxinaIA() {
 
   // Abas do sistema de limpeza
   const abas = [
-    { id: 'planejador', nome: 'Planejador Inteligente', icone: '🎯' },
-    { id: 'produtos', nome: 'Guia de Produtos', icone: '🧴' },
-    { id: 'ambientes', nome: 'Análise por Ambiente', icone: '🏠' },
-    { id: 'sustentabilidade', nome: 'Sustentabilidade', icone: '🌱' }
+    { id: 'planejador', nome: 'Planejador Inteligente', icone: 'fa-bullseye' },
+    { id: 'produtos', nome: 'Guia de Produtos', icone: 'fa-spray-can' },
+    { id: 'ambientes', nome: 'Análise por Ambiente', icone: 'fa-home' },
+    { id: 'sustentabilidade', nome: 'Sustentabilidade', icone: 'fa-leaf' }
   ];
 
   // Dados de configuração
@@ -47,7 +47,7 @@ export default function FaxinaIA() {
     { 
       id: 'cozinha', 
       nome: 'Cozinha', 
-      icone: '🍳', 
+      icone: 'fa-utensils', 
       frequencia: 'Diária',
       manutencao: 'Limpeza profunda semanal',
       produtos: ['Detergente', 'Desengordurante', 'Água sanitária'],
@@ -77,7 +77,7 @@ export default function FaxinaIA() {
     { 
       id: 'quarto', 
       nome: 'Quarto', 
-      icone: '🛏️', 
+      icone: 'fa-bed', 
       frequencia: 'Semanal',
       manutencao: 'Aspiração de colchão mensal',
       produtos: ['Aspirador', 'Pano úmido', 'Desinfetante'],
@@ -92,7 +92,7 @@ export default function FaxinaIA() {
     { 
       id: 'sala', 
       nome: 'Sala', 
-      icone: '🛋️', 
+      icone: 'fa-couch', 
       frequencia: 'Semanal',
       manutencao: 'Limpeza de estofados trimestral',
       produtos: ['Aspirador', 'Pano úmido', 'Protetor de tecido'],
@@ -330,7 +330,7 @@ export default function FaxinaIA() {
           
           <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-4 flex items-center gap-2 relative z-10">
             <div className="w-8 h-8 bg-blue-500 dark:bg-blue-600 rounded-lg flex items-center justify-center">
-              <span className="text-white text-sm">⚙️</span>
+              <i className="fa-solid fa-cog text-white text-sm"></i>
             </div>
             Configuração Personalizada
           </h3>
@@ -393,7 +393,7 @@ export default function FaxinaIA() {
             
             <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-4 flex items-center gap-2 relative z-10">
               <div className="w-8 h-8 bg-green-500 dark:bg-green-600 rounded-lg flex items-center justify-center">
-                <span className="text-white text-sm">📅</span>
+                <i className="fa-solid fa-calendar text-white text-sm"></i>
               </div>
               Cronograma Inteligente
             </h3>
@@ -471,7 +471,7 @@ export default function FaxinaIA() {
         
         <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-4 flex items-center gap-2 relative z-10">
           <div className="w-8 h-8 bg-purple-500 dark:bg-purple-600 rounded-lg flex items-center justify-center">
-            <span className="text-white text-sm">🧴</span>
+            <i className="fa-solid fa-spray-can text-white text-sm"></i>
           </div>
           Guia de Produtos e Técnicas
         </h3>
@@ -547,7 +547,7 @@ export default function FaxinaIA() {
     <div key={comodo.id} className="p-4 bg-gray-50 dark:bg-gray-700 rounded-lg border border-gray-200 dark:border-gray-600 max-h-80 overflow-y-auto">
       <div className="flex items-center justify-between mb-3">
         <h4 className="font-semibold text-gray-900 dark:text-white text-sm flex items-center gap-2">
-          {comodo.icone} {comodo.nome}
+          <i className={`fa-solid ${comodo.icone}`}></i> {comodo.nome}
         </h4>
         <span className="text-xs text-gray-600 dark:text-gray-400 bg-gray-200 dark:bg-gray-600 px-2 py-1 rounded-full">
           {comodo.frequencia}
@@ -596,7 +596,7 @@ export default function FaxinaIA() {
           <div className="flex items-center justify-between mb-4 relative z-10">
             <h3 className="text-lg font-bold text-gray-900 dark:text-white flex items-center gap-2">
               <div className="w-8 h-8 bg-green-500 dark:bg-green-600 rounded-lg flex items-center justify-center">
-                <span className="text-white text-sm">🏠</span>
+                <i className="fa-solid fa-home text-white text-sm"></i>
               </div>
               Análise por Ambiente
             </h3>
@@ -661,7 +661,7 @@ export default function FaxinaIA() {
         <div className="flex items-center justify-between mb-6 relative z-10">
           <h3 className="text-lg font-bold text-gray-900 dark:text-white flex items-center gap-2">
             <div className="w-8 h-8 bg-emerald-500 dark:bg-emerald-600 rounded-lg flex items-center justify-center">
-              <span className="text-white text-sm">🌱</span>
+              <i className="fa-solid fa-leaf text-white text-sm"></i>
             </div>
             Sustentabilidade
           </h3>
@@ -703,7 +703,9 @@ export default function FaxinaIA() {
       {/* Hero Section */}
       <section className="relative flex items-center justify-between w-full mx-auto glass-effect rounded-xl shadow-lg p-4 sm:p-6 mb-4 sm:mb-6 fade-in-up bg-white/95 dark:bg-gray-700 border border-gray-200 dark:border-gray-500 h-20 sm:h-24">
         <div className="flex items-center gap-3">
-          <div className="text-2xl sm:text-3xl">🧹</div>
+          <div className="text-2xl sm:text-3xl">
+            <i className="fa-solid fa-broom text-orange-600 dark:text-orange-400"></i>
+          </div>
           <div>
             <h1 className="text-lg sm:text-xl font-bold text-gray-900 dark:text-white">Faxina com IA</h1>
             <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-300">Limpeza inteligente e sustentável</p>
@@ -732,7 +734,7 @@ export default function FaxinaIA() {
                     : 'bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-600'
                 }`}
               >
-                <span className="text-lg">{aba.icone}</span>
+                <i className={`fa-solid ${aba.icone} text-lg`}></i>
                 <span className="hidden sm:inline">{aba.nome}</span>
               </button>
             ))}

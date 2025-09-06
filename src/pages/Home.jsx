@@ -68,14 +68,14 @@ export default function Home() {
   ], []);
 
   const catFacts = useMemo(() => [
-    "Os gatos passam 70% da vida dormindo! 😴",
-    "Um gato pode fazer mais de 100 sons diferentes! 🐱",
-    "Os bigodes dos gatos são sensores de movimento ultra-sensíveis! 🧐",
-    "Gatos não conseguem sentir o sabor doce! 🍭",
-    "O ronronar dos gatos pode curar ossos quebrados! 🦴",
-    "Gatos têm 3 pálpebras em cada olho! 👁️",
-    "Um gato pode correr até 48 km/h! 🏃‍♂️",
-    "Gatos suam apenas pelas patas! 🐾"
+    "Os gatos passam 70% da vida dormindo!",
+    "Um gato pode fazer mais de 100 sons diferentes!",
+    "Os bigodes dos gatos são sensores de movimento ultra-sensíveis!",
+    "Gatos não conseguem sentir o sabor doce!",
+    "O ronronar dos gatos pode curar ossos quebrados!",
+    "Gatos têm 3 pálpebras em cada olho!",
+    "Um gato pode correr até 48 km/h!",
+    "Gatos suam apenas pelas patas!"
   ], []);
 
   // Simular dados de atividade recente baseados no localStorage
@@ -85,9 +85,9 @@ export default function Home() {
       setRecentActivity(JSON.parse(savedActivity));
     } else {
       const defaultActivity = [
-        { id: 1, action: "Receita sugerida", item: "Pasta Carbonara", time: "2h atrás", icon: "🍝", type: "recipe" },
-        { id: 2, action: "Lista de compras", item: "Mercado Central", time: "Ontem", icon: "🛒", type: "shopping" },
-        { id: 3, action: "Rotina de faxina", item: "Cozinha", time: "2 dias atrás", icon: "🧹", type: "cleaning" }
+        { id: 1, action: "Receita sugerida", item: "Pasta Carbonara", time: "2h atrás", icon: "fa-utensils", type: "recipe" },
+        { id: 2, action: "Lista de compras", item: "Mercado Central", time: "Ontem", icon: "fa-shopping-cart", type: "shopping" },
+        { id: 3, action: "Rotina de faxina", item: "Cozinha", time: "2 dias atrás", icon: "fa-broom", type: "cleaning" }
       ];
       setRecentActivity(defaultActivity);
       localStorage.setItem('catbutler-activity', JSON.stringify(defaultActivity));
@@ -176,7 +176,7 @@ export default function Home() {
             <h1 className="text-lg sm:text-xl lg:text-2xl font-bold text-gray-900 dark:text-white">
               {getGreeting()}, <span className="visitante-span">visitante</span>
             </h1>
-            <span className="text-2xl" aria-label="paz">✌️</span>
+            <i className="fa-solid fa-hand-peace text-2xl text-blue-500 dark:text-green-400" aria-label="paz"></i>
           </div>
           <p className="text-xs sm:text-sm text-gray-800 dark:text-white max-w-xl font-medium leading-relaxed mb-3">
             Organize sua casa com IA — receitas, faxina e compras numa experiência fluida.
@@ -356,7 +356,7 @@ export default function Home() {
               >
                 <div className="flex items-start gap-3">
                   <div className="text-yellow-600 dark:text-yellow-400 text-lg group-hover:scale-110 transition-transform duration-200">
-                    {showCatFact ? "🐱" : "💡"}
+                    <i className={`fa-solid ${showCatFact ? 'fa-cat' : 'fa-lightbulb'} text-lg`}></i>
                   </div>
                   <div className="flex-1">
                     {isGenerating ? (

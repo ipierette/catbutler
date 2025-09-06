@@ -220,11 +220,11 @@ export default function Login() {
         </h3>
         <div className="grid grid-cols-2 gap-3">
           <button className="flex items-center justify-center gap-2 py-2 px-4 bg-blue-500 hover:bg-blue-600 text-white rounded-lg transition-colors text-sm font-semibold">
-            <span>📘</span>
+            <i className="fa-brands fa-facebook"></i>
             {' '}Facebook
           </button>
           <button className="flex items-center justify-center gap-2 py-2 px-4 bg-gray-800 hover:bg-gray-900 text-white rounded-lg transition-colors text-sm font-semibold">
-            <span>🔍</span>
+            <i className="fa-brands fa-google"></i>
             {' '}Google
           </button>
         </div>

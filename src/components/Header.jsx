@@ -206,7 +206,9 @@ function ShareTooltip({ theme }) {
               Compartilhar
             </button>
           </div>
-          <div className="text-xs text-gray-400 mt-2">Ajude a divulgar! 🚀</div>
+          <div className="text-xs text-gray-400 mt-2 flex items-center gap-1">
+            Ajude a divulgar! <i className="fa-solid fa-rocket text-xs"></i>
+          </div>
         </div>,
         document.body
       )}
