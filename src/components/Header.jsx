@@ -11,7 +11,7 @@ function Header() {
   
   return (
     <>
-      <header className="fixed top-0 left-0 right-0 w-full glass-effect shadow-lg py-2 px-3 sm:px-4 flex items-center justify-between z-50">
+      <header className="fixed top-0 left-0 right-0 w-full glass-effect shadow-lg py-2 px-3 sm:px-4 flex items-center justify-between z-50" style={{height: '4rem', backdropFilter: 'blur(10px)'}}>
         <div className="flex items-center gap-2 sm:gap-3 lg:gap-4">
           <div className="flex items-center justify-center">
             <img 

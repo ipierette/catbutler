@@ -23,8 +23,8 @@
 
 body {
   margin: 0;
-  min-width: 320px;
-  min-height: 100vh;
+  min-width: 20rem; /* 320px em rem */
+  height: 100dvh; /* Usar dvh para altura dinâmica */
   background: transparent;
   overflow: hidden;
 }
@@ -188,6 +188,14 @@ html.light .container {
   box-shadow: 0 4px 32px 0 rgba(0, 0, 0, 0.07), 0 1.5px 4px 0 rgba(0, 0, 0, 0.03);
   border: 1px solid rgba(0, 0, 0, 0.04);
   backdrop-filter: blur(8px);
+}
+
+/* Header específico para modo claro */
+html.light header.glass-effect {
+  background: rgba(255, 255, 255, 0.9) !important;
+  backdrop-filter: blur(20px) !important;
+  -webkit-backdrop-filter: blur(20px) !important;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1) !important;
 }
 
 /* Cores específicas para modo claro */
@@ -662,6 +670,14 @@ html.dark .glass-effect {
   border: 1px solid rgba(255, 255, 255, 0.25) !important;
   backdrop-filter: blur(15px);
   -webkit-backdrop-filter: blur(15px);
+}
+
+/* Header específico para ficar sobre conteúdo */
+header.glass-effect {
+  background: rgba(0, 0, 0, 0.8) !important;
+  backdrop-filter: blur(20px) !important;
+  -webkit-backdrop-filter: blur(20px) !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
 }
 
 /* Cores específicas para modo escuro */

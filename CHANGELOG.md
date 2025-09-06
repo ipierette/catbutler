@@ -29,6 +29,63 @@ e este projeto adere ao [Versionamento Semântico](https://semver.org/lang/pt-BR
   - Corrigida inconsistência nas animações entre navegação de páginas
   - Todos os cards agora têm animação consistente ao retornar à home
 
+## [2.3.0] - 2025-01-27
+
+### 🚀 Layout Otimizado e Scroll Removido
+
+#### Adicionado
+- **Sistema de Layout Fixo Completo**
+  - Remoção completa do scroll vertical na versão desktop
+  - Layout otimizado para se encaixar perfeitamente na viewport
+  - Sistema de altura dinâmica com `100dvh` para responsividade total
+  - Header e footer fixos com conteúdo deslizante entre eles
+
+#### Melhorado
+- **Layout da Home Page**
+  - Cards compactos com alturas otimizadas (`10rem`, `8rem`, `6rem`)
+  - Espaçamentos reduzidos para melhor aproveitamento do espaço
+  - Gaps menores entre elementos (`gap-3 sm:gap-4`)
+  - Margens otimizadas (`mb-4 sm:mb-5`)
+  - Padding reduzido em todos os componentes (`p-3 sm:p-4`)
+
+- **Seção de Conquistas**
+  - Altura reduzida para `6rem` para melhor proporção
+  - Padding menor nos botões de conquistas (`p-2`)
+  - Gaps otimizados entre elementos (`gap-2 sm:gap-3`)
+  - Layout mais compacto e organizado
+
+- **Footer Simplificado**
+  - Estrutura simplificada sem wrappers desnecessários
+  - Altura fixa de `3.5rem` para consistência
+  - Mensagem "Curtiu?" centralizada horizontalmente
+  - Layout flex otimizado para melhor distribuição
+
+#### Corrigido
+- **Problemas de Sobreposição**
+  - Eliminada sobreposição do footer com conteúdo
+  - Header flutuante sobre conteúdo deslizante
+  - Z-index otimizado para elementos fixos
+  - Layout responsivo sem conflitos de posicionamento
+
+- **Scroll Desnecessário**
+  - Removido scroll vertical na versão desktop
+  - Layout fixo que se adapta a qualquer altura de tela
+  - Conteúdo otimizado para caber na viewport
+  - Experiência mais limpa e profissional
+
+#### Técnico
+- **Sistema de Alturas Dinâmicas**
+  - `body`: `height: 100dvh; overflow: hidden`
+  - `main`: `height: 100dvh; overflow-hidden`
+  - `Home`: `height: calc(100dvh - 7.5rem); overflow-y-auto`
+  - Cálculos precisos para header (`4rem`) e footer (`3.5rem`)
+
+- **Otimizações de Performance**
+  - Remoção de scroll desnecessário melhora performance
+  - Layout fixo reduz reflows e repaints
+  - Animações mais suaves sem conflitos de scroll
+  - Experiência de usuário mais fluida
+
 ## [2.2.1] - 2025-01-27
 
 ### 🎨 Melhorias de Interface e Usabilidade

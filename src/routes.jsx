@@ -1,4 +1,4 @@
-import React, { Suspense } from "react";
+import React from "react";
 import { Routes, Route } from "react-router-dom";
 import { withLazyLoading } from "./components/LazyWrapper";
 import Header from "./components/Header";
@@ -87,7 +87,7 @@ export default function AppRoutes() {
       <Header />
       
       {/* Conteúdo principal com scroll */}
-      <main className="min-h-screen pt-16 pb-20 mt-8 overflow-y-auto lg:overflow-y-visible">
+      <main className="overflow-hidden" style={{height: '100dvh', paddingTop: '4rem', paddingBottom: '3.5rem'}}>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/tarefas" element={<Tarefas />} />
