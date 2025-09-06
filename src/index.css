@@ -273,12 +273,45 @@ html.light input[type="password"],
 html.light textarea,
 html.light select {
   color: #111827 !important;
+  background-color: #ffffff !important;
   border-color: #d1d5db !important;
 }
 
 html.light input::placeholder,
 html.light textarea::placeholder {
   color: #9ca3af !important;
+}
+
+/* Forçar fundo branco em todos os inputs no modo claro */
+html.light input,
+html.light select,
+html.light textarea {
+  background-color: #ffffff !important;
+  color: #111827 !important;
+  border-color: #d1d5db !important;
+}
+
+html.light input:focus,
+html.light select:focus,
+html.light textarea:focus {
+  background-color: #ffffff !important;
+  color: #111827 !important;
+  border-color: #3b82f6 !important;
+}
+
+/* Seletores específicos para campos problemáticos */
+html.light .bg-white input,
+html.light .bg-white select,
+html.light .bg-white textarea {
+  background-color: #ffffff !important;
+  color: #111827 !important;
+}
+
+html.light .glass-effect input,
+html.light .glass-effect select,
+html.light .glass-effect textarea {
+  background-color: #ffffff !important;
+  color: #111827 !important;
 }
 
 html.light label {
@@ -403,6 +436,193 @@ html.light .bg-gray-200:hover {
 }
 
 html.light .bg-gray-200 svg {
+  color: #374151 !important;
+}
+
+/* ===== CARDS ESCUROS NO MODO CLARO ===== */
+html.light .bg-gray-800,
+html.light .bg-gray-700,
+html.light .bg-gray-600 {
+  background-color: #f3f4f6 !important;
+  color: #111827 !important;
+}
+
+html.light .bg-gray-800 *,
+html.light .bg-gray-700 *,
+html.light .bg-gray-600 * {
+  color: #111827 !important;
+}
+
+/* Cards específicos que aparecem escuros */
+html.light .bg-gray-800 input,
+html.light .bg-gray-800 select,
+html.light .bg-gray-800 textarea {
+  background-color: #ffffff !important;
+  color: #111827 !important;
+  border-color: #d1d5db !important;
+}
+
+html.light .bg-gray-700 input,
+html.light .bg-gray-700 select,
+html.light .bg-gray-700 textarea {
+  background-color: #ffffff !important;
+  color: #111827 !important;
+  border-color: #d1d5db !important;
+}
+
+html.light .bg-gray-600 input,
+html.light .bg-gray-600 select,
+html.light .bg-gray-600 textarea {
+  background-color: #ffffff !important;
+  color: #111827 !important;
+  border-color: #d1d5db !important;
+}
+
+/* ===== BOTÕES ESCUROS NO MODO CLARO ===== */
+html.light button.bg-gray-800,
+html.light button.bg-gray-700,
+html.light button.bg-gray-600 {
+  background-color: #f3f4f6 !important;
+  color: #111827 !important;
+  border-color: #d1d5db !important;
+}
+
+html.light button.bg-gray-800:hover,
+html.light button.bg-gray-700:hover,
+html.light button.bg-gray-600:hover {
+  background-color: #e5e7eb !important;
+  color: #111827 !important;
+}
+
+html.light button.bg-gray-800 *,
+html.light button.bg-gray-700 *,
+html.light button.bg-gray-600 * {
+  color: #111827 !important;
+}
+
+/* Botões específicos que aparecem escuros */
+html.light .bg-gray-800 button,
+html.light .bg-gray-700 button,
+html.light .bg-gray-600 button {
+  background-color: #f3f4f6 !important;
+  color: #111827 !important;
+  border-color: #d1d5db !important;
+}
+
+html.light .bg-gray-800 button:hover,
+html.light .bg-gray-700 button:hover,
+html.light .bg-gray-600 button:hover {
+  background-color: #e5e7eb !important;
+  color: #111827 !important;
+}
+
+/* ===== SETAS DE ACCORDION - MODO CLARO ===== */
+html.light .fa-chevron-down,
+html.light .fa-chevron-up,
+html.light .fa-chevron-left,
+html.light .fa-chevron-right {
+  color: #374151 !important;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1) !important;
+}
+
+html.light .accordion-button .fa-chevron-down,
+html.light .accordion-button .fa-chevron-up {
+  color: #374151 !important;
+}
+
+html.light button .fa-chevron-down,
+html.light button .fa-chevron-up,
+html.light button .fa-chevron-left,
+html.light button .fa-chevron-right {
+  color: #374151 !important;
+}
+
+/* ===== SEÇÕES ESCURAS - MODO CLARO ===== */
+html.light .bg-gray-800,
+html.light .bg-gray-700,
+html.light .bg-gray-600,
+html.light .bg-gray-900 {
+  background-color: #f3f4f6 !important;
+  color: #111827 !important;
+}
+
+html.light .bg-gray-800 *,
+html.light .bg-gray-700 *,
+html.light .bg-gray-600 *,
+html.light .bg-gray-900 * {
+  color: #111827 !important;
+}
+
+/* ===== CARDS ESCUROS ESPECÍFICOS ===== */
+html.light .card.bg-gray-800,
+html.light .card.bg-gray-700,
+html.light .card.bg-gray-600 {
+  background-color: #f3f4f6 !important;
+  color: #111827 !important;
+}
+
+html.light .card.bg-gray-800 *,
+html.light .card.bg-gray-700 *,
+html.light .card.bg-gray-600 * {
+  color: #111827 !important;
+}
+
+/* ===== CONTAINERS ESCUROS ===== */
+html.light .container.bg-gray-800,
+html.light .container.bg-gray-700,
+html.light .container.bg-gray-600 {
+  background-color: #f3f4f6 !important;
+  color: #111827 !important;
+}
+
+html.light .container.bg-gray-800 *,
+html.light .container.bg-gray-700 *,
+html.light .container.bg-gray-600 * {
+  color: #111827 !important;
+}
+
+/* ===== ELEMENTOS ESPECÍFICOS PROBLEMÁTICOS ===== */
+html.light .bg-gray-800 .text-gray-300,
+html.light .bg-gray-700 .text-gray-300,
+html.light .bg-gray-600 .text-gray-300 {
+  color: #111827 !important;
+}
+
+html.light .bg-gray-800 .text-gray-400,
+html.light .bg-gray-700 .text-gray-400,
+html.light .bg-gray-600 .text-gray-400 {
+  color: #374151 !important;
+}
+
+html.light .bg-gray-800 .text-gray-500,
+html.light .bg-gray-700 .text-gray-500,
+html.light .bg-gray-600 .text-gray-500 {
+  color: #6b7280 !important;
+}
+
+/* ===== BOTÕES EM SEÇÕES ESCURAS ===== */
+html.light .bg-gray-800 button,
+html.light .bg-gray-700 button,
+html.light .bg-gray-600 button {
+  background-color: #ffffff !important;
+  color: #111827 !important;
+  border-color: #d1d5db !important;
+}
+
+html.light .bg-gray-800 button:hover,
+html.light .bg-gray-700 button:hover,
+html.light .bg-gray-600 button:hover {
+  background-color: #f3f4f6 !important;
+  color: #111827 !important;
+}
+
+/* ===== ÍCONES EM SEÇÕES ESCURAS ===== */
+html.light .bg-gray-800 i,
+html.light .bg-gray-700 i,
+html.light .bg-gray-600 i,
+html.light .bg-gray-800 svg,
+html.light .bg-gray-700 svg,
+html.light .bg-gray-600 svg {
   color: #374151 !important;
 }
 
@@ -601,4 +821,82 @@ button:hover {
 button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
+}
+
+/* ===== REGRAS ULTRA-ESPECÍFICAS PARA FORÇAR CONTRASTE ===== */
+/* Forçar todos os elementos escuros para claros no modo claro */
+html.light [class*="bg-gray-8"],
+html.light [class*="bg-gray-7"],
+html.light [class*="bg-gray-6"],
+html.light [class*="bg-gray-9"] {
+  background-color: #f3f4f6 !important;
+  color: #111827 !important;
+}
+
+html.light [class*="bg-gray-8"] *,
+html.light [class*="bg-gray-7"] *,
+html.light [class*="bg-gray-6"] *,
+html.light [class*="bg-gray-9"] * {
+  color: #111827 !important;
+}
+
+/* Forçar inputs em qualquer container escuro */
+html.light [class*="bg-gray-8"] input,
+html.light [class*="bg-gray-7"] input,
+html.light [class*="bg-gray-6"] input,
+html.light [class*="bg-gray-9"] input,
+html.light [class*="bg-gray-8"] select,
+html.light [class*="bg-gray-7"] select,
+html.light [class*="bg-gray-6"] select,
+html.light [class*="bg-gray-9"] select {
+  background-color: #ffffff !important;
+  color: #111827 !important;
+  border-color: #d1d5db !important;
+}
+
+/* Forçar botões em qualquer container escuro */
+html.light [class*="bg-gray-8"] button,
+html.light [class*="bg-gray-7"] button,
+html.light [class*="bg-gray-6"] button,
+html.light [class*="bg-gray-9"] button {
+  background-color: #ffffff !important;
+  color: #111827 !important;
+  border-color: #d1d5db !important;
+}
+
+/* Forçar ícones em qualquer container escuro */
+html.light [class*="bg-gray-8"] i,
+html.light [class*="bg-gray-7"] i,
+html.light [class*="bg-gray-6"] i,
+html.light [class*="bg-gray-9"] i,
+html.light [class*="bg-gray-8"] svg,
+html.light [class*="bg-gray-7"] svg,
+html.light [class*="bg-gray-6"] svg,
+html.light [class*="bg-gray-9"] svg {
+  color: #374151 !important;
+}
+
+/* Forçar setas de accordion em qualquer lugar */
+html.light .fa-chevron-down,
+html.light .fa-chevron-up,
+html.light .fa-chevron-left,
+html.light .fa-chevron-right {
+  color: #374151 !important;
+}
+
+/* Forçar todos os inputs para branco no modo claro */
+html.light input,
+html.light select,
+html.light textarea {
+  background-color: #ffffff !important;
+  color: #111827 !important;
+  border-color: #d1d5db !important;
+}
+
+html.light input:focus,
+html.light select:focus,
+html.light textarea:focus {
+  background-color: #ffffff !important;
+  color: #111827 !important;
+  border-color: #3b82f6 !important;
 }
