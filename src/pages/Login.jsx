@@ -203,7 +203,7 @@ export default function Login() {
       {/* Informações de Segurança */}
       <section className="mt-6 p-4 bg-green-50 dark:bg-green-900/20 rounded-lg border border-green-200 dark:border-green-500/30">
         <h3 className="text-sm font-semibold text-green-800 dark:text-green-100 mb-2">
-          🔒 Login Seguro
+          <i className="fa-solid fa-lock mr-2"></i>Login Seguro
         </h3>
         <ul className="text-xs text-green-700 dark:text-green-200 space-y-1">
           <li>• Sua senha é criptografada e protegida</li>

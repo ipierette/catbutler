@@ -300,7 +300,7 @@ export default function SignUp() {
       {/* Informações de Segurança - Versão Compacta */}
       <div className="mt-4 p-2 bg-green-50 dark:bg-green-900/20 rounded-lg border border-green-200 dark:border-green-500/30">
         <div className="flex items-center gap-2 text-xs text-green-700 dark:text-green-200">
-          <span className="text-green-600 dark:text-green-400">🔒</span>
+          <i className="fa-solid fa-lock text-green-600 dark:text-green-400"></i>
           <span className="font-medium">Dados criptografados • LGPD • Validação de entrada</span>
         </div>
       </div>
