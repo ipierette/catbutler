@@ -1,0 +1,35 @@
+{
+  "version": 2,
+  "name": "catbutler",
+  "builds": [
+    {
+      "src": "catbutler-frontend/package.json",
+      "use": "@vercel/static-build",
+      "config": {
+        "distDir": "dist"
+      }
+    },
+    {
+      "src": "catbutler-backend/server.js",
+      "use": "@vercel/node"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/api/(.*)",
+      "dest": "catbutler-backend/server.js"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "catbutler-frontend/dist/$1"
+    }
+  ],
+  "env": {
+    "NODE_ENV": "production"
+  },
+  "functions": {
+    "catbutler-backend/server.js": {
+      "maxDuration": 30
+    }
+  }
+}
