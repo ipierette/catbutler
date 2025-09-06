@@ -35,7 +35,9 @@ class ErrorBoundary extends React.Component {
       return (
         <div className="min-h-screen flex items-center justify-center p-4 bg-gray-50 dark:bg-gray-900">
           <div className="max-w-md w-full bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6 text-center">
-            <div className="text-6xl mb-4">😿</div>
+            <div className="text-6xl mb-4">
+              <i className="fa-solid fa-cat text-red-500"></i>
+            </div>
             <h2 className="text-xl font-bold text-gray-900 dark:text-gray-100 mb-2">
               Oops! Algo deu errado
             </h2>

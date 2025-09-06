@@ -412,7 +412,7 @@ export default function CozinhaIA() {
             <div className="flex items-center justify-between mb-4 relative z-10">
               <h3 className="text-lg font-bold text-gray-900 dark:text-white flex items-center gap-2">
                 <div className="w-8 h-8 bg-purple-500 dark:bg-purple-600 rounded-lg flex items-center justify-center">
-                  <span className="text-white text-sm">🤖</span>
+                  <i className="fa-solid fa-robot text-white text-sm"></i>
                 </div>
                 Assistente Culinário
               </h3>
@@ -443,7 +443,7 @@ export default function CozinhaIA() {
                   }}
                   className="p-2 bg-orange-100 dark:bg-orange-900/30 text-orange-600 dark:text-orange-400 rounded-lg hover:bg-orange-200 dark:hover:bg-orange-900/50 transition-colors"
                 >
-                  {chatAberto ? "✕" : "💬"}
+                  {chatAberto ? <i className="fa-solid fa-times"></i> : <i className="fa-solid fa-comment"></i>}
                 </button>
               </div>
             </div>

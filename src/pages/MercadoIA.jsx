@@ -57,14 +57,14 @@ export default function MercadoIA() {
 
   // Sugestões inteligentes baseadas em padrões
   const sugestoesInteligentes = [
-    { nome: 'Arroz 5kg', categoria: 'Grãos', frequencia: 'Semanal', preco: 12.90, imagem: '🍚' },
-    { nome: 'Feijão 1kg', categoria: 'Grãos', frequencia: 'Semanal', preco: 8.50, imagem: '🫘' },
-    { nome: 'Leite 1L', categoria: 'Laticínios', frequencia: 'Diária', preco: 4.20, imagem: '🥛' },
-    { nome: 'Pão Francês', categoria: 'Padaria', frequencia: 'Diária', preco: 0.80, imagem: '🍞' },
-    { nome: 'Banana Kg', categoria: 'Frutas', frequencia: 'Semanal', preco: 3.90, imagem: '🍌' },
-    { nome: 'Detergente', categoria: 'Limpeza', frequencia: 'Mensal', preco: 5.50, imagem: '🧽' },
-    { nome: 'Papel Higiênico', categoria: 'Higiene', frequencia: 'Mensal', preco: 12.00, imagem: '🧻' },
-    { nome: 'Café 500g', categoria: 'Bebidas', frequencia: 'Semanal', preco: 15.90, imagem: '☕' }
+    { nome: 'Arroz 5kg', categoria: 'Grãos', frequencia: 'Semanal', preco: 12.90, imagem: 'fa-bowl-rice' },
+    { nome: 'Feijão 1kg', categoria: 'Grãos', frequencia: 'Semanal', preco: 8.50, imagem: 'fa-seedling' },
+    { nome: 'Leite 1L', categoria: 'Laticínios', frequencia: 'Diária', preco: 4.20, imagem: 'fa-mug-hot' },
+    { nome: 'Pão Francês', categoria: 'Padaria', frequencia: 'Diária', preco: 0.80, imagem: 'fa-bread-slice' },
+    { nome: 'Banana Kg', categoria: 'Frutas', frequencia: 'Semanal', preco: 3.90, imagem: 'fa-apple-alt' },
+    { nome: 'Detergente', categoria: 'Limpeza', frequencia: 'Mensal', preco: 5.50, imagem: 'fa-spray-can' },
+    { nome: 'Papel Higiênico', categoria: 'Higiene', frequencia: 'Mensal', preco: 12.00, imagem: 'fa-toilet-paper' },
+    { nome: 'Café 500g', categoria: 'Bebidas', frequencia: 'Semanal', preco: 15.90, imagem: 'fa-coffee' }
   ];
 
   // Organização por seções do supermercado
@@ -325,7 +325,7 @@ export default function MercadoIA() {
                   onClick={() => adicionarSugestao(sugestao)}
                   className="flex items-center gap-1 px-2 py-1 bg-purple-100 dark:bg-purple-800/30 text-purple-800 dark:text-purple-200 rounded text-xs hover:bg-purple-200 dark:hover:bg-purple-700/30 transition-colors"
                 >
-                  <span>{sugestao.imagem}</span>
+                  <i className={`fa-solid ${sugestao.imagem}`}></i>
                   <span>{sugestao.nome}</span>
                   <span className="text-purple-600 dark:text-purple-300">+</span>
                 </button>
@@ -442,14 +442,14 @@ export default function MercadoIA() {
         
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {[
-            { nome: 'Leite 1L', preco: 3.50, desconto: 20, mercado: 'Super A', imagem: '🥛' },
-            { nome: 'Pão Francês', preco: 0.80, desconto: 15, mercado: 'Padaria B', imagem: '🍞' },
-            { nome: 'Banana Kg', preco: 2.90, desconto: 25, mercado: 'Frutas C', imagem: '🍌' },
-            { nome: 'Detergente', preco: 4.20, desconto: 30, mercado: 'Super D', imagem: '🧽' }
+            { nome: 'Leite 1L', preco: 3.50, desconto: 20, mercado: 'Super A', imagem: 'fa-mug-hot' },
+            { nome: 'Pão Francês', preco: 0.80, desconto: 15, mercado: 'Padaria B', imagem: 'fa-bread-slice' },
+            { nome: 'Banana Kg', preco: 2.90, desconto: 25, mercado: 'Frutas C', imagem: 'fa-apple-alt' },
+            { nome: 'Detergente', preco: 4.20, desconto: 30, mercado: 'Super D', imagem: 'fa-spray-can' }
           ].map((oferta, index) => (
             <div key={index} className="p-4 bg-orange-50 dark:bg-orange-900/20 rounded-lg border border-orange-200 dark:border-orange-500/30">
               <div className="flex items-center justify-between mb-2">
-                <span className="text-2xl">{oferta.imagem}</span>
+                <i className={`fa-solid ${oferta.imagem} text-2xl`}></i>
                 <span className="px-2 py-1 bg-red-100 dark:bg-red-900/20 text-red-800 dark:text-red-200 text-xs rounded-full">
                   -{oferta.desconto}%
                 </span>

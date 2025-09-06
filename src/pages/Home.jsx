@@ -12,6 +12,7 @@ export default function Home() {
   const [achievements, setAchievements] = useState({});
   const [showCatFact, setShowCatFact] = useState(false);
   const [isGenerating, setIsGenerating] = useState(false);
+  const [animationKey, setAnimationKey] = useState(0);
   const termsModal = useModal();
   const navigate = useNavigate();
 
@@ -21,6 +22,11 @@ export default function Home() {
       setCurrentTime(new Date());
     }, 60000);
     return () => clearInterval(timer);
+  }, []);
+
+  // Forçar reanimação dos cards quando o usuário volta para a home
+  useEffect(() => {
+    setAnimationKey(prev => prev + 1);
   }, []);
 
   // Obter saudação baseada no horário
@@ -194,7 +200,7 @@ export default function Home() {
   return (
     <main className="min-h-screen p-2 sm:p-3 md:p-4 max-w-7xl mx-auto">
       {/* Hero Section - Compacta e proporcional */}
-      <section className="relative flex flex-col lg:flex-row items-center justify-center gap-3 lg:gap-6 w-full mx-auto glass-effect rounded-xl shadow-lg p-4 sm:p-6 mb-4 sm:mb-6 fade-in-up bg-white/95 dark:bg-gray-700 border border-gray-200 dark:border-gray-500 min-h-[200px] lg:min-h-[240px]">
+      <section key={`hero-${animationKey}`} className="relative flex flex-col lg:flex-row items-center justify-center gap-3 lg:gap-6 w-full mx-auto glass-effect rounded-xl shadow-lg p-4 sm:p-6 mb-4 sm:mb-6 fade-in-up bg-white/95 dark:bg-gray-700 border border-gray-200 dark:border-gray-500 min-h-[200px] lg:min-h-[240px]">
         <div className="flex flex-col items-center lg:items-start justify-center gap-3 lg:w-2/3 text-center lg:text-left px-2 sm:px-0">
           <div className="flex items-center gap-3 mb-1">
             <h1 className="text-lg sm:text-xl lg:text-2xl font-bold text-gray-900 dark:text-white">
@@ -227,7 +233,7 @@ export default function Home() {
       </section>
       {/* Seção de Ações Rápidas - Melhorada */}
       <section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 w-full mx-auto mb-6 sm:mb-8">
-        <article className="agora-card glass-effect rounded-xl shadow-lg p-4 sm:p-5 flex flex-col justify-between gap-4 fade-in-up hover:scale-105 transition-all duration-300 bg-gradient-to-br from-blue-50 to-indigo-100 dark:from-gray-800 dark:to-gray-700 border border-blue-200 dark:border-gray-600 min-h-[200px] sm:min-h-[220px] relative overflow-hidden" style={{animationDelay: '0.1s'}}>
+        <article key={`agora-${animationKey}`} className="agora-card glass-effect rounded-xl shadow-lg p-4 sm:p-5 flex flex-col justify-between gap-4 fade-in-up hover:scale-105 transition-all duration-300 bg-gradient-to-br from-blue-50 to-indigo-100 dark:from-gray-800 dark:to-gray-700 border border-blue-200 dark:border-gray-600 min-h-[200px] sm:min-h-[220px] relative overflow-hidden" style={{animationDelay: '0.1s'}}>
           {/* Decorative background elements */}
           <div className="absolute top-0 right-0 w-20 h-20 bg-blue-200 dark:bg-blue-600 rounded-full -translate-y-10 translate-x-10 opacity-20"></div>
           <div className="absolute bottom-0 left-0 w-16 h-16 bg-indigo-200 dark:bg-indigo-600 rounded-full translate-y-8 -translate-x-8 opacity-30"></div>
@@ -307,7 +313,7 @@ export default function Home() {
           </div>
         </article>
 
-        <article className="glass-effect rounded-xl shadow-lg p-4 sm:p-5 flex flex-col justify-between gap-3 fade-in-up hover:scale-105 transition-all duration-300 bg-gradient-to-br from-green-50 to-emerald-100 dark:from-gray-800 dark:to-gray-700 border border-green-200 dark:border-gray-600 min-h-[160px] sm:min-h-[180px] relative overflow-hidden" style={{animationDelay: '0.2s'}}>
+        <article key={`atividade-${animationKey}`} className="glass-effect rounded-xl shadow-lg p-4 sm:p-5 flex flex-col justify-between gap-3 fade-in-up hover:scale-105 transition-all duration-300 bg-gradient-to-br from-green-50 to-emerald-100 dark:from-gray-800 dark:to-gray-700 border border-green-200 dark:border-gray-600 min-h-[160px] sm:min-h-[180px] relative overflow-hidden" style={{animationDelay: '0.2s'}}>
           {/* Decorative background elements */}
           <div className="absolute top-0 right-0 w-16 h-16 bg-green-200 dark:bg-green-600 rounded-full -translate-y-8 translate-x-8 opacity-20"></div>
           <div className="absolute bottom-0 left-0 w-12 h-12 bg-emerald-200 dark:bg-emerald-600 rounded-full translate-y-6 -translate-x-6 opacity-30"></div>
@@ -355,7 +361,7 @@ export default function Home() {
           </div>
         </article>
 
-        <article className="glass-effect rounded-xl shadow-lg p-4 sm:p-5 flex flex-col justify-between gap-3 fade-in-up hover:scale-105 transition-all duration-300 bg-gradient-to-br from-yellow-50 to-orange-100 dark:from-gray-800 dark:to-gray-700 border border-yellow-200 dark:border-gray-600 min-h-[160px] sm:min-h-[180px] relative overflow-hidden" style={{animationDelay: '0.3s'}}>
+        <article key={`dicas-${animationKey}`} className="glass-effect rounded-xl shadow-lg p-4 sm:p-5 flex flex-col justify-between gap-3 fade-in-up hover:scale-105 transition-all duration-300 bg-gradient-to-br from-yellow-50 to-orange-100 dark:from-gray-800 dark:to-gray-700 border border-yellow-200 dark:border-gray-600 min-h-[160px] sm:min-h-[180px] relative overflow-hidden" style={{animationDelay: '0.3s'}}>
           {/* Decorative background elements */}
           <div className="absolute top-0 right-0 w-16 h-16 bg-yellow-200 dark:bg-yellow-600 rounded-full -translate-y-8 translate-x-8 opacity-20"></div>
           <div className="absolute bottom-0 left-0 w-12 h-12 bg-orange-200 dark:bg-orange-600 rounded-full translate-y-6 -translate-x-6 opacity-30"></div>
@@ -430,7 +436,7 @@ export default function Home() {
       {/* Seção de Estatísticas - Compacta */}
       <section className="w-full mx-auto mb-4 sm:mb-6">
 
-        <article className="glass-effect rounded-xl shadow-lg p-4 sm:p-5 fade-in-up bg-gradient-to-br from-purple-50 to-pink-100 dark:from-gray-800 dark:to-gray-700 border border-purple-200 dark:border-gray-600 relative overflow-hidden" style={{animationDelay: '0.4s'}}>
+        <article key={`estatisticas-${animationKey}`} className="glass-effect rounded-xl shadow-lg p-4 sm:p-5 fade-in-up bg-gradient-to-br from-purple-50 to-pink-100 dark:from-gray-800 dark:to-gray-700 border border-purple-200 dark:border-gray-600 relative overflow-hidden" style={{animationDelay: '0.4s'}}>
           {/* Decorative background elements */}
           <div className="absolute top-0 right-0 w-16 h-16 bg-purple-200 dark:bg-purple-600 rounded-full -translate-y-8 translate-x-8 opacity-20"></div>
           <div className="absolute bottom-0 left-0 w-12 h-12 bg-pink-200 dark:bg-pink-600 rounded-full translate-y-6 -translate-x-6 opacity-30"></div>

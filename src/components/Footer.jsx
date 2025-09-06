@@ -9,7 +9,7 @@ export default function Footer() {
           {/* Logo e versão à esquerda */}
           <div className="flex items-center gap-2 absolute left-3 sm:left-4">
             <span className="font-bold text-base sm:text-lg catbutler-title">CatButler</span>
-            <span className="text-sm sm:text-base bg-blue-900 text-white px-2 py-1 rounded-full animate-pulse">v2.0.0</span>
+            <span className="text-sm sm:text-base bg-blue-900 text-white px-2 py-1 rounded-full animate-pulse">v2.2.1</span>
           </div>
 
           {/* Frase centralizada */}

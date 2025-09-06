@@ -7,10 +7,27 @@ e este projeto adere ao [Versionamento Semântico](https://semver.org/lang/pt-BR
 
 ## [Unreleased]
 
-### Adicionado
+### 🎨 Melhorias de Interface e Usabilidade
+
+#### Adicionado
 - Sistema de documentação completo
 - Guias de instalação, desenvolvimento e deploy
 - Templates para contribuição
+
+#### Alterado
+- **Substituição de Emojis por Ícones FontAwesome**
+  - Assistente Culinário: emoji de chef substituído por ícone de robô (`fa-robot`)
+  - Botões de chat: emojis substituídos por ícones FontAwesome (`fa-times`, `fa-comment`)
+  - MercadoIA: todos os emojis de produtos substituídos por ícones apropriados
+  - FaxinaIA: emojis de ambientes substituídos por ícones FontAwesome
+  - ErrorBoundary: emoji de gato triste substituído por ícone de gato (`fa-cat`)
+
+#### Corrigido
+- **Animações dos Cards da Home**
+  - Implementado sistema de reanimação quando usuário volta para a home
+  - Adicionado estado `animationKey` para forçar re-renderização dos cards
+  - Corrigida inconsistência nas animações entre navegação de páginas
+  - Todos os cards agora têm animação consistente ao retornar à home
 
 ## [2.2.1] - 2025-01-27
 
@@ -53,6 +70,16 @@ e este projeto adere ao [Versionamento Semântico](https://semver.org/lang/pt-BR
 #### Removido
 - Botão de engrenagem do card "Agora" (substituído por funcionalidade inteligente)
 - Regras CSS genéricas que causavam conflitos visuais
+
+#### Corrigido (Atualização Final)
+- **Problemas Persistentes de Contraste**
+  - Aplicação de regras CSS ultra-específicas com seletores de atributos
+  - Forçar fundo cinza claro em todos os containers escuros no modo claro
+  - Forçar texto escuro em todos os elementos filhos de containers escuros
+  - Forçar fundo branco em todos os inputs, selects e textareas
+  - Forçar cor cinza escura em todos os ícones e setas de accordion
+  - Regras aplicadas no final do arquivo para sobrescrever conflitos
+  - Cobertura total de elementos problemáticos com seletores `[class*="bg-gray-X"]`
 
 ## [2.2.0] - 2025-01-27
 

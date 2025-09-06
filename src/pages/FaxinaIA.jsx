@@ -62,7 +62,7 @@ export default function FaxinaIA() {
     { 
       id: 'banheiro', 
       nome: 'Banheiro', 
-      icone: '🚿', 
+      icone: 'fa-shower', 
       frequencia: 'Diária',
       manutencao: 'Desinfecção semanal',
       produtos: ['Água sanitária', 'Desinfetante', 'Creme de limpeza'],
@@ -139,7 +139,7 @@ export default function FaxinaIA() {
     { 
       id: 'ceramica', 
       nome: 'Cerâmica', 
-      icone: '🧱',
+      icone: 'fa-cube',
       produtos: ['Água sanitária', 'Desinfetante', 'Creme de limpeza'],
       tecnicas: [
         'Ventile o ambiente',
