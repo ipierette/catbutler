@@ -100,8 +100,7 @@ npm run dev:backend   # http://localhost:3001
 ## 📖 Documentação
 
 - [Guia de Deploy Gratuito](./GUIA_DEPLOY_GRATUITO.md)
-- [Configuração do Backend](./catbutler-backend/README.md)
-- [Configuração do Frontend](./catbutler-frontend/README.md)
+- [Instruções de Commit e Deploy](./INSTRUCOES_COMMIT_DEPLOY.md)
 
 ## 🤝 Contribuição
 
